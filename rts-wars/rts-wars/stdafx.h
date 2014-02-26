@@ -10,6 +10,13 @@
 #include <stdio.h>
 #include <tchar.h>
 
+// SFML Headers
+#include <SFML/System.hpp>
+#include <SFML/Window.hpp>
+#include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
+#include <SFML/Network.hpp>
 
-
-// TODO: reference additional headers your program requires here
+// Poco Headers
+#include <Poco/Random.h>
+#include <Poco/UUID.h>
