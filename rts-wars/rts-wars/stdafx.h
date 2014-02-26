@@ -7,8 +7,12 @@
 
 #include "targetver.h"
 
-#include <stdio.h>
+#include <cstdio>
 #include <tchar.h>
+
+// Standard library headers
+#include <vector>
+
 
 // SFML Headers
 #include <SFML/System.hpp>
@@ -20,3 +24,10 @@
 // Poco Headers
 #include <Poco/Random.h>
 #include <Poco/UUID.h>
+
+// Utility Helpers
+#include "util/make_unique.hpp"
+#include "util/Math.hpp"
+#include "util/Typedefs.hpp"
+#include "util/Observer.hpp"
+#include "util/Observable.hpp"
