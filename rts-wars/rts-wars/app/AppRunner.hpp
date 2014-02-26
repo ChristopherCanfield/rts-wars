@@ -9,7 +9,6 @@
 
 namespace cdc 
 {
-
 	class AppRunner
 	{
 	public:
@@ -18,5 +17,4 @@ namespace cdc
 
 		void execute(App& app);
 	};
-
 }

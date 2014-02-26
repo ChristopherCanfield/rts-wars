@@ -6,7 +6,6 @@
 
 namespace cdc 
 {
-
 	class App
 	{
 	public:
@@ -21,5 +20,4 @@ namespace cdc
 		// The final method that is called before the app is shut down.
 		virtual void teardown() = 0;
 	};
-
 }

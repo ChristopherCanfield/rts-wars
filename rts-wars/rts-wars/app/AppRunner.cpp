@@ -1,3 +1,5 @@
+#include "stdafx.h"
+
 #include "AppRunner.hpp"
 
 #include <stdexcept>

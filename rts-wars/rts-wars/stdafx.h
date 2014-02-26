@@ -31,3 +31,7 @@
 #include "util/Typedefs.hpp"
 #include "util/Observer.hpp"
 #include "util/Observable.hpp"
+
+#include "app/App.hpp"
+#include "app/AppRunner.hpp"
+#include "app/Constants.hpp"

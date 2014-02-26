@@ -8,7 +8,6 @@
 
 namespace cdc
 {
-
 	namespace Math
 	{
 		const float pi = 3.14159265359f;
