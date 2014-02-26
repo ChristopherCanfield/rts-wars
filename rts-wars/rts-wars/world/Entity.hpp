@@ -11,6 +11,7 @@
 
 namespace cdc
 {
+	class World;
 	
 	/// <summary>
 	/// Interface for game entities. All game world objects are entities.
@@ -41,5 +42,7 @@ namespace cdc
 		virtual uint getWidth() const = 0;
 
 		virtual void setWidth(uint width) = 0;
+
+		virtual void update(World& world) = 0;
 	};
 }

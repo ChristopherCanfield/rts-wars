@@ -23,3 +23,11 @@ void World::addEntity(unique_ptr<Entity>&& e)
 {
 	entities.push_back(move(e));
 }
+
+void World::update()
+{
+	for (auto& entity : entities)
+	{
+		entity->update(*this);
+	}
+}

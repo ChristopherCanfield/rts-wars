@@ -3,6 +3,7 @@
 #include "GameApp.hpp"
 
 using namespace cdc;
+using namespace sf;
 
 GameApp::GameApp() :
 	window()
@@ -22,7 +23,24 @@ void GameApp::setup()
 
 bool GameApp::run()
 {
-	// TODO: update this.
+	if (timer.getElapsedTime().asMilliseconds() > Constants::MillisPerTick)
+	{
+		sf::Event event;
+		while (window.pollEvent(event))
+		{
+			if (event.type == sf::Event::Closed)
+			{
+				window.close();
+				return false;
+			}
+		}
+	}
+	else if (timer.getElapsedTime().asMilliseconds() - Constants::MillisPerTick > 5)
+	{
+		Time sleepTime(sf::microseconds(timer.restart().asMilliseconds() - Constants::MillisPerTick));
+		sf::sleep(sleepTime);
+	}
+
 	return true;
 }
 

@@ -24,6 +24,9 @@ namespace cdc
 		/// <param name="e">The entity to add.</param>
 		void addEntity(std::unique_ptr<Entity>&& e);
 
+		/// <summary>Updates all entities</summary>
+		void update();
+
 	private:
 		World& operator=(World& rhs);
 		World(const World& rhs);

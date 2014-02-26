@@ -51,6 +51,8 @@ namespace cdc
 
 		virtual void setWidth(uint width) override;
 
+		virtual void update(World& world) override;
+
 	private:
 		AbstractEntity operator=(AbstractEntity&);
 

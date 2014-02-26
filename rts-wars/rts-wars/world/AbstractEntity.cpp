@@ -86,3 +86,8 @@ void AbstractEntity::setWidth(uint width)
 {
 	this->width = width;
 }
+
+// Default implementation: do nothing.
+void AbstractEntity::update(World& world)
+{
+}

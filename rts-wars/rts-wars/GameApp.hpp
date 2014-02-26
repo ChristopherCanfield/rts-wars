@@ -30,5 +30,7 @@ namespace cdc
 
 	private:
 		sf::RenderWindow window;
+
+		sf::Clock timer;
 	};
 }
