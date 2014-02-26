@@ -43,6 +43,12 @@ namespace cdc
 
 		virtual void setWidth(uint width) = 0;
 
+		/// <summary>Determines whether this entity is destroyed.</summary>
+		/// <returns>true if this entity is destroyed.</returns>
+		virtual bool isDestroyed() const = 0;
+
+		/// <summary>Updates this entity. Must be called once per game tick.</summary>
+		/// <param name="world">Reference to the world.</param>
 		virtual void update(World& world) = 0;
 	};
 }

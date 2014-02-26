@@ -51,7 +51,12 @@ namespace cdc
 
 		virtual void setWidth(uint width) override;
 
+		virtual bool isDestroyed() const override;
+
 		virtual void update(World& world) override;
+
+	protected:
+		void setDestroyed(bool value);
 
 	private:
 		AbstractEntity operator=(AbstractEntity&);
@@ -67,5 +72,7 @@ namespace cdc
 
 		uint height;
 		uint width;
+
+		bool destroyed;
 	};
 }

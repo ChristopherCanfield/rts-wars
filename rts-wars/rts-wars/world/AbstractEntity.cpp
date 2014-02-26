@@ -26,6 +26,7 @@ void AbstractEntity::constructEntity()
 {
 	x = y = rotation = 0;
 	height = width = 0;
+	destroyed = false;
 }
 
 AbstractEntity::~AbstractEntity()
@@ -85,6 +86,16 @@ uint AbstractEntity::getWidth() const
 void AbstractEntity::setWidth(uint width)
 {
 	this->width = width;
+}
+
+bool AbstractEntity::isDestroyed() const
+{
+	return destroyed;
+}
+
+void AbstractEntity::setDestroyed(bool value)
+{
+	destroyed = value;
 }
 
 // Default implementation: do nothing.
