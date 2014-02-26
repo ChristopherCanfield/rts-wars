@@ -4,6 +4,8 @@
 // February 2014
 // Entity.hpp
 
+#include "../util/Typedefs.hpp"
+
 #include "Poco/UUID.h"
 
 
@@ -18,7 +20,7 @@ namespace cdc
 	public:
 		virtual ~Entity() {}
 
-		virtual Poco::UUID getId() const = 0;
+		virtual const Poco::UUID& getId() const = 0;
 
 		virtual float getX() const = 0;
 

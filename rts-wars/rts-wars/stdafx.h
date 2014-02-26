@@ -24,6 +24,7 @@
 // Poco Headers
 #include <Poco/Random.h>
 #include <Poco/UUID.h>
+#include <Poco/UUIDGenerator.h>
 
 // Utility Helpers
 #include "util/make_unique.hpp"
