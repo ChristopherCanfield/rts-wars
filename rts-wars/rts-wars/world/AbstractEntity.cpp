@@ -97,8 +97,3 @@ void AbstractEntity::setDestroyed(bool value)
 {
 	destroyed = value;
 }
-
-// Default implementation: do nothing.
-void AbstractEntity::update(World& world)
-{
-}

@@ -53,13 +53,11 @@ namespace cdc
 
 		virtual bool isDestroyed() const override;
 
-		virtual void update(World& world) override;
-
 	protected:
 		void setDestroyed(bool value);
 
 	private:
-		AbstractEntity operator=(AbstractEntity&);
+		AbstractEntity operator=(AbstractEntity&) {}
 
 		void constructEntity();
 

@@ -19,6 +19,10 @@ namespace cdc
 	class Entity
 	{
 	public:
+		typedef std::shared_ptr<Entity> SharedPtr;
+		typedef std::unique_ptr<Entity> UniquePtr;
+		typedef std::weak_ptr<Entity> WeakPtr;
+
 		virtual ~Entity() {}
 
 		virtual const Poco::UUID& getId() const = 0;
@@ -50,5 +54,8 @@ namespace cdc
 		/// <summary>Updates this entity. Must be called once per game tick.</summary>
 		/// <param name="world">Reference to the world.</param>
 		virtual void update(World& world) = 0;
+
+	private:
+		Entity& operator=(const Entity& rhs);
 	};
 }

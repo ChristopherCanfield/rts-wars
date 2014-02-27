@@ -8,10 +8,16 @@
 #include "targetver.h"
 
 #include <cstdio>
-#include <tchar.h>
 
 // Standard library headers
+#include <string>
+#include <iostream>
+
 #include <vector>
+#include <unordered_map>
+
+#include <algorithm>
+
 
 
 // SFML Headers
@@ -32,6 +38,7 @@
 #include "util/Typedefs.hpp"
 #include "util/Observer.hpp"
 #include "util/Observable.hpp"
+#include "util/UUIDHash.hpp"
 
 #include "app/App.hpp"
 #include "app/AppRunner.hpp"
