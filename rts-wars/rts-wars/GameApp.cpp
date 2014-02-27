@@ -37,7 +37,7 @@ bool GameApp::run()
 	}
 	else if (timer.getElapsedTime().asMilliseconds() - Constants::MillisPerTick > 5)
 	{
-		Time sleepTime(sf::microseconds(timer.restart().asMilliseconds() - Constants::MillisPerTick));
+		Time sleepTime(sf::milliseconds(timer.restart().asMilliseconds() - Constants::MillisPerTick));
 		sf::sleep(sleepTime);
 	}
 

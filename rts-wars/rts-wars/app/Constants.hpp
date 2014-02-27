@@ -6,6 +6,8 @@
 
 #include <string>
 
+#include <SFML/System.hpp>
+
 namespace cdc
 {
 	namespace Constants
@@ -17,6 +19,6 @@ namespace cdc
 		const int TicksPerSecond = 30;
 
 		// The number of milliseconds per tick.
-		const float MillisPerTick = TicksPerSecond / 1000;
+		const sf::Int32 MillisPerTick = 1000 / TicksPerSecond;
 	}
 }

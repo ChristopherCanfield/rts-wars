@@ -2,3 +2,4 @@ Default window: 800x600
 
 Map size: 3200x3200
 
+Default tile size: 32x32

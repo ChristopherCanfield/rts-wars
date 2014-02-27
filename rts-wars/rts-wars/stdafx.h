@@ -36,3 +36,7 @@
 #include "app/App.hpp"
 #include "app/AppRunner.hpp"
 #include "app/Constants.hpp"
+
+#include "ui/GuiEventManager.hpp"
+#include "ui/GuiEventObserver.hpp"
+#include "ui/DirectGuiEventObserver.hpp"
