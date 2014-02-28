@@ -9,11 +9,16 @@ using namespace cdc;
 
 
 AbstractSprite::AbstractSprite(Entity& entity) :
-	entity(&entity)
+	entity(entity)
 {
 }
 
 
 AbstractSprite::~AbstractSprite()
 {
+}
+
+bool AbstractSprite::isDestroyed() const
+{
+	return entity.isDestroyed();
 }

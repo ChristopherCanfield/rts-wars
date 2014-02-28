@@ -6,18 +6,23 @@
 // February 2014
 // AbstractSprite.hpp
 
+#include "graphics/Sprite.hpp"
+
 namespace cdc
 {
 	class Entity;
 
-	class AbstractSprite
+	class AbstractSprite :
+		public Sprite
 	{
 	public:
 		AbstractSprite(Entity& entity);
 		virtual ~AbstractSprite();
 
+		virtual bool isDestroyed() const override;
+
 	private:
-		Entity* entity;
+		Entity& entity;
 
 		sf::Sprite* currentSprite;
 	};

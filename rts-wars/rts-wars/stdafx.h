@@ -40,6 +40,9 @@
 #include "util/Observable.hpp"
 #include "util/UUIDHash.hpp"
 
+#include "graphics/Graphics.hpp"
+#include "graphics/Sprite.hpp"
+
 #include "app/App.hpp"
 #include "app/AppRunner.hpp"
 #include "app/Constants.hpp"
