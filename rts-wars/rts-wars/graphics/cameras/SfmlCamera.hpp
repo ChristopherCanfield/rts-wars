@@ -23,6 +23,8 @@ namespace cdc
 
 		virtual void addController(CameraController::UniquePtr c) override;
 
+		virtual void update() override;
+
 		virtual void moveForwardZ() override;
 
 		virtual void moveBackwardZ() override;

@@ -25,6 +25,14 @@ void SfmlCamera::addController(CameraController::UniquePtr c)
 	controllers.push_back(move(c));
 }
 
+void SfmlCamera::update()
+{
+	for (auto& c : controllers)
+	{
+		c->update();
+	}
+}
+
 
 void SfmlCamera::moveForwardZ()
 {
