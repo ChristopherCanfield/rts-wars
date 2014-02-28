@@ -60,4 +60,4 @@
 #include "world/World.hpp"
 
 #include "controllers/Controller.hpp"
-#include "controllers/MoveController.hpp"
+#include "controllers/CameraController.hpp"

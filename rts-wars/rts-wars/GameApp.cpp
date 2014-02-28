@@ -2,6 +2,7 @@
 
 #include "GameApp.hpp"
 #include "world/Tank.hpp"
+#include "graphics/cameras/SfmlCamera.hpp"
 
 using namespace cdc;
 using namespace sf;
@@ -22,6 +23,8 @@ void GameApp::setup()
 	// TODO: allow the window resolution to be set by user?
 	window.create(sf::VideoMode(800, 600), Constants::AppName, sf::Style::Default);
 
+	camera = make_unique<SfmlCamera>(window, sf::Vector2u(3200u, 3200u));
+
 	// TODO: this is a test - remove it in the future.
 	Entity::SharedPtr tank = make_shared<Tank>();
 	tank->setX(50.f);
@@ -31,8 +34,10 @@ void GameApp::setup()
 
 bool GameApp::run()
 {
+	// Game loop.
 	if (timer.getElapsedTime().asMilliseconds() > Constants::MillisPerTick)
 	{
+		// Poll for window events.
 		sf::Event event;
 		while (window.pollEvent(event))
 		{
@@ -50,6 +55,7 @@ bool GameApp::run()
 
 		window.display();
 	}
+	// Sleep if more than a very small amount of time remains in the time slice.
 	else if (timer.getElapsedTime().asMilliseconds() - Constants::MillisPerTick > 5)
 	{
 		Time sleepTime(sf::milliseconds(timer.restart().asMilliseconds() - Constants::MillisPerTick));

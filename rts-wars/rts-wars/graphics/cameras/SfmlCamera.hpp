@@ -3,7 +3,9 @@
 #include "graphics/Camera.hpp"
 
 #include "SFML/Graphics/View.hpp"
-#include "SFML/Graphics/Rect.hpp"
+#include "SFML/System/Vector2.hpp"
+
+#include <vector>
 
 // Christopher D. Canfield
 // February 2014
@@ -16,8 +18,10 @@ namespace cdc
 		public Camera
 	{
 	public:
-		SfmlCamera(sf::RenderWindow& window, sf::IntRect worldDimensions);
+		SfmlCamera(sf::RenderWindow& window, sf::Vector2u worldDimensions);
 		virtual ~SfmlCamera();
+
+		virtual void addController(CameraController::UniquePtr c) override;
 
 		virtual void moveForwardZ() override;
 
@@ -38,6 +42,8 @@ namespace cdc
 
 		sf::View view;
 
-		sf::IntRect worldDimensions;
+		sf::Vector2u worldDimensions;
+
+		std::vector<CameraController::UniquePtr> controllers;
 	};
 }

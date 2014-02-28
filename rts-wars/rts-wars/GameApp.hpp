@@ -6,6 +6,7 @@
 
 #include "app/App.hpp"
 #include "world/World.hpp"
+#include "graphics/Camera.hpp"
 
 #include <SFML/Graphics.hpp>
 
@@ -31,6 +32,7 @@ namespace cdc
 
 	private:
 		sf::RenderWindow window;
+		Camera::UniquePtr camera;
 
 		sf::Clock timer;
 

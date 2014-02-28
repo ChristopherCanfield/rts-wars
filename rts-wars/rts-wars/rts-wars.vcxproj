@@ -84,14 +84,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="controllers\CameraController.hpp" />
     <ClInclude Include="graphics\Camera.hpp" />
     <ClInclude Include="controllers\Controller.hpp" />
     <ClInclude Include="graphics\cameras\SfmlCamera.hpp" />
+    <ClInclude Include="controllers\cameracontrollers\SfmlCameraController.hpp" />
     <ClInclude Include="util\FileLoadException.hpp" />
     <ClInclude Include="util\GameLogicException.hpp" />
     <ClInclude Include="graphics\sprites\AbstractSprite.hpp" />
     <ClInclude Include="graphics\Sprite.hpp" />
-    <ClInclude Include="controllers\MoveController.hpp" />
+    <ClInclude Include="controllers\entitycontrollers\MoveController.hpp" />
     <ClInclude Include="graphics\sprites\TankSprite.hpp" />
     <ClInclude Include="world\Tank.hpp" />
     <ClInclude Include="util\UUIDHash.hpp" />
@@ -117,10 +119,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="graphics\cameras\SfmlCamera.cpp" />
+    <ClCompile Include="controllers\cameracontrollers\SfmlCameraController.cpp" />
     <ClCompile Include="util\FileLoadException.cpp" />
     <ClCompile Include="util\GameLogicException.cpp" />
     <ClCompile Include="graphics\sprites\AbstractSprite.cpp" />
-    <ClCompile Include="controllers\MoveController.cpp" />
+    <ClCompile Include="controllers\entitycontrollers\MoveController.cpp" />
     <ClCompile Include="graphics\sprites\TankSprite.cpp" />
     <ClCompile Include="world\Tank.cpp" />
     <ClCompile Include="world\Terrain.cpp" />

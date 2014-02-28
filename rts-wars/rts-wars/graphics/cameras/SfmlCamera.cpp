@@ -9,7 +9,7 @@ using namespace cdc;
 
 const float movementPerTick = 1.f;
 
-SfmlCamera::SfmlCamera(sf::RenderWindow& window, sf::IntRect worldDimensions) :
+SfmlCamera::SfmlCamera(sf::RenderWindow& window, sf::Vector2u worldDimensions) :
 	window(window),
 	worldDimensions(worldDimensions)
 {
@@ -18,6 +18,11 @@ SfmlCamera::SfmlCamera(sf::RenderWindow& window, sf::IntRect worldDimensions) :
 
 SfmlCamera::~SfmlCamera()
 {
+}
+
+void SfmlCamera::addController(CameraController::UniquePtr c)
+{
+	controllers.push_back(move(c));
 }
 
 

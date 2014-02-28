@@ -4,7 +4,7 @@
 // February 2014
 // MoveController.hpp
 
-#include "Controller.hpp"
+#include "controllers/Controller.hpp"
 
 #include <Poco/UUID.h>
 

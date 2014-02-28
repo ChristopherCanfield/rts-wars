@@ -1,5 +1,7 @@
 #pragma once
 
+#include <memory>
+
 // Christopher D. Canfield
 // February 2014
 // Controller.hpp
@@ -12,6 +14,8 @@ namespace cdc
 	class Controller
 	{
 	public:
+		typedef std::unique_ptr<Controller> UniquePtr;
+
 		virtual ~Controller() {}
 
 		///<summary>Updates the controller. Must be called once per game tick.</summary>

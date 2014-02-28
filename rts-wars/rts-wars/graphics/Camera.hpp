@@ -1,5 +1,7 @@
 #pragma once
 
+#include "controllers/CameraController.hpp"
+
 // Christopher D. Canfield
 // February 2014
 // Camera.hpp
@@ -11,9 +13,13 @@ namespace cdc
 	class Camera
 	{
 	public:
-		typedef std::unique_ptr<Camera> SharedPtr;
+		typedef std::unique_ptr<Camera> UniquePtr;
 
 		virtual ~Camera() {}
+
+		virtual void addController(CameraController::UniquePtr c) = 0;
+
+		virtual void update() = 0;
 
 		virtual void moveForwardZ() = 0;
 
