@@ -7,7 +7,7 @@
 
 using namespace cdc;
 
-FileLoadException::FileLoadException(const std::string& message) :
+FileLoadException::FileLoadException(std::string message) :
 	std::runtime_error(message)
 {
 }

@@ -1,9 +1,11 @@
 #include "stdafx.h"
 
 #include "GameApp.hpp"
+#include "world/Tank.hpp"
 
 using namespace cdc;
 using namespace sf;
+using namespace std;
 
 GameApp::GameApp() :
 	window()
@@ -21,7 +23,10 @@ void GameApp::setup()
 	window.create(sf::VideoMode(800, 600), Constants::AppName);
 
 	// TODO: this is a test - remove it in the future.
-	
+	Entity::SharedPtr tank = make_shared<Tank>();
+	tank->setX(50.f);
+	tank->setY(40.f);
+	world.addEntity(tank);
 }
 
 bool GameApp::run()

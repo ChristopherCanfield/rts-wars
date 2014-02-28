@@ -19,6 +19,7 @@
 #include <algorithm>
 #include <exception>
 #include <stdexcept>
+#include <memory>
 
 // SFML Headers
 #include <SFML/System.hpp>

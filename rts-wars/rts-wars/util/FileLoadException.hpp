@@ -5,15 +5,16 @@
 // FileLoadException.hpp
 
 #include <stdexcept>
+#include <string>
 
 namespace cdc
 {
 	///<summary>Thrown when a file load fails.</summary>
 	class FileLoadException :
-		std::runtime_error
+		public std::runtime_error
 	{
 	public:
-		FileLoadException(const std::string& message);
+		FileLoadException(std::string message);
 		~FileLoadException();
 	};
 }

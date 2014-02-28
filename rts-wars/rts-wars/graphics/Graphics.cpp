@@ -39,7 +39,7 @@ sf::Texture& Graphics::getTexture(std::string path)
 		}
 		else
 		{
-			
+			throw FileLoadException("Unable to load texture file: " + path);
 		}
 	}
 	return *textures[path];
@@ -58,7 +58,12 @@ void Graphics::draw(sf::RenderTarget& target, sf::RenderStates states) const
 void Graphics::update()
 {
 	// Remove destroyed sprites.
-	sprites.erase(remove_if(sprites.begin(), sprites.end(), [](Sprite::SharedPtr sprite) {
+	auto eraseIterator = remove_if(sprites.begin(), sprites.end(), [](Sprite::SharedPtr sprite) {
 		return sprite->isDestroyed();
-	}));
+	});
+
+	if (eraseIterator != sprites.end())
+	{
+		sprites.erase(eraseIterator);
+	}
 }

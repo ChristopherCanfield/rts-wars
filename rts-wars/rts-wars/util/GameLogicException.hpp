@@ -5,6 +5,7 @@
 // GameLogicException.hpp
 
 #include <string>
+#include <stdexcept>
 
 namespace cdc
 {
@@ -13,7 +14,7 @@ namespace cdc
 		public std::logic_error
 	{
 	public:
-		GameLogicException(const std::string& message);
+		GameLogicException(std::string message);
 		~GameLogicException();
 	};
 }
