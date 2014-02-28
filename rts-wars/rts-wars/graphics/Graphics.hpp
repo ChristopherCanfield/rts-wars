@@ -10,7 +10,7 @@
 
 #include <string>
 #include <vector>
-#include <map>
+#include <unordered_map>
 #include <memory>
 
 namespace sf
@@ -49,6 +49,6 @@ namespace cdc
 
 		std::vector<Sprite::SharedPtr> sprites;
 
-		std::map<std::string, std::unique_ptr<sf::Texture>> textures;
+		std::unordered_map<std::string, std::unique_ptr<sf::Texture>> textures;
 	};
 }

@@ -20,7 +20,7 @@ GameApp::~GameApp()
 void GameApp::setup()
 {
 	// TODO: allow the window resolution to be set by user?
-	window.create(sf::VideoMode(800, 600), Constants::AppName);
+	window.create(sf::VideoMode(800, 600), Constants::AppName, sf::Style::Default);
 
 	// TODO: this is a test - remove it in the future.
 	Entity::SharedPtr tank = make_shared<Tank>();
@@ -43,9 +43,12 @@ bool GameApp::run()
 			}
 		}
 
+		window.clear(sf::Color::Blue);
 		window.draw(Graphics::Instance());
 		world.update();
 		Graphics::Instance().update();
+
+		window.display();
 	}
 	else if (timer.getElapsedTime().asMilliseconds() - Constants::MillisPerTick > 5)
 	{
@@ -58,5 +61,4 @@ bool GameApp::run()
 
 void GameApp::teardown()
 {
-
 }
