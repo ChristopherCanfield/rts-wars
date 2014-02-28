@@ -11,6 +11,8 @@ namespace cdc
 	class Camera
 	{
 	public:
+		typedef std::unique_ptr<Camera> SharedPtr;
+
 		virtual ~Camera() {}
 
 		virtual void moveForwardZ() = 0;

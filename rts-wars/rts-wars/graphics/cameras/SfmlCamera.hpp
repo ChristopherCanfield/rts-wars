@@ -2,18 +2,21 @@
 
 #include "graphics/Camera.hpp"
 
+#include "SFML/Graphics/View.hpp"
+#include "SFML/Graphics/Rect.hpp"
+
 // Christopher D. Canfield
 // February 2014
 // SfmlCamera.hpp
 
 namespace cdc
 {
-
+	///<summary>A camera used with the SFML library</summary>
 	class SfmlCamera :
 		public Camera
 	{
 	public:
-		SfmlCamera(sf::RenderWindow& window);
+		SfmlCamera(sf::RenderWindow& window, sf::IntRect worldDimensions);
 		virtual ~SfmlCamera();
 
 		virtual void moveForwardZ() override;
@@ -32,5 +35,9 @@ namespace cdc
 		SfmlCamera& operator=(SfmlCamera& rhs);
 
 		sf::RenderWindow& window;
+
+		sf::View view;
+
+		sf::IntRect worldDimensions;
 	};
 }
