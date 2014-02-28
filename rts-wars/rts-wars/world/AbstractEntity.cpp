@@ -97,3 +97,11 @@ void AbstractEntity::setDestroyed(bool value)
 {
 	destroyed = value;
 }
+
+void AbstractEntity::update(World& world)
+{
+	for (auto& controller : controllers)
+	{
+		controller.update(world);
+	}
+}

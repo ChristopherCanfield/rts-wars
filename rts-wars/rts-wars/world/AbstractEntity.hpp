@@ -6,27 +6,16 @@
 // February 2014
 // AbstractEntity.hpp
 
+#include <vector>
+
 namespace cdc
 {
+	class Controller;
+
 	class AbstractEntity : 
 		public Entity
 	{
 	public:
-
-		/// <summary>
-		/// Constructs a new instance of <see cref="AbstractEntity"/> with 
-		/// a random UUID.
-		/// </summary>
-		AbstractEntity();
-
-
-		/// <summary>
-		/// Constructs a new instance of <see cref="AbstractEntity"/> with the 
-		/// specified id.
-		/// </summary>
-		/// <param name="uuid">The entity's id.</param>
-		AbstractEntity(Poco::UUID uuid);
-
 		virtual ~AbstractEntity();
 
 		virtual const Poco::UUID& getId() const override;
@@ -53,7 +42,22 @@ namespace cdc
 
 		virtual bool isDestroyed() const override;
 
+		virtual void update(World& world) override;
+
 	protected:
+		/// <summary>
+		/// Constructs a new instance of <see cref="AbstractEntity"/> with 
+		/// a random UUID.
+		/// </summary>
+		AbstractEntity();
+
+		/// <summary>
+		/// Constructs a new instance of <see cref="AbstractEntity"/> with the 
+		/// specified id.
+		/// </summary>
+		/// <param name="uuid">The entity's id.</param>
+		AbstractEntity(Poco::UUID uuid);
+
 		void setDestroyed(bool value);
 
 	private:
@@ -72,5 +76,7 @@ namespace cdc
 		uint width;
 
 		bool destroyed;
+
+		std::vector<Controller> controllers;
 	};
 }

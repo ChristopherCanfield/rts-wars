@@ -47,3 +47,9 @@
 #include "ui/GuiEventManager.hpp"
 #include "ui/GuiEventObserver.hpp"
 #include "ui/DirectGuiEventObserver.hpp"
+
+#include "world/Entity.hpp"
+#include "world/World.hpp"
+
+#include "controllers/Controller.hpp"
+#include "controllers/MoveController.hpp"
