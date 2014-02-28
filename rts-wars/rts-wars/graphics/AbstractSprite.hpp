@@ -16,10 +16,12 @@ namespace cdc
 		public Sprite
 	{
 	public:
-		AbstractSprite(Entity& entity);
+		AbstractSprite(Entity& entity, bool isMovable);
 		virtual ~AbstractSprite();
 
 		virtual bool isDestroyed() const override;
+
+		virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const;
 
 	protected:
 		///<summary>Sets the current sprite.</summary>
@@ -35,5 +37,7 @@ namespace cdc
 		Entity& entity;
 
 		sf::Sprite* currentSprite;
+
+		bool movable;
 	};
 }

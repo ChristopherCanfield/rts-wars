@@ -8,8 +8,9 @@
 using namespace cdc;
 
 
-AbstractSprite::AbstractSprite(Entity& entity) :
-	entity(entity)
+AbstractSprite::AbstractSprite(Entity& entity, bool isMovable) :
+	entity(entity),
+	movable(isMovable)
 {
 }
 
@@ -31,4 +32,13 @@ void AbstractSprite::setSprite(sf::Sprite& sprite)
 sf::Sprite& AbstractSprite::getSprite() const
 {
 	return *currentSprite;
+}
+
+void AbstractSprite::draw(sf::RenderTarget &target, sf::RenderStates states) const
+{
+	if (movable)
+	{
+		currentSprite->setPosition(entity.getX(), entity.getY());
+	}
+	target.draw(*currentSprite, states);
 }
