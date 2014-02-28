@@ -4,16 +4,23 @@
 // February 2014
 // TankSprite.hpp
 
-#include "graphics/Sprite.hpp"
+#include <vector>
+
+#include <SFML/Graphics.hpp>
 
 namespace cdc
 {
+	class AbstractSprite;
 
 	class TankSprite :
-		public Sprite
+		public AbstractSprite
 	{
 	public:
 		TankSprite(Entity& entity);
 		virtual ~TankSprite();
+
+	private:
+		sf::Sprite sprite;
+		std::vector<sf::IntRect> textureRegions;
 	};
 }

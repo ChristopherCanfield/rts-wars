@@ -7,10 +7,15 @@
 
 using namespace cdc;
 
-TankSprite::TankSprite(Entity& entity)
-{
-}
+const std::string TankSpriteTextureName("tank.png");
 
+
+TankSprite::TankSprite(Entity& entity) :
+	AbstractSprite(entity, true)
+{
+	sprite.setTexture(Graphics::Instance().getTexture(Graphics::TexturePath + TankSpriteTextureName));
+	setSprite(sprite);
+}
 
 TankSprite::~TankSprite()
 {

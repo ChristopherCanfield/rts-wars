@@ -5,6 +5,7 @@
 // GameApp.hpp
 
 #include "app/App.hpp"
+#include "world/World.hpp"
 
 #include <SFML/Graphics.hpp>
 
@@ -32,5 +33,7 @@ namespace cdc
 		sf::RenderWindow window;
 
 		sf::Clock timer;
+
+		World world;
 	};
 }

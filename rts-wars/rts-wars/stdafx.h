@@ -17,8 +17,8 @@
 #include <unordered_map>
 
 #include <algorithm>
-
-
+#include <exception>
+#include <stdexcept>
 
 // SFML Headers
 #include <SFML/System.hpp>
@@ -39,9 +39,12 @@
 #include "util/Observer.hpp"
 #include "util/Observable.hpp"
 #include "util/UUIDHash.hpp"
+#include "util/FileLoadException.hpp"
+#include "util/GameLogicException.hpp"
 
 #include "graphics/Graphics.hpp"
 #include "graphics/Sprite.hpp"
+#include "graphics/AbstractSprite.hpp"
 
 #include "app/App.hpp"
 #include "app/AppRunner.hpp"

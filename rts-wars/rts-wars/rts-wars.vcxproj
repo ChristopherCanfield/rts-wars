@@ -85,6 +85,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="controllers\Controller.hpp" />
+    <ClInclude Include="util\FileLoadException.hpp" />
+    <ClInclude Include="util\GameLogicException.hpp" />
     <ClInclude Include="graphics\AbstractSprite.hpp" />
     <ClInclude Include="graphics\Sprite.hpp" />
     <ClInclude Include="controllers\MoveController.hpp" />
@@ -112,6 +114,8 @@
     <ClInclude Include="world\Entity.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="util\FileLoadException.cpp" />
+    <ClCompile Include="util\GameLogicException.cpp" />
     <ClCompile Include="graphics\AbstractSprite.cpp" />
     <ClCompile Include="controllers\MoveController.cpp" />
     <ClCompile Include="graphics\TankSprite.cpp" />

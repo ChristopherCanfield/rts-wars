@@ -6,11 +6,17 @@
 
 #include "graphics/Sprite.hpp"
 
+#include <SFML/Graphics/Drawable.hpp>
+
+#include <string>
 #include <vector>
+#include <map>
+#include <memory>
 
 namespace sf
 {
 	class RenderWindow;
+	class Drawable;
 }
 
 namespace cdc
@@ -18,9 +24,12 @@ namespace cdc
 	/// <summary>
 	/// The graphics system.
 	/// </summary>
-	class Graphics
+	class Graphics :
+		public sf::Drawable
 	{
 	public:
+		static const std::string TexturePath;
+
 		~Graphics();
 		static Graphics& Instance();
 		
@@ -28,12 +37,18 @@ namespace cdc
 		///<param name="sprite">The sprite to add</param>
 		void addSprite(Sprite::SharedPtr sprite);
 
-		void draw(sf::RenderWindow& window, sf::RenderStates states);
+		sf::Texture& getTexture(std::string path);
+
+		virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
+
+		void update();
 
 	private:
 		Graphics();
 		static Graphics instance;
 
 		std::vector<Sprite::SharedPtr> sprites;
+
+		std::map<std::string, std::unique_ptr<sf::Texture>> textures;
 	};
 }

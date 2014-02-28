@@ -19,6 +19,9 @@ void GameApp::setup()
 {
 	// TODO: allow the window resolution to be set by user?
 	window.create(sf::VideoMode(800, 600), Constants::AppName);
+
+	// TODO: this is a test - remove it in the future.
+	
 }
 
 bool GameApp::run()
@@ -34,6 +37,10 @@ bool GameApp::run()
 				return false;
 			}
 		}
+
+		window.draw(Graphics::Instance());
+		world.update();
+		Graphics::Instance().update();
 	}
 	else if (timer.getElapsedTime().asMilliseconds() - Constants::MillisPerTick > 5)
 	{

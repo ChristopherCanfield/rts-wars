@@ -93,6 +93,12 @@
     <ClInclude Include="graphics\TankSprite.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="util\GameLogicException.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="util\FileLoadException.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -132,6 +138,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="graphics\TankSprite.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="util\GameLogicException.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="util\FileLoadException.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
