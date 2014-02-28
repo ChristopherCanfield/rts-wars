@@ -88,6 +88,7 @@
     <ClInclude Include="graphics\AbstractSprite.hpp" />
     <ClInclude Include="graphics\Sprite.hpp" />
     <ClInclude Include="controllers\MoveController.hpp" />
+    <ClInclude Include="graphics\TankSprite.hpp" />
     <ClInclude Include="world\Tank.hpp" />
     <ClInclude Include="util\UUIDHash.hpp" />
     <ClInclude Include="world\Terrain.hpp" />
@@ -113,6 +114,7 @@
   <ItemGroup>
     <ClCompile Include="graphics\AbstractSprite.cpp" />
     <ClCompile Include="controllers\MoveController.cpp" />
+    <ClCompile Include="graphics\TankSprite.cpp" />
     <ClCompile Include="world\Tank.cpp" />
     <ClCompile Include="world\Terrain.cpp" />
     <ClCompile Include="ui\GuiEventManager.cpp" />

@@ -22,3 +22,13 @@ bool AbstractSprite::isDestroyed() const
 {
 	return entity.isDestroyed();
 }
+
+void AbstractSprite::setSprite(sf::Sprite& sprite)
+{
+	currentSprite = &sprite;
+}
+
+sf::Sprite& AbstractSprite::getSprite() const
+{
+	return *currentSprite;
+}

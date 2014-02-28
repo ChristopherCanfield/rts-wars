@@ -8,7 +8,8 @@
 
 namespace cdc
 {
-	class Sprite
+	class Sprite :
+		public sf::Drawable
 	{
 	public:
 		typedef std::shared_ptr<Sprite> SharedPtr;
