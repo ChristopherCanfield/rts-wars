@@ -7,11 +7,12 @@
 
 using namespace cdc;
 
-const float movementPerTick = 1.f;
+const float movementPerTick = 0.1f;
 
 SfmlCamera::SfmlCamera(sf::RenderWindow& window, sf::Vector2u worldDimensions) :
 	window(window),
-	worldDimensions(worldDimensions)
+	worldDimensions(worldDimensions),
+	view(sf::FloatRect(0, 0, window.getSize().x, window.getSize().y))
 {
 }
 

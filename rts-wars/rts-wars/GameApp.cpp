@@ -3,6 +3,7 @@
 #include "GameApp.hpp"
 #include "world/Tank.hpp"
 #include "graphics/cameras/SfmlCamera.hpp"
+#include "controllers/cameracontrollers/SfmlCameraController.hpp"
 
 using namespace cdc;
 using namespace sf;
@@ -24,6 +25,7 @@ void GameApp::setup()
 	window.create(sf::VideoMode(800, 600), Constants::AppName, sf::Style::Default);
 
 	camera = make_unique<SfmlCamera>(window, sf::Vector2u(3200u, 3200u));
+	camera->addController(make_unique<SfmlCameraController>(*camera));
 
 	// TODO: this is a test - remove it in the future.
 	Entity::SharedPtr tank = make_shared<Tank>();
@@ -51,6 +53,7 @@ bool GameApp::run()
 		window.clear(sf::Color::Blue);
 		window.draw(Graphics::Instance());
 		world.update();
+		camera->update();
 		Graphics::Instance().update();
 
 		window.display();
