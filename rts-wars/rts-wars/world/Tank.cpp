@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "Tank.hpp"
-#include "graphics/TankSprite.hpp"
+#include "graphics/sprites/TankSprite.hpp"
 
 // Christopher D. Canfield
 // February 2014

@@ -63,9 +63,6 @@
     <ClInclude Include="graphics\Sprite.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="graphics\AbstractSprite.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="ui\DirectGuiEventObserver.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -90,13 +87,22 @@
     <ClInclude Include="controllers\MoveController.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="graphics\TankSprite.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="util\GameLogicException.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="util\FileLoadException.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\sprites\TankSprite.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\sprites\AbstractSprite.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\Camera.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\cameras\SfmlCamera.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -122,9 +128,6 @@
     <ClCompile Include="world\World.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="graphics\AbstractSprite.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ui\GuiEventManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -137,13 +140,19 @@
     <ClCompile Include="controllers\MoveController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="graphics\TankSprite.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="util\GameLogicException.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="util\FileLoadException.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\sprites\TankSprite.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\sprites\AbstractSprite.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\cameras\SfmlCamera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -44,8 +44,9 @@
 #include "util/GameLogicException.hpp"
 
 #include "graphics/Graphics.hpp"
+#include "graphics/Camera.hpp"
 #include "graphics/Sprite.hpp"
-#include "graphics/AbstractSprite.hpp"
+#include "graphics/sprites/AbstractSprite.hpp"
 
 #include "app/App.hpp"
 #include "app/AppRunner.hpp"
