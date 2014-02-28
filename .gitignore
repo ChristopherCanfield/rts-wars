@@ -16,8 +16,8 @@
 *.idb
 *.pdb
 *.tlog
-*.vcxproj
-*.filters
+# Now included: *.vcxproj
+# Now included: *.filters
 *.user
 *.lastbuildstate
 
