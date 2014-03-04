@@ -12,6 +12,7 @@ namespace cdc
 {
 	class Controller;
 
+	///<summary>The abstract base class for entities.</summary>
 	class AbstractEntity : 
 		public Entity
 	{
@@ -20,28 +21,52 @@ namespace cdc
 
 		virtual const Poco::UUID& getId() const override;
 
+		///<summary>Gets the entity's x coordinate, in world coordinates.</summary>
+		///<returns>The entity's x coordinate.</returns>
 		virtual float getX() const override;
 
+		///<summary>Sets the entity's x coordinate.</summary>
+		///<param name="x">The entity's x coordinate.</param>
 		virtual void setX(float x) override;
 
+		///<summary>Gets the entity's y coordinate, in world coordinates.</summary>
+		///<returns>The entity's y coordinate.</returns>
 		virtual float getY() const override;
 
+		///<summary>Sets the entity's y coordinate.</summary>
+		///<param name="y">The entity's y coordinate.</param>
 		virtual void setY(float y) override;
 
+		///<summary>Gets the entity's rotation.</summary>
+		///<returns>The entity's rotation.</returns>
 		virtual float getRotation() const override;
 
+		///<summary>Sets the entity's rotation.</summary>
+		///<param name="radians">The entity's rotation.</param>
 		virtual void setRotation(float radians) override;
 
+		///<summary>Gets the entity's height.</summary>
+		///<returns>The entity's height.</returns>
 		virtual uint getHeight() const override;
 
+		///<summary>Sets the entity's height.</summary>
+		///<param name="height">The entity's height.</param>
 		virtual void setHeight(uint height) override;
 
+		///<summary>Gets the entity's width.</summary>
+		///<returns>The entity's width.</returns>
 		virtual uint getWidth() const override;
 
+		///<summary>Sets the entity's width.</summary>
+		///<param name="width">The entity's width.</param>
 		virtual void setWidth(uint width) override;
 
+		///<summary>Specifies whether the entity is destroyed.</summary>
+		///<returns>true if the entity is destroyed.</returns>
 		virtual bool isDestroyed() const override;
 
+		///<summary>Updates the entity. Must be called once per game tick.</summary>
+		///<param name="world">Reference to the world.</param>
 		virtual void update(World& world) override;
 
 	protected:
@@ -58,7 +83,7 @@ namespace cdc
 		/// <param name="uuid">The entity's id.</param>
 		AbstractEntity(Poco::UUID uuid);
 
-		void setDestroyed(bool value);
+		void destroy();
 
 	private:
 		AbstractEntity operator=(AbstractEntity&) {}

@@ -9,7 +9,7 @@
 
 namespace cdc
 {
-
+	///<summary>A dirt tile.</summary>
 	class Dirt :
 		public AbstractTile
 	{

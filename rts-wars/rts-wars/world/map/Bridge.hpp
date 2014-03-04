@@ -9,7 +9,7 @@
 
 namespace cdc
 {
-
+	///<summary>A bridge tile.</summary>
 	class Bridge :
 		public AbstractTile
 	{

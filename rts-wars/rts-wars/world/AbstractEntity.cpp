@@ -93,9 +93,9 @@ bool AbstractEntity::isDestroyed() const
 	return destroyed;
 }
 
-void AbstractEntity::setDestroyed(bool value)
+void AbstractEntity::destroy()
 {
-	destroyed = value;
+	destroyed = true;
 }
 
 void AbstractEntity::update(World& world)

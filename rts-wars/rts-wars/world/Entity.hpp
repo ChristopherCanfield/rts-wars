@@ -27,24 +27,44 @@ namespace cdc
 
 		virtual const Poco::UUID& getId() const = 0;
 
+		///<summary>Gets the entity's x coordinate, in world coordinates.</summary>
+		///<returns>The entity's x coordinate.</returns>
 		virtual float getX() const = 0;
 
+		///<summary>Sets the entity's x coordinate.</summary>
+		///<param name="x">The entity's x coordinate.</param>
 		virtual void setX(float x) = 0;
 
+		///<summary>Gets the entity's y coordinate, in world coordinates.</summary>
+		///<returns>The entity's y coordinate.</returns>
 		virtual float getY() const = 0;
 
+		///<summary>Sets the entity's y coordinate.</summary>
+		///<param name="y">The entity's y coordinate.</param>
 		virtual void setY(float y) = 0;
 
+		///<summary>Gets the entity's rotation.</summary>
+		///<returns>The entity's rotation.</returns>
 		virtual float getRotation() const = 0;
 
+		///<summary>Sets the entity's rotation.</summary>
+		///<param name="radians">The entity's rotation.</param>
 		virtual void setRotation(float radians) = 0;
 
+		///<summary>Gets the entity's height.</summary>
+		///<returns>The entity's height.</returns>
 		virtual uint getHeight() const = 0;
 
+		///<summary>Sets the entity's height.</summary>
+		///<param name="height">The entity's height.</param>
 		virtual void setHeight(uint height) = 0;
 
+		///<summary>Gets the entity's width.</summary>
+		///<returns>The entity's width.</returns>
 		virtual uint getWidth() const = 0;
 
+		///<summary>Sets the entity's width.</summary>
+		///<param name="width">The entity's width.</param>
 		virtual void setWidth(uint width) = 0;
 
 		/// <summary>Determines whether this entity is destroyed.</summary>
