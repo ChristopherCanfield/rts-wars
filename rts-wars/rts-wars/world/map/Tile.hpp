@@ -2,6 +2,8 @@
 
 #include "util/Typedefs.hpp"
 
+#include <memory>
+
 // Christopher D. Canfield
 // March 2014
 // Tile.hpp
@@ -12,6 +14,9 @@ namespace cdc
 	class Tile
 	{
 	public:
+		typedef std::shared_ptr<Tile> SharedPtr;
+		typedef std::unique_ptr<Tile> UniquePtr;
+
 		virtual ~Tile() {}
 
 		virtual float getX() const = 0;

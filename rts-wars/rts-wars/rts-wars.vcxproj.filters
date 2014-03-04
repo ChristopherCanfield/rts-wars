@@ -126,6 +126,18 @@
     <ClInclude Include="world\map\AbstractTile.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="world\map\Dirt.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="world\map\Water.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="world\map\Road.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="world\map\Bridge.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -186,6 +198,18 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="world\map\AbstractTile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="world\map\Dirt.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="world\map\Water.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="world\map\Road.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="world\map\Bridge.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
