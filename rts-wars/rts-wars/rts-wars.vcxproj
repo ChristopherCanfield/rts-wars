@@ -85,6 +85,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="world\map\Bridge.hpp" />
+    <ClInclude Include="world\map\GameMap.hpp" />
     <ClInclude Include="world\map\Road.hpp" />
     <ClInclude Include="world\map\Water.hpp" />
     <ClInclude Include="world\map\Dirt.hpp" />
@@ -128,6 +129,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\map\Bridge.cpp" />
+    <ClCompile Include="world\map\GameMap.cpp" />
     <ClCompile Include="world\map\Road.cpp" />
     <ClCompile Include="world\map\Water.cpp" />
     <ClCompile Include="world\map\Dirt.cpp" />
