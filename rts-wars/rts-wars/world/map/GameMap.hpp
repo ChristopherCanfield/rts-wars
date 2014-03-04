@@ -1,7 +1,7 @@
 #pragma once
 
 #include "util/Typedefs.hpp"
-#include "Tile.hpp"
+#include "Terrain.hpp"
 
 #include <vector>
 
@@ -28,11 +28,11 @@ namespace cdc
 		///<returns>the width of the map.</returns>
 		uint getWidth() const;
 
-		///<summary>Returns the height of the map.</summary>
-		///<param name="x">the x location of the tile, in world coordinates.</param>
-		///<param name="y">the y location of the tile, in world coordinates.</param>
-		///<returns>the height of the map.</returns>
-		Tile& getTile(uint x, uint y) const;
+		///<summary>Returns the specified terrain.</summary>
+		///<param name="x">the x location of the terrain, in world coordinates.</param>
+		///<param name="y">the y location of the terrain, in world coordinates.</param>
+		///<returns>The terrain.</returns>
+		Terrain& getTerrain(uint x, uint y) const;
 
 	private:
 		uint height;
@@ -41,8 +41,8 @@ namespace cdc
 		uint tileHeight;
 		uint tileWidth;
 
-		std::vector<std::vector<Tile::UniquePtr>> tiles;
+		std::vector<std::vector<Terrain::UniquePtr>> tiles;
 
-		void addTile(Tile::UniquePtr);
+		void addTerrain(Terrain::UniquePtr);
 	};
 }

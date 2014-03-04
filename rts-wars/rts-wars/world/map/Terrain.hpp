@@ -6,18 +6,18 @@
 
 // Christopher D. Canfield
 // March 2014
-// Tile.hpp
+// Terrain.hpp
 
 namespace cdc
 {
 
-	class Tile
+	class Terrain
 	{
 	public:
-		typedef std::shared_ptr<Tile> SharedPtr;
-		typedef std::unique_ptr<Tile> UniquePtr;
+		typedef std::shared_ptr<Terrain> SharedPtr;
+		typedef std::unique_ptr<Terrain> UniquePtr;
 
-		virtual ~Tile() {}
+		virtual ~Terrain() {}
 
 		virtual float getX() const = 0;
 

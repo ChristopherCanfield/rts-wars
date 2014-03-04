@@ -72,9 +72,6 @@
     <ClInclude Include="ui\GuiEventObserver.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="world\Terrain.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="util\UUIDHash.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -111,9 +108,6 @@
     <ClInclude Include="controllers\cameracontrollers\SfmlCameraController.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="world\map\Tile.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="world\map\Grass.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -121,9 +115,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="world\map\parser\TiledMapParser.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="world\map\AbstractTile.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="world\map\Dirt.hpp">
@@ -139,6 +130,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="world\map\GameMap.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="world\map\Terrain.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="world\map\AbstractTerrain.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -165,9 +162,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ui\GuiEventManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="world\Terrain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="world\Tank.cpp">
@@ -200,9 +194,6 @@
     <ClCompile Include="world\map\parser\TiledMapParser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="world\map\AbstractTile.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="world\map\Dirt.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -216,6 +207,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="world\map\GameMap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="world\map\AbstractTerrain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

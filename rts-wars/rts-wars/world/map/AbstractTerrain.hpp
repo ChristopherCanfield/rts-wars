@@ -1,20 +1,20 @@
 #pragma once
 
-#include "Tile.hpp"
+#include "Terrain.hpp"
 
 // Christopher D. Canfield
 // March 2014
-// AbstractTile.hpp
+// AbstractTerrain.hpp
 
 namespace cdc
 {
 
-	class AbstractTile :
-		public Tile
+	class AbstractTerrain :
+		public Terrain
 	{
 	public:
-		AbstractTile(float x, float y, uint height, uint width, bool passable, float speedPercentage);
-		virtual ~AbstractTile();
+		AbstractTerrain(float x, float y, uint height, uint width, bool passable, float speedPercentage);
+		virtual ~AbstractTerrain();
 
 		///<summary>Returns the x coordinate of the tile, in world coordinates.</summary>
 		///<returns>the x coordinate of the tile, in world coordinates.</returns>

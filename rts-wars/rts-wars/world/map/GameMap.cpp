@@ -27,7 +27,7 @@ uint GameMap::getWidth() const
 	return width;
 }
 
-Tile& GameMap::getTile(uint x, uint y) const
+Terrain& GameMap::getTerrain(uint x, uint y) const
 {
 	// TODO: implement this.
 
@@ -36,7 +36,7 @@ Tile& GameMap::getTile(uint x, uint y) const
 	return *tiles[gridX][gridY].get();
 }
 
-void GameMap::addTile(Tile::UniquePtr tile)
+void GameMap::addTerrain(Terrain::UniquePtr tile)
 {
 	// TODO: implement this.
 }

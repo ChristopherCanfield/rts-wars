@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Tile.hpp"
+#include "AbstractTerrain.hpp"
 
 // Christopher D. Canfield
 // March 2014
@@ -9,9 +9,9 @@
 
 namespace cdc
 {
-	///<summary>A grass tile.</summary>
+	///<summary>A grass terrain.</summary>
 	class Grass :
-		public AbstractTile
+		public AbstractTerrain
 	{
 	public:
 		Grass(float x, float y);

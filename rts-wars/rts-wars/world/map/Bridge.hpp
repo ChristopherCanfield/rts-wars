@@ -1,6 +1,6 @@
 #pragma once
 
-#include "AbstractTile.hpp"
+#include "AbstractTerrain.hpp"
 
 // Christopher D. Canfield
 // March 2014
@@ -9,9 +9,9 @@
 
 namespace cdc
 {
-	///<summary>A bridge tile.</summary>
+	///<summary>A bridge terrain.</summary>
 	class Bridge :
-		public AbstractTile
+		public AbstractTerrain
 	{
 	public:
 		Bridge(float x, float y);
