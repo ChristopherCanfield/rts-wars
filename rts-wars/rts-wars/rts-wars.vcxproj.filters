@@ -111,6 +111,21 @@
     <ClInclude Include="controllers\cameracontrollers\SfmlCameraController.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="world\map\Tile.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="world\map\Grass.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="world\map\parser\MapParser.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="world\map\parser\TiledMapParser.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="world\map\AbstractTile.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -162,6 +177,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="controllers\cameracontrollers\SfmlCameraController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="world\map\Grass.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="world\map\parser\TiledMapParser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="world\map\AbstractTile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

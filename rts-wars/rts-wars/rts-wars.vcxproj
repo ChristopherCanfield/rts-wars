@@ -84,17 +84,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="world\map\AbstractTile.hpp" />
     <ClInclude Include="controllers\CameraController.hpp" />
     <ClInclude Include="graphics\Camera.hpp" />
     <ClInclude Include="controllers\Controller.hpp" />
     <ClInclude Include="graphics\cameras\SfmlCamera.hpp" />
     <ClInclude Include="controllers\cameracontrollers\SfmlCameraController.hpp" />
+    <ClInclude Include="world\map\Grass.hpp" />
+    <ClInclude Include="world\map\Tile.hpp" />
     <ClInclude Include="util\FileLoadException.hpp" />
     <ClInclude Include="util\GameLogicException.hpp" />
     <ClInclude Include="graphics\sprites\AbstractSprite.hpp" />
     <ClInclude Include="graphics\Sprite.hpp" />
     <ClInclude Include="controllers\entitycontrollers\MoveController.hpp" />
     <ClInclude Include="graphics\sprites\TankSprite.hpp" />
+    <ClInclude Include="world\map\parser\MapParser.hpp" />
+    <ClInclude Include="world\map\parser\TiledMapParser.hpp" />
     <ClInclude Include="world\Tank.hpp" />
     <ClInclude Include="util\UUIDHash.hpp" />
     <ClInclude Include="world\Terrain.hpp" />
@@ -118,13 +123,16 @@
     <ClInclude Include="world\Entity.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="world\map\AbstractTile.cpp" />
     <ClCompile Include="graphics\cameras\SfmlCamera.cpp" />
     <ClCompile Include="controllers\cameracontrollers\SfmlCameraController.cpp" />
+    <ClCompile Include="world\map\Grass.cpp" />
     <ClCompile Include="util\FileLoadException.cpp" />
     <ClCompile Include="util\GameLogicException.cpp" />
     <ClCompile Include="graphics\sprites\AbstractSprite.cpp" />
     <ClCompile Include="controllers\entitycontrollers\MoveController.cpp" />
     <ClCompile Include="graphics\sprites\TankSprite.cpp" />
+    <ClCompile Include="world\map\parser\TiledMapParser.cpp" />
     <ClCompile Include="world\Tank.cpp" />
     <ClCompile Include="world\Terrain.cpp" />
     <ClCompile Include="ui\GuiEventManager.cpp" />

@@ -58,6 +58,8 @@
 
 #include "world/Entity.hpp"
 #include "world/World.hpp"
+#include "world/map/Tile.hpp"
+#include "world/map/AbstractTile.hpp"
 
 #include "controllers/Controller.hpp"
 #include "controllers/CameraController.hpp"
