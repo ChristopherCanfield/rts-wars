@@ -28,6 +28,11 @@ void Graphics::addSprite(Sprite::SharedPtr sprite)
 	sprites.push_back(sprite);
 }
 
+void Graphics::addMapSprite(sf::Sprite mapSprite)
+{
+	mapSprites.push_back(move(mapSprite));
+}
+
 sf::Texture& Graphics::getTexture(std::string path)
 {
 	if (textures.count(path) == 0)
@@ -47,12 +52,15 @@ sf::Texture& Graphics::getTexture(std::string path)
 
 void Graphics::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
+	for (auto& map : mapSprites)
+	{
+		target.draw(map, states);
+	}
+
 	for (auto& sprite : sprites)
 	{
 		target.draw(*sprite, states);
 	}
-
-	
 }
 
 void Graphics::update()

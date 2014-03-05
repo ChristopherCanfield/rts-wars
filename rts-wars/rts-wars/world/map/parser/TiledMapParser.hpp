@@ -9,6 +9,7 @@
 
 namespace cdc
 {
+	///<summary>Parser for maps that were created using the Tiled map editor.</summary>
 	class TiledMapParser :
 		public MapParser
 	{

@@ -34,8 +34,12 @@ namespace cdc
 		static Graphics& Instance();
 		
 		///<summary>Adds a sprite.<summary>
-		///<param name="sprite">The sprite to add</param>
+		///<param name="sprite">The sprite to add.</param>
 		void addSprite(Sprite::SharedPtr sprite);
+
+		///<summary></summary>
+		///<param name="mapSprite">The sprite to add.</param>
+		void addMapSprite(sf::Sprite mapSprite);
 
 		sf::Texture& getTexture(std::string path);
 
@@ -48,6 +52,8 @@ namespace cdc
 		static Graphics instance;
 
 		std::vector<Sprite::SharedPtr> sprites;
+
+		std::vector<sf::Sprite> mapSprites;
 
 		std::unordered_map<std::string, std::unique_ptr<sf::Texture>> textures;
 	};
