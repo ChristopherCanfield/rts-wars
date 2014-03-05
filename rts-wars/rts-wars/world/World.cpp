@@ -57,6 +57,16 @@ void World::removeEntity(Poco::UUID id)
 	}
 }
 
+void World::setGameMap(GameMap::UniquePtr map)
+{
+	gameMap = move(map);
+}
+
+GameMap& World::getGameMap() const
+{
+	return *gameMap.get();
+}
+
 void World::update()
 {
 	for (auto& entity : entities)

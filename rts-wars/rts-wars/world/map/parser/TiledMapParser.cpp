@@ -21,4 +21,5 @@ TiledMapParser::~TiledMapParser()
 void TiledMapParser::parse(std::string path)
 {
 	// TODO: implement this.
+	// 
 }

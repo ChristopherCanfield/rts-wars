@@ -4,6 +4,7 @@
 #include "Terrain.hpp"
 
 #include <vector>
+#include <memory>
 
 // Christopher D. Canfield
 // March 2014
@@ -16,6 +17,8 @@ namespace cdc
 	class GameMap
 	{
 	public:
+		typedef std::unique_ptr<GameMap> UniquePtr;
+
 		GameMap(uint height, uint width, uint tileHeight, uint tileWidth);
 
 		~GameMap() {}

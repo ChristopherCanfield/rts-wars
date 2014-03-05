@@ -5,6 +5,7 @@
 // World.hpp
 
 #include "Entity.hpp"
+#include "world/map/GameMap.hpp"
 
 #include <memory>
 #include <vector>
@@ -38,6 +39,14 @@ namespace cdc
 		/// <param name="id">The entity's unique id.</param>
 		void removeEntity(Poco::UUID id);
 
+		/// <summarySets the game map.</summary>
+		/// <param name="gameMap">The game map.</param>
+		void setGameMap(GameMap::UniquePtr gameMap);
+
+		/// <summary>Returns a reference to the game map.</summary>
+		/// <returns>Reference to the game map.</returns>
+		GameMap& getGameMap() const;
+
 		/// <summary>Updates all entities</summary>
 		void update();
 
@@ -48,5 +57,7 @@ namespace cdc
 
 		std::vector<Entity::SharedPtr> entities;
 		std::unordered_map<Poco::UUID, Entity*> entityMap;
+
+		GameMap::UniquePtr gameMap;
 	};
 }
