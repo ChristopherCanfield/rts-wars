@@ -13,6 +13,8 @@
 
 namespace cdc
 {
+	class Node;
+
 	///<summary>The game map, which contains tile information.</summary>
 	class GameMap
 	{

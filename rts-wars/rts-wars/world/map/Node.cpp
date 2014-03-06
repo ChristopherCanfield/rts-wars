@@ -6,9 +6,10 @@
 // Node.cpp
 
 using namespace cdc;
+using namespace std;
 
-
-Node::explicit Node(Terrain&& terrain);
+Node::Node(Terrain&& t) :
+	terrain(move(unique_ptr<Terrain>(&t)))
 {
 }
 
@@ -18,10 +19,23 @@ Node::~Node()
 }
 
 
-std::vector<Node::WeakPtr>& getConnections() const;
+std::vector<Node::WeakPtr>& Node::getConnections()
+{
+	return connections;
+}
 
-void addConnection(Node& node);
+void Node::addConnection(Node::SharedPtr node)
+{
+	auto nodeWeakPtr = std::weak_ptr<Node>(node);
+	connections.push_back(nodeWeakPtr);
+}
 
-void removeConnection(Node& node);
+void Node::removeConnection(Node& node)
+{
 
-Terrain& getTerrain() const;
+}
+
+Terrain& Node::getTerrain() const
+{
+	return *terrain.get();
+}

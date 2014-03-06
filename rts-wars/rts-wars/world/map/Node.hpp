@@ -17,13 +17,14 @@ namespace cdc
 	{
 	public:
 		typedef std::weak_ptr<Node> WeakPtr;
+		typedef std::shared_ptr<Node> SharedPtr;
 
 		explicit Node(Terrain&& terrain);
 		~Node();
 
-		std::vector<Node::WeakPtr>& getConnections() const;
+		std::vector<Node::WeakPtr>& getConnections();
 
-		void addConnection(Node& node);
+		void addConnection(Node::SharedPtr node);
 
 		void removeConnection(Node& node);
 
