@@ -84,6 +84,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="util\Vector2fAdapter.hpp" />
+    <ClInclude Include="world\map\nav\Edge.hpp" />
+    <ClInclude Include="world\map\nav\GridLocation.hpp" />
+    <ClInclude Include="world\map\nav\NavGraphHelper.hpp" />
+    <ClInclude Include="world\map\nav\Node.hpp" />
+    <ClInclude Include="world\map\nav\PathKey.hpp" />
+    <ClInclude Include="world\map\nav\PathNode.hpp" />
+    <ClInclude Include="world\map\nav\Search.hpp" />
     <ClInclude Include="world\map\Node.hpp" />
     <ClInclude Include="world\map\Bridge.hpp" />
     <ClInclude Include="world\map\GameMap.hpp" />
@@ -128,6 +136,14 @@
     <ClInclude Include="world\Entity.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="util\Vector2fAdapter.cpp" />
+    <ClCompile Include="world\map\nav\Edge.cpp" />
+    <ClCompile Include="world\map\nav\GridLocation.cpp" />
+    <ClCompile Include="world\map\nav\NavGraphHelper.cpp" />
+    <ClCompile Include="world\map\nav\Node.cpp" />
+    <ClCompile Include="world\map\nav\PathKey.cpp" />
+    <ClCompile Include="world\map\nav\PathNode.cpp" />
+    <ClCompile Include="world\map\nav\Search.cpp" />
     <ClCompile Include="world\map\Node.cpp" />
     <ClCompile Include="world\map\Bridge.cpp" />
     <ClCompile Include="world\map\GameMap.cpp" />

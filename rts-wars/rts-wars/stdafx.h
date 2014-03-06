@@ -12,13 +12,19 @@
 // Standard library headers
 #include <string>
 #include <iostream>
+#include <sstream>
 
 #include <vector>
 #include <unordered_map>
+#include <unordered_set>
+#include <queue>
 
+#include <cmath>
 #include <algorithm>
+
 #include <exception>
 #include <stdexcept>
+
 #include <memory>
 
 // SFML Headers
@@ -33,7 +39,7 @@
 #include <Poco/UUID.h>
 #include <Poco/UUIDGenerator.h>
 
-// Utility Helpers
+// Game Headers
 #include "util/make_unique.hpp"
 #include "util/Math.hpp"
 #include "util/Typedefs.hpp"
@@ -42,6 +48,7 @@
 #include "util/UUIDHash.hpp"
 #include "util/FileLoadException.hpp"
 #include "util/GameLogicException.hpp"
+#include "util/Vector2fAdapter.hpp"
 
 #include "graphics/Graphics.hpp"
 #include "graphics/Camera.hpp"
@@ -62,6 +69,13 @@
 #include "world/map/AbstractTerrain.hpp"
 #include "world/map/GameMap.hpp"
 #include "world/map/Node.hpp"
+
+#include "world/map/nav/Node.hpp"
+#include "world/map/nav/Edge.hpp"
+#include "world/map/nav/PathKey.hpp"
+#include "world/map/nav/GridLocation.hpp"
+#include "world/map/nav/PathNode.hpp"
+#include "world/map/nav/Search.hpp"
 
 #include "controllers/Controller.hpp"
 #include "controllers/CameraController.hpp"
