@@ -8,9 +8,9 @@
 using namespace cdc;
 
 
-AbstractTerrain::AbstractTerrain(float x, float y, uint height, uint width, bool passable, float speedPercentage) :
+AbstractTerrain::AbstractTerrain(float x, float z, uint height, uint width, bool passable, float speedPercentage) :
 	x(x),
-	y(y),
+	z(z),
 	height(height),
 	width(width),
 	passable(passable),
@@ -29,9 +29,9 @@ float AbstractTerrain::getX() const
 	return x;
 }
 
-float AbstractTerrain::getY() const
+float AbstractTerrain::getZ() const
 {
-	return y;
+	return z;
 }
 
 uint AbstractTerrain::getHeight() const
