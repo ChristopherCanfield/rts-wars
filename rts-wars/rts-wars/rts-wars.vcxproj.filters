@@ -138,9 +138,6 @@
     <ClInclude Include="world\map\AbstractTerrain.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="world\map\Node.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="world\map\nav\Edge.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -237,9 +234,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="world\map\AbstractTerrain.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="world\map\Node.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="world\map\nav\Edge.cpp">

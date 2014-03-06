@@ -95,13 +95,13 @@ std::deque<Node*> cdc::Search::aStar(const Node& startNode, const Node& endNode,
 		auto edges = lowestCost->getEdgeList();
 		for (auto edge : edges)
 		{
-			auto currentNode = edge->getOppositeNode(*lowestCost);
+			auto currentNode = edge.lock()->getOppositeNode(*lowestCost);
 			if (debug) cout << "|-searching edge: current node: " << currentNode->getRow() << "," 
 					<< currentNode->getColumn() << endl;
 
 			// Calculate the cost for traversing this edge.
 			float h = heuristic(*currentNode, endNode);
-			float g = edge->getCost() + lowestCost->getG();
+			float g = edge.lock()->getCost() + lowestCost->getG();
 			float cost = h + g;
 			if (debug) cout << "|---current node cost: " << cost << endl;
 

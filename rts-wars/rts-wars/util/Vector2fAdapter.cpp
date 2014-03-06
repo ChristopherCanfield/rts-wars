@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "Vector2fAdapter.hpp"
 
 using cdc::Vector2fAdapter;

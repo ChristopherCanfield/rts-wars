@@ -9,6 +9,8 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
 
+#include <memory>
+
 
 namespace cdc 
 {
@@ -20,6 +22,9 @@ namespace cdc
 			public sf::Drawable
 	{
 	public:
+		typedef std::weak_ptr<Edge> WeakPtr;
+		typedef std::shared_ptr<Edge> SharedPtr;
+
 		explicit Edge(Node& startNode);
 		Edge(Node& startNode, Node& endNode, float cost);
 		Edge(Node& startNode, Node& endNode, int cost);

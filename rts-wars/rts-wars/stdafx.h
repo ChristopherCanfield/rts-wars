@@ -68,7 +68,6 @@
 #include "world/map/Terrain.hpp"
 #include "world/map/AbstractTerrain.hpp"
 #include "world/map/GameMap.hpp"
-#include "world/map/Node.hpp"
 
 #include "world/map/nav/Node.hpp"
 #include "world/map/nav/Edge.hpp"

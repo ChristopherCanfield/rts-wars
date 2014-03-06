@@ -92,7 +92,6 @@
     <ClInclude Include="world\map\nav\PathKey.hpp" />
     <ClInclude Include="world\map\nav\PathNode.hpp" />
     <ClInclude Include="world\map\nav\Search.hpp" />
-    <ClInclude Include="world\map\Node.hpp" />
     <ClInclude Include="world\map\Bridge.hpp" />
     <ClInclude Include="world\map\GameMap.hpp" />
     <ClInclude Include="world\map\Road.hpp" />
@@ -144,7 +143,6 @@
     <ClCompile Include="world\map\nav\PathKey.cpp" />
     <ClCompile Include="world\map\nav\PathNode.cpp" />
     <ClCompile Include="world\map\nav\Search.cpp" />
-    <ClCompile Include="world\map\Node.cpp" />
     <ClCompile Include="world\map\Bridge.cpp" />
     <ClCompile Include="world\map\GameMap.cpp" />
     <ClCompile Include="world\map\Road.cpp" />

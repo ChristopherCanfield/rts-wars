@@ -17,14 +17,16 @@
 
 namespace cdc 
 {
-	class AntFoodPile;
-	class Edge;
+	class Terrain;
 
 	// A node in a graph.
 	class Node :
 		public sf::Drawable
 	{
 	public:
+		typedef std::weak_ptr<Node> WeakPtr;
+		typedef std::shared_ptr<Node> SharedPtr;
+
 		Node(GridLocation location, int pixelX, int pixelY);
 		~Node();
 
@@ -35,20 +37,20 @@ namespace cdc
 		// - edge: the Edge to add.
 		// - addEdgeToOppositeNode: add the Edge to the opposite node as well.
 		//		In other words, if this is adding edge A->B, also add B->A.
-		Node& addEdge(std::shared_ptr<Edge> edge, bool addEdgeToOppositeNode = true);
+		Node& addEdge(Edge::SharedPtr edge, bool addEdgeToOppositeNode = true);
 
 		// Removes an edge.
 		void removeEdge(Edge& edge, bool removeEdgeFromOpposite = true);
 
 		// Returns a reference to the edge list.
-		const std::vector<std::shared_ptr<Edge>>& getEdgeList() const;
+		const std::vector<Edge::WeakPtr>& getEdgeList() const;
 
 		// Returns a reference to an edge.
 		// - index: the edge's index in the Node's edge list.
 		Edge& getEdge(uint index) const;
 
 		// Returns true if the edge exists.
-		bool edgeExists(std::shared_ptr<Edge>& edge) const;
+		bool edgeExists(Edge& edge) const;
 
 		// Gets the x location of the Node, in pixels.
 		template <class T>
@@ -62,6 +64,7 @@ namespace cdc
 
 		// Returns the node's row in the navigation grid.
 		uint getRow() const;
+
 		// Returns the node's column in the navigation grid.
 		uint getColumn() const;
 
@@ -69,13 +72,7 @@ namespace cdc
 		// (i.e., it has at least one edge).
 		bool isConnected() const;
 
-		// Sets the ant food pile at this node.
-		// - antFoodPile: A non-owning pointer to an AntFoodPile, or nullptr.
-		void setAntFoodPile(AntFoodPile* antFoodPile);
-		// Gets a non-owning pointer to the ant food pile at this node.
-		AntFoodPile* getAntFoodPile() const;
-
-		void update(uint ticks);
+		Terrain& getTerrain() const;
 
 		virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const override;
 
@@ -87,7 +84,9 @@ namespace cdc
 	private:
 		void removeEdge(Edge& edge);
 
-		std::vector<std::shared_ptr<Edge>> edges;
+		Terrain::UniquePtr terrain;
+
+		std::vector<Edge::WeakPtr> edges;
 
 		int pixelX;
 		int pixelY;
@@ -97,8 +96,6 @@ namespace cdc
 
 		// The graphical representation of the node.
 		sf::CircleShape circle;
-
-		AntFoodPile* antFoodPile;
 	};
 
 	template <class T>

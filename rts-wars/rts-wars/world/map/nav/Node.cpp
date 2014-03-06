@@ -8,18 +8,15 @@
 using cdc::Node;
 using cdc::Edge;
 using cdc::GridLocation;
-using cdc::AntFoodPile;
-using std::shared_ptr;
-using std::out_of_range;
-using std::vector;
+
+using namespace std;
 
 
 Node::Node(GridLocation location, int pixelX, int pixelY) :
 	location(location), 
 	pixelX(pixelX), 
 	pixelY(pixelY), 
-	circle(5),
-	antFoodPile(nullptr)
+	circle(5)
 {
 	circle.setOrigin(circle.getLocalBounds().width / 2.f, circle.getLocalBounds().height / 2.f);
 	circle.setPosition(Vector2fAdapter(pixelX, pixelY));
@@ -32,8 +29,7 @@ Node::Node(const Node&& other) :
 	location(other.location), 
 	pixelX(other.pixelX), 
 	pixelY(other.pixelY), 
-	circle(other.circle),
-	antFoodPile(nullptr)
+	circle(other.circle)
 {
 	edges = std::move(other.edges);
 }
@@ -47,7 +43,6 @@ Node& Node::operator=(const Node&& other)
 		pixelY = other.pixelY;
 		location = other.location;
 		circle = other.circle;
-		antFoodPile = other.antFoodPile;
 	}
 	return *this;
 }
@@ -60,7 +55,7 @@ Node& Node::addEdge(shared_ptr<Edge> edge, bool addEdgeToOppositeNode)
 {
 	for (auto& e : edges)
 	{
-		if (edge == e)
+		if (edge == e.lock())
 		{
 			return *this;
 		}
@@ -83,28 +78,33 @@ void Node::removeEdge(Edge& edge, bool removeEdgeFromOpposite)
 {
 	for (auto e = edges.begin(); e != edges.end(); ++e)
 	{
-		if (*(*e) == edge)
+		if (!e->expired())
 		{
-			if (removeEdgeFromOpposite)
+			auto dereferencedEdge = *e->lock().get();
+			if (dereferencedEdge == edge)
 			{
-				(*e)->getOppositeNode(*this)->removeEdge(*(*e), false);
+				if (removeEdgeFromOpposite)
+				{
+					dereferencedEdge.getOppositeNode(*this)->removeEdge(dereferencedEdge, false);
+				}
+				edges.erase(e);
+				return;
 			}
-			edges.erase(e);
-			return;
 		}
 	}
 }
 
-const std::vector<shared_ptr<Edge>>& Node::getEdgeList() const
+const std::vector<Edge::WeakPtr>& Node::getEdgeList() const
 {
 	return edges;
 }
 
 Edge& Node::getEdge(uint index) const
 {
+	// TODO: this needs to be tested, or removed.
 	if (index < edges.size())
 	{
-		return *edges[index].get();
+		return *edges[index].lock().get();
 	}
 	else
 	{
@@ -112,11 +112,11 @@ Edge& Node::getEdge(uint index) const
 	}
 }
 
-bool Node::edgeExists(std::shared_ptr<Edge>& edge) const
+bool Node::edgeExists(Edge& edge) const
 {
 	for (auto e : edges)
 	{
-		if (*e == *edge)
+		if (*e.lock().get() == edge)
 		{
 			return true;
 		}
@@ -146,24 +146,6 @@ bool Node::isConnected() const
 	return (edges.size() != 0);
 }
 
-void Node::setAntFoodPile(AntFoodPile* antFoodPile)
-{
-	this->antFoodPile = antFoodPile;
-}
-
-AntFoodPile* Node::getAntFoodPile() const
-{
-	return antFoodPile;
-}
-
-void Node::update(uint ticks)
-{
-	for (auto& edge : edges)
-	{
-		edge->update(ticks);
-	}
-}
-
 
 void Node::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
@@ -171,7 +153,10 @@ void Node::draw(sf::RenderTarget &target, sf::RenderStates states) const
 
 	for (auto& edge : edges)
 	{
-		target.draw(*edge, states);
+		if (!edge.expired())
+		{
+			target.draw(*edge.lock().get(), states);
+		}
 	}
 }
 

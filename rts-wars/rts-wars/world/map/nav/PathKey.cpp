@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "PathKey.hpp"
 
 // Christopher D. Canfield

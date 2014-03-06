@@ -60,7 +60,7 @@ PathNode& PathNode::operator=(const PathNode& rhs)
 	return *this;
 }
 
-const std::vector<std::shared_ptr<Edge>> PathNode::getEdgeList() const
+const std::vector<Edge::WeakPtr> PathNode::getEdgeList() const
 {
 	return node->getEdgeList();
 }
