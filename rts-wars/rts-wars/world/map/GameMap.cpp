@@ -6,13 +6,14 @@
 // GameMap.cpp
 
 using namespace cdc;
+using namespace std;
 
-
-GameMap::GameMap(uint height, uint width, uint tileHeight, uint tileWidth) :
+GameMap::GameMap(uint height, uint width, uint tileHeight, uint tileWidth, std::vector<std::vector<Terrain::UniquePtr>> terrain) :
 	height(height),
 	width(width),
 	tileHeight(tileHeight),
-	tileWidth(tileWidth)
+	tileWidth(tileWidth),
+	terrain(move(terrain))
 {
 }
 
@@ -27,16 +28,27 @@ uint GameMap::getWidth() const
 	return width;
 }
 
-Terrain& GameMap::getTerrain(uint x, uint y) const
+Terrain& GameMap::getTerrain(uint x, uint z) const
 {
-	// TODO: implement this.
-
 	uint gridX(x / tileWidth);
-	uint gridY(y / tileHeight);
-	return *tiles[gridX][gridY].get();
+	uint gridZ(z / tileHeight);
+
+	#ifdef _DEBUG
+		if (gridX > terrain.size() - 1)
+		{
+			throw new GameLogicException("GameMap::getTerrain: x parameter is out of range: " + gridX);
+		}
+		else if (gridZ > terrain[0].size() - 1)
+		{
+			throw new GameLogicException("GameMap::getTerrain: z parameter is out of range: " + gridZ);
+		}
+	#endif
+
+	return *terrain[gridX][gridZ].get();
 }
 
 void GameMap::addTerrain(Terrain::UniquePtr tile)
 {
-	// TODO: implement this.
+	uint gridX(tile->getX() / tileWidth);
+	uint gridY(tile->getZ() / tileHeight);
 }
