@@ -37,6 +37,12 @@ namespace cdc
 		///<returns>The terrain.</returns>
 		Terrain& getTerrain(uint x, uint y) const;
 
+		///<summary>Returns the specified node.</summary>
+		///<param name="x">the x location of the node, in world coordinates.</param>
+		///<param name="y">the y location of the node, in world coordinates.</param>
+		///<returns>The node.</returns>
+		Node& getNode(uint x, uint y) const;
+
 	private:
 		uint height;
 		uint width;
