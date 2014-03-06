@@ -1,7 +1,7 @@
 #pragma once
 
 #include "util/Typedefs.hpp"
-#include "Terrain.hpp"
+#include "world/map/terrain/Terrain.hpp"
 
 #include <vector>
 #include <memory>

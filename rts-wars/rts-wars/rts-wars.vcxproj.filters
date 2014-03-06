@@ -108,34 +108,13 @@
     <ClInclude Include="controllers\cameracontrollers\SfmlCameraController.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="world\map\Grass.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="world\map\parser\MapParser.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="world\map\parser\TiledMapParser.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="world\map\Dirt.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="world\map\Water.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="world\map\Road.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="world\map\Bridge.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="world\map\GameMap.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="world\map\Terrain.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="world\map\AbstractTerrain.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="world\map\nav\Edge.hpp">
@@ -160,6 +139,27 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="world\map\nav\GridLocation.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="world\map\terrain\AbstractTerrain.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="world\map\terrain\Bridge.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="world\map\terrain\Dirt.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="world\map\terrain\Grass.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="world\map\terrain\Road.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="world\map\terrain\Terrain.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="world\map\terrain\Water.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -212,28 +212,10 @@
     <ClCompile Include="controllers\cameracontrollers\SfmlCameraController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="world\map\Grass.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="world\map\parser\TiledMapParser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="world\map\Dirt.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="world\map\Water.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="world\map\Road.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="world\map\Bridge.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="world\map\GameMap.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="world\map\AbstractTerrain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="world\map\nav\Edge.cpp">
@@ -258,6 +240,24 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="world\map\nav\GridLocation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="world\map\terrain\AbstractTerrain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="world\map\terrain\Bridge.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="world\map\terrain\Dirt.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="world\map\terrain\Grass.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="world\map\terrain\Road.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="world\map\terrain\Water.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

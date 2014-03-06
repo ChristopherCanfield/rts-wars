@@ -65,8 +65,8 @@
 
 #include "world/Entity.hpp"
 #include "world/World.hpp"
-#include "world/map/Terrain.hpp"
-#include "world/map/AbstractTerrain.hpp"
+#include "world/map/terrain/Terrain.hpp"
+#include "world/map/terrain/AbstractTerrain.hpp"
 #include "world/map/GameMap.hpp"
 
 #include "world/map/nav/Node.hpp"
