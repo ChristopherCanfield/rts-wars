@@ -60,9 +60,9 @@ PathNode& PathNode::operator=(const PathNode& rhs)
 	return *this;
 }
 
-const std::vector<Edge::WeakPtr> PathNode::getEdgeList() const
+const std::vector<uint> PathNode::getAdjacent() const
 {
-	return node->getEdgeList();
+	return node->getAdjacent();
 }
 
 Node& PathNode::getNode() const

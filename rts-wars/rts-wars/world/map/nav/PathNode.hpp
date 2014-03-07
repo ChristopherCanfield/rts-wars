@@ -26,7 +26,7 @@ namespace cdc
 
 		PathNode& operator=(const PathNode& rhs);
 	
-		const std::vector<Edge::WeakPtr> getEdgeList() const;
+		const std::vector<uint> getAdjacent();
 
 		// Returns the underlying navigation node.
 		Node& getNode() const;
