@@ -58,6 +58,8 @@ namespace cdc
 		std::vector<Entity::SharedPtr> entities;
 		std::unordered_map<Poco::UUID, Entity*> entityMap;
 
+		std::vector<Node::SharedPtr> node;
+
 		GameMap::UniquePtr gameMap;
 	};
 }

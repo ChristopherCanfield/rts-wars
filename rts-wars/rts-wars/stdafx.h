@@ -39,6 +39,14 @@
 #include <Poco/UUID.h>
 #include <Poco/UUIDGenerator.h>
 
+#include <Poco/SAX/ContentHandler.h>
+#include <Poco/DOM/DOMParser.h>
+#include <Poco/SAX/DefaultHandler.h>
+#include <Poco/DOM/NodeIterator.h>
+#include <Poco/DOM/NodeFilter.h>
+#include <Poco/DOM/AutoPtr.h>
+#include <Poco/SAX/InputSource.h>
+
 // Game Headers
 #include "util/make_unique.hpp"
 #include "util/Math.hpp"
@@ -65,9 +73,15 @@
 
 #include "world/Entity.hpp"
 #include "world/World.hpp"
+#include "world/map/GameMap.hpp"
+
 #include "world/map/terrain/Terrain.hpp"
 #include "world/map/terrain/AbstractTerrain.hpp"
-#include "world/map/GameMap.hpp"
+#include "world/map/terrain/Bridge.hpp"
+#include "world/map/terrain/Dirt.hpp"
+#include "world/map/terrain/Grass.hpp"
+#include "world/map/terrain/Road.hpp"
+#include "world/map/terrain/Water.hpp"
 
 #include "world/map/nav/Node.hpp"
 #include "world/map/nav/Edge.hpp"

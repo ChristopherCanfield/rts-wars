@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="50" height="50" tilewidth="32" tileheight="32">
+ <properties>
+  <property name="image0" value="map1.png"/>
+  <property name="imageLeft0" value="0"/>
+  <property name="imageTop0" value="0"/>
+ </properties>
  <tileset firstgid="1" name="groundtiles" tilewidth="32" tileheight="32" spacing="1" margin="1">
   <image source="../textures/groundtiles.png" width="396" height="132"/>
   <tile id="3">

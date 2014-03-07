@@ -9,15 +9,20 @@
 
 namespace cdc
 {
+	class GameMap;
+
 	///<summary>Parser for maps that were created using the Tiled map editor.</summary>
 	class TiledMapParser :
 		public MapParser
 	{
 	public:
-		TiledMapParser();
+		TiledMapParser(GameMap& map);
 		virtual ~TiledMapParser();
 
 		virtual void parse(std::string path) override;
+
+	private:
+		GameMap& map;
 	};
 }
 
