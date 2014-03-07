@@ -64,7 +64,7 @@ void TiledMapParser::parse(std::string path)
 	{
 		if (node->nodeName() == "map")
 		{
-			if (!node->hasAttributes()) throw 
+			if (!node->hasAttributes()) throw FileFormatException("The Tiled map file is formatted incorrectly: there are no map attributes.");
 
 			properties = processMapProperties(node);
 			loadMapImages(node);
@@ -97,24 +97,53 @@ void TiledMapParser::parse(std::string path)
 	
 }
 
-
+// Imports the map properties, which should be in the following form:
+// <map version="1.0" orientation="orthogonal" width="50" height="50" tilewidth="32" tileheight="32">
 MapProperties processMapProperties(Poco::XML::Node* node)
 {
-	Poco::XML::NamedNodeMap* attributes = nullptr;
+	// Smart pointer for Poco::XML::NamedNodeMap
+	class SmartNamedNodeMap
+	{
+	public:
+		SmartNamedNodeMap(Poco::XML::NamedNodeMap* attributes) :
+			att(attributes) {}
+
+		~SmartNamedNodeMap() {
+			att->release();
+		}
+
+		Poco::XML::NamedNodeMap* operator->() { 
+			return att; 
+		}
+
+	private:
+		Poco::XML::NamedNodeMap* att;
+	};
+
 	try
 	{
-		auto attributes = node->attributes();
-		attributes->getNamedItem("width")->nodeValue();
+		MapProperties properties;
 
+		SmartNamedNodeMap attributes(node->attributes());
+
+		stringstream widthStream(attributes->getNamedItem("width")->nodeValue());
+		widthStream >> properties.columns;
+
+		stringstream heightStream(attributes->getNamedItem("height")->nodeValue());
+		heightStream >> properties.rows;
+
+		stringstream tileWidthStream(attributes->getNamedItem("tileWidth")->nodeValue());
+		tileWidthStream >> properties.tileWidth;
+
+		stringstream tileHeightStream(attributes->getNamedItem("tileHeight")->nodeValue());
+		tileHeightStream >> properties.tileHeight;
+
+		return move(properties);
 	} 
-	catch (...)
+	catch (exception e)
 	{
-		
-	}
-
-	if (attributes != nullptr)
-	{
-		attributes->release();
+		cerr << e.what() << endl;
+		throw FileFormatException("The Tiled map file is formatted incorrectly: one or more map attributes are missing.");
 	}
 }
 
