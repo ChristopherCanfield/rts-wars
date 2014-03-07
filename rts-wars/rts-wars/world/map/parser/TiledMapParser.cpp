@@ -64,16 +64,24 @@ void TiledMapParser::parse(std::string path)
 	{
 		if (node->nodeName() == "map")
 		{
+			if (!node->hasAttributes()) throw 
+
 			properties = processMapProperties(node);
 			loadMapImages(node);
-		}
-		else if (node->nodeName() == "tileset")
-		{
-			terrainFactories = setFactories(node);
-		}
-		else if (node->nodeName() == "layer")
-		{
+		
+			XML::NodeIterator childIterator(node, XML::NodeFilter::SHOW_ELEMENT);
+			XML::Node* childNode = childIterator.nextNode();
+			while (childNode)
+			{
+				if (node->nodeName() == "tileset")
+				{
+					terrainFactories = setFactories(node);
+				}
+				else if (node->nodeName() == "layer")
+				{
 
+				}
+			}
 		}
 
 		node = iterator.nextNode();
@@ -92,7 +100,22 @@ void TiledMapParser::parse(std::string path)
 
 MapProperties processMapProperties(Poco::XML::Node* node)
 {
+	Poco::XML::NamedNodeMap* attributes = nullptr;
+	try
+	{
+		auto attributes = node->attributes();
+		attributes->getNamedItem("width")->nodeValue();
 
+	} 
+	catch (...)
+	{
+		
+	}
+
+	if (attributes != nullptr)
+	{
+		attributes->release();
+	}
 }
 
 void loadMapImages(Poco::XML::Node* node)
@@ -110,7 +133,7 @@ map<int, terrainFactory> setFactories(Poco::XML::Node* node)
 
 void processTerrain(Nodes& nodes, map<int, terrainFactory> terrainFactories, Poco::XML::Node* node)
 {
-
+	
 }
 
 void bridgeFactory(Nodes& nodes, uint row, uint column, uint index, float x, float z)

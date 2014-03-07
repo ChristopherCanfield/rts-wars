@@ -47,6 +47,7 @@
 #include <Poco/DOM/NodeFilter.h>
 #include <Poco/DOM/AutoPtr.h>
 #include <Poco/SAX/InputSource.h>
+#include <Poco/DOM/NamedNodeMap.h>
 
 // Game Headers
 #include "util/make_unique.hpp"
@@ -58,6 +59,7 @@
 #include "util/Vector2fAdapter.hpp"
 
 #include "util/FileLoadException.hpp"
+#include "util/FileFormatException.hpp"
 #include "util/GameLogicException.hpp"
 #include "util/NavGraphException.hpp"
 

@@ -165,6 +165,9 @@
     <ClInclude Include="util\NavGraphException.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="util\FileFormatException.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -264,6 +267,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="util\NavGraphException.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="util\FileFormatException.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
