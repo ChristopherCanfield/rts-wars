@@ -18,7 +18,10 @@ namespace cdc
 	class World
 	{
 	public:
-		World();
+		static std::unique_ptr<World> instance;
+
+		static World& Instance();
+
 		~World();
 
 		/// <summary>Adds the entity to the world.</summary>
@@ -51,14 +54,14 @@ namespace cdc
 		void update();
 
 	private:
+		World();
+
 		World& operator=(World& rhs);
 		World(const World& rhs);
 		World(const World&& rhs);
 
 		std::vector<Entity::SharedPtr> entities;
 		std::unordered_map<Poco::UUID, Entity*> entityMap;
-
-		std::vector<Node::SharedPtr> node;
 
 		GameMap::UniquePtr gameMap;
 	};

@@ -8,24 +8,24 @@
 using namespace cdc;
 using namespace std;
 
-GameMap::GameMap(uint height, uint width, uint tileHeight, uint tileWidth, std::vector<std::vector<Terrain::UniquePtr>> terrain) :
-	height(height),
-	width(width),
+GameMap::GameMap(uint height, uint width, uint tileHeight, uint tileWidth, std::vector<std::vector<Terrain::UniquePtr>> nodes) :
+	rows(rows),
+	columns(columns),
 	tileHeight(tileHeight),
 	tileWidth(tileWidth),
-	terrain(move(terrain))
+	nodes(nodes)
 {
 }
 
 
-uint GameMap::getHeight() const
+uint GameMap::getRows() const
 {
-	return height;
+	return rows;
 }
 
-uint GameMap::getWidth() const
+uint GameMap::getColumns() const
 {
-	return width;
+	return columns;
 }
 
 Terrain& GameMap::getTerrain(uint x, uint z) const
@@ -45,10 +45,4 @@ Terrain& GameMap::getTerrain(uint x, uint z) const
 	#endif
 
 	return *terrain[gridX][gridZ].get();
-}
-
-void GameMap::addTerrain(Terrain::UniquePtr tile)
-{
-	uint gridX(tile->getX() / tileWidth);
-	uint gridY(tile->getZ() / tileHeight);
 }

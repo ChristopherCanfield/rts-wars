@@ -2,6 +2,7 @@
 
 #include "util/Typedefs.hpp"
 #include "world/map/terrain/Terrain.hpp"
+#include "world/map/nav/Node.hpp"
 
 #include <vector>
 #include <memory>
@@ -13,8 +14,6 @@
 
 namespace cdc
 {
-	class Node;
-
 	///<summary>The game map, which contains tile information.</summary>
 	class GameMap
 	{
@@ -22,22 +21,22 @@ namespace cdc
 		typedef std::unique_ptr<GameMap> UniquePtr;
 
 		///<summary>Constructs a new GameMap object.</summary>
-		///<param name="height">The height of the map, in world coordinates.</summary>
-		///<param name="width">The width of the map, in world coordinates.</summary>
+		///<param name="rows">The number of rows of terrain objects.</summary>
+		///<param name="columns">The number of rows of terrain objects.</summary>
 		///<param name="tileHeight">The height of each tile, in world coordinates.</summary>
 		///<param name="tileWidth">The width of each tile, in world coordinates.</summary>
-		///<param name="tiles">A list of all terrain objects in the game.</summary>
-		GameMap(uint height, uint width, uint tileHeight, uint tileWidth, std::vector<std::vector<Terrain::UniquePtr>> terrain);
+		///<param name="nodes">A list of all node objects in the game.</summary>
+		GameMap(uint rows, uint columns, uint tileHeight, uint tileWidth, std::vector<Node> nodes);
 
 		~GameMap() {}
 
-		///<summary>Returns the height of the map, in world coordinates.</summary>
-		///<returns>the height of the map.</returns>
-		uint getHeight() const;
+		///<summary>Returns the number of rows of terrain objects.</summary>
+		///<returns>the number of rows of terrain objects.</returns>
+		uint getRows() const;
 
-		///<summary>Returns the width of the map, in world coordinates.</summary>
-		///<returns>the width of the map.</returns>
-		uint getWidth() const;
+		///<summary>Returns the number of columns of terrain objects.</summary>
+		///<returns>the number of columns of terrain objects.</returns>
+		uint getColumns() const;
 
 		///<summary>Returns the specified terrain.</summary>
 		///<param name="x">the x location of the terrain, in world coordinates.</param>
@@ -54,14 +53,14 @@ namespace cdc
 		// TODO: add ability to change terrain objects?
 
 	private:
-		uint height;
-		uint width;
+		// The number of rows of terrain objects.
+		uint rows;
+		// The number of columns of terrain objects.
+		uint columns;
 
 		uint tileHeight;
 		uint tileWidth;
 
-		std::vector<std::vector<Terrain::UniquePtr>> terrain;
-
-		void addTerrain(Terrain::UniquePtr);
+		std::vector<Node> navGraph;
 	};
 }

@@ -12,11 +12,12 @@ using cdc::GridLocation;
 using namespace std;
 
 
-Node::Node(GridLocation location, int pixelX, int pixelY) :
+Node::Node(GridLocation location, int pixelX, int pixelY, Terrain::UniquePtr terrain) :
 	location(location), 
 	pixelX(pixelX), 
 	pixelY(pixelY), 
-	circle(5)
+	circle(5),
+	terrain(move(terrain))
 {
 	circle.setOrigin(circle.getLocalBounds().width / 2.f, circle.getLocalBounds().height / 2.f);
 	circle.setPosition(Vector2fAdapter(pixelX, pixelY));

@@ -9,8 +9,23 @@
 using namespace cdc;
 using namespace std;
 
-typedef void (*terrainFactory)(World& world, float x, float z);
+typedef std::vector<std::vector<Node::SharedPtr>> Nodes;
 
+typedef void (*terrainFactory)(Nodes, float x, float z, uint row, uint column);
+
+struct MapProperties
+{
+	MapProperties() :
+		rows(0),
+		columns(0),
+		tileHeight(0),
+		tileWidth(0) {}
+
+	uint rows;
+	uint columns;
+	uint tileHeight;
+	uint tileWidth;
+};
 
 TiledMapParser::TiledMapParser(GameMap& gameMap) :
 	map(gameMap)
@@ -27,41 +42,52 @@ void TiledMapParser::parse(std::string path)
 {
 	// TODO: implement this.
 	// 
+
+	MapProperties properties = processMapProperties(node);
+
+	Nodes nodes;
+	nodes.resize(properties.rows);
+
+	GameMap::UniquePtr gameMap = make_unique<GameMap>(properties.rows, properties.columns, 
+			properties.tileHeight, properties.tileWidth, nodes);
+	
 }
 
 
-void processMapProperties(World& world, Poco::XML::Node* node)
+MapProperties processMapProperties(Poco::XML::Node* node)
 {
 
 }
 
-void processTerrain(World& world, map<int, terrainFactory> terrainFactories, Poco::XML::Node* node)
+void processTerrain(Nodes& nodes, map<int, terrainFactory> terrainFactories, Poco::XML::Node* node)
 {
 
 }
 
-void bridgeFactory(World& world, float x, float z)
+void bridgeFactory(Nodes& nodes, float x, float z, uint row, uint column)
 {
-	Terrain::SharedPtr terrain = make_shared<Bridge>(x, z);
-	world.addEntity(entity);
+	Bridge terrain(x, z);
+	Node::SharedPtr node = make_shared<Node>(GridLocation(row, column), x, z, terrain);
+	
+	nodes[row].push_back(node);
 }
 
-void dirtFactory(World& world, float x, float z)
-{
-
-}
-
-void grassFactory(World& world, float x, float z)
+void dirtFactory(Nodes& nodes, float x, float z, uint row, uint column)
 {
 
 }
 
-void roadFactory(World& world, float x, float z)
+void grassFactory(Nodes& nodes, float x, float z, uint row, uint column)
 {
 
 }
 
-void waterFactory(World& world, float x, float z)
+void roadFactory(Nodes& nodes, float x, float z, uint row, uint column)
+{
+
+}
+
+void waterFactory(Nodes& nodes, float x, float z, uint row, uint column)
 {
 
 }

@@ -7,6 +7,7 @@
 #include "Edge.hpp"
 #include "GridLocation.hpp"
 #include "util/Typedefs.hpp"
+#include "world/map/terrain/Terrain.hpp>
 
 #include <SFML/Graphics.hpp>
 
@@ -17,17 +18,12 @@
 
 namespace cdc 
 {
-	class Terrain;
-
 	// A node in a graph.
 	class Node :
 		public sf::Drawable
 	{
 	public:
-		typedef std::weak_ptr<Node> WeakPtr;
-		typedef std::shared_ptr<Node> SharedPtr;
-
-		Node(GridLocation location, int pixelX, int pixelY);
+		Node(GridLocation location, int pixelX, int pixelY, Terrain::UniquePtr terrain);
 		~Node();
 
 		Node(const Node&& other);
