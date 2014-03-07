@@ -66,16 +66,22 @@ void TiledMapParser::parse(std::string path)
 		{
 			if (!node->hasAttributes()) throw FileFormatException("The Tiled map file is formatted incorrectly: there are no map attributes.");
 
+			// Load the properties.
 			properties = processMapProperties(node);
-			loadMapImages(node);
 		
 			XML::NodeIterator childIterator(node, XML::NodeFilter::SHOW_ELEMENT);
 			XML::Node* childNode = childIterator.nextNode();
 			while (childNode)
 			{
-				if (node->nodeName() == "tileset")
+				if (node->nodeName() == "property")
 				{
-					terrainFactories = setFactories(node);
+					// TODO: Implement.
+					loadMapImages(childNode);
+				}
+				else if (node->nodeName() == "tileset")
+				{
+					// TODO: Implement.
+					terrainFactories = setFactories(childNode);
 				}
 				else if (node->nodeName() == "layer")
 				{
@@ -147,9 +153,28 @@ MapProperties processMapProperties(Poco::XML::Node* node)
 	}
 }
 
+// Loads the map images based on the properties specified in the Tiled xml file.
+// Example:
+//  <property name="image0" value="map1.png"/>
+//  <property name="imageLeft0" value="0"/>
+//  <property name="imageTop0" value="0"/>
 void loadMapImages(Poco::XML::Node* node)
 {
+	using namespace Poco;
 
+	int i = 0;
+	bool nodeNotFound = false;
+	while (!nodeNotFound)
+	{
+		// TODO: loop through the images, and load them into Graphics.
+	}
+
+	XML::NodeIterator childIterator(node, XML::NodeFilter::SHOW_ELEMENT);
+	XML::Node* childNode = childIterator.nextNode();
+	while (childNode)
+	{
+		if (childNode->fin
+	}
 }
 
 map<int, terrainFactory> setFactories(Poco::XML::Node* node)
