@@ -23,30 +23,16 @@ namespace cdc
 		public sf::Drawable
 	{
 	public:
-		Node(GridLocation location, int pixelX, int pixelY, Terrain::UniquePtr terrain);
+		Node(GridLocation location, uint index, int pixelX, int pixelY, Terrain::UniquePtr terrain);
 		~Node();
 
 		Node(const Node&& other);
 		Node& operator=(const Node&& other);
-	
-		// Adds an edge.
-		// - edge: the Edge to add.
-		// - addEdgeToOppositeNode: add the Edge to the opposite node as well.
-		//		In other words, if this is adding edge A->B, also add B->A.
-		Node& addEdge(Edge::SharedPtr edge, bool addEdgeToOppositeNode = true);
 
-		// Removes an edge.
-		void removeEdge(Edge& edge, bool removeEdgeFromOpposite = true);
+		// Returns a reference to the list of adjacent nodes.
+		const std::vector<uint>& getAdjacent() const;
 
-		// Returns a reference to the edge list.
-		const std::vector<Edge::WeakPtr>& getEdgeList() const;
-
-		// Returns a reference to an edge.
-		// - index: the edge's index in the Node's edge list.
-		Edge& getEdge(uint index) const;
-
-		// Returns true if the edge exists.
-		bool edgeExists(Edge& edge) const;
+		uint getIndex() const;
 
 		// Gets the x location of the Node, in pixels.
 		template <class T>
@@ -78,14 +64,14 @@ namespace cdc
 		bool operator!=(const Node& other) const;
 
 	private:
-		void removeEdge(Edge& edge);
-
 		Terrain::UniquePtr terrain;
 
-		std::vector<Edge::WeakPtr> edges;
+		std::vector<uint> adjacent;
 
 		int pixelX;
 		int pixelY;
+
+		uint index;
 
 		// The node's row-column location.
 		GridLocation location;
