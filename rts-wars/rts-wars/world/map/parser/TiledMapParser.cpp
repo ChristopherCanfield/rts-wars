@@ -13,6 +13,9 @@ typedef std::vector<Node> Nodes;
 
 typedef void (*terrainFactory)(Nodes, uint row, uint column, uint index, float x, float z);
 
+void loadMapImages(Poco::XML::Node* node);
+map<int, terrainFactory> setFactories(Poco::XML::Node* node);
+
 struct MapProperties
 {
 	MapProperties() :
@@ -27,11 +30,13 @@ struct MapProperties
 	uint tileWidth;
 };
 
+MapProperties processMapProperties(Poco::XML::Node* node);
+
+
 TiledMapParser::TiledMapParser(GameMap& gameMap) :
 	map(gameMap)
 {
 }
-
 
 TiledMapParser::~TiledMapParser()
 {
@@ -40,10 +45,41 @@ TiledMapParser::~TiledMapParser()
 
 void TiledMapParser::parse(std::string path)
 {
-	// TODO: implement this.
-	// 
+	using namespace Poco;
 
-	//MapProperties properties = processMapProperties(node);
+	// TODO: implement this.
+	
+	ifstream in(path);
+	XML::InputSource src(in);
+
+	XML::DOMParser parser;
+	AutoPtr<XML::Document> doc = parser.parse(&src);
+
+	MapProperties properties;
+	std::map<int, terrainFactory> terrainFactories;
+
+	XML::NodeIterator iterator(doc, XML::NodeFilter::SHOW_ELEMENT);
+	XML::Node* node = iterator.nextNode();
+	while (node)
+	{
+		if (node->nodeName() == "map")
+		{
+			properties = processMapProperties(node);
+			loadMapImages(node);
+		}
+		else if (node->nodeName() == "tileset")
+		{
+			terrainFactories = setFactories(node);
+		}
+		else if (node->nodeName() == "layer")
+		{
+
+		}
+
+		node = iterator.nextNode();
+	}
+
+	//MapProperties 
 
 	//Nodes nodes;
 	//nodes.resize(properties.rows);
@@ -57,6 +93,19 @@ void TiledMapParser::parse(std::string path)
 MapProperties processMapProperties(Poco::XML::Node* node)
 {
 
+}
+
+void loadMapImages(Poco::XML::Node* node)
+{
+
+}
+
+map<int, terrainFactory> setFactories(Poco::XML::Node* node)
+{
+	map<int, terrainFactory> factories;
+
+	
+	return factories;
 }
 
 void processTerrain(Nodes& nodes, map<int, terrainFactory> terrainFactories, Poco::XML::Node* node)

@@ -11,8 +11,10 @@
 
 // Standard library headers
 #include <string>
-#include <iostream>
 #include <sstream>
+#include <iostream>
+#include <istream>
+#include <fstream>
 
 #include <vector>
 #include <unordered_map>
@@ -39,9 +41,8 @@
 #include <Poco/UUID.h>
 #include <Poco/UUIDGenerator.h>
 
-#include <Poco/SAX/ContentHandler.h>
 #include <Poco/DOM/DOMParser.h>
-#include <Poco/SAX/DefaultHandler.h>
+#include <Poco/DOM/Document.h>
 #include <Poco/DOM/NodeIterator.h>
 #include <Poco/DOM/NodeFilter.h>
 #include <Poco/DOM/AutoPtr.h>
