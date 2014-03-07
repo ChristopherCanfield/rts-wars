@@ -3,6 +3,7 @@
 #include "util/Typedefs.hpp"
 #include "world/map/terrain/Terrain.hpp"
 #include "world/map/nav/Node.hpp"
+#include "world/map/nav/GridLocation.hpp"
 
 #include <vector>
 #include <memory>
@@ -62,5 +63,7 @@ namespace cdc
 		uint tileWidth;
 
 		std::vector<Node> navGraph;
+
+		std::unordered_map<GridLocation, uint> nodeIndices;
 	};
 }

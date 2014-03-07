@@ -9,8 +9,7 @@ using namespace cdc;
 using namespace sf;
 using namespace std;
 
-GameApp::GameApp() :
-	window()
+GameApp::GameApp()
 {
 }
 
@@ -31,7 +30,7 @@ void GameApp::setup()
 	Entity::SharedPtr tank = make_shared<Tank>();
 	tank->setX(50.f);
 	tank->setY(40.f);
-	world.addEntity(tank);
+	World::Instance().addEntity(tank);
 }
 
 bool GameApp::run()
@@ -52,7 +51,7 @@ bool GameApp::run()
 
 		window.clear(sf::Color::Blue);
 		window.draw(Graphics::Instance());
-		world.update();
+		World::Instance().update();
 		camera->update();
 		Graphics::Instance().update();
 

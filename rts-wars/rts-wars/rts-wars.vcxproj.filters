@@ -162,6 +162,9 @@
     <ClInclude Include="world\map\terrain\Water.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="util\NavGraphException.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -258,6 +261,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="world\map\terrain\Water.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="util\NavGraphException.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

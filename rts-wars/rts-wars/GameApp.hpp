@@ -35,7 +35,5 @@ namespace cdc
 		Camera::UniquePtr camera;
 
 		sf::Clock timer;
-
-		World world;
 	};
 }

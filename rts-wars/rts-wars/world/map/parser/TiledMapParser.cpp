@@ -9,9 +9,9 @@
 using namespace cdc;
 using namespace std;
 
-typedef std::vector<std::vector<Node::SharedPtr>> Nodes;
+typedef std::vector<Node> Nodes;
 
-typedef void (*terrainFactory)(Nodes, float x, float z, uint row, uint column);
+typedef void (*terrainFactory)(Nodes, uint row, uint column, uint index, float x, float z);
 
 struct MapProperties
 {
@@ -43,13 +43,13 @@ void TiledMapParser::parse(std::string path)
 	// TODO: implement this.
 	// 
 
-	MapProperties properties = processMapProperties(node);
+	//MapProperties properties = processMapProperties(node);
 
-	Nodes nodes;
-	nodes.resize(properties.rows);
+	//Nodes nodes;
+	//nodes.resize(properties.rows);
 
-	GameMap::UniquePtr gameMap = make_unique<GameMap>(properties.rows, properties.columns, 
-			properties.tileHeight, properties.tileWidth, nodes);
+	//GameMap::UniquePtr gameMap = make_unique<GameMap>(properties.rows, properties.columns, 
+	//		properties.tileHeight, properties.tileWidth, nodes);
 	
 }
 
@@ -64,30 +64,27 @@ void processTerrain(Nodes& nodes, map<int, terrainFactory> terrainFactories, Poc
 
 }
 
-void bridgeFactory(Nodes& nodes, float x, float z, uint row, uint column)
+void bridgeFactory(Nodes& nodes, uint row, uint column, uint index, float x, float z)
 {
-	Bridge terrain(x, z);
-	Node::SharedPtr node = make_shared<Node>(GridLocation(row, column), x, z, terrain);
-	
-	nodes[row].push_back(node);
+	nodes.emplace_back(Node(GridLocation(row, column), index, x, z, make_unique<Bridge>(x, z)));
 }
 
-void dirtFactory(Nodes& nodes, float x, float z, uint row, uint column)
+void dirtFactory(Nodes& nodes, uint row, uint column, uint index, float x, float z)
 {
-
+	nodes.emplace_back(Node(GridLocation(row, column), index, x, z, make_unique<Dirt>(x, z)));
 }
 
-void grassFactory(Nodes& nodes, float x, float z, uint row, uint column)
+void grassFactory(Nodes& nodes, uint row, uint column, uint index, float x, float z)
 {
-
+	nodes.emplace_back(Node(GridLocation(row, column), index, x, z, make_unique<Grass>(x, z)));
 }
 
-void roadFactory(Nodes& nodes, float x, float z, uint row, uint column)
+void roadFactory(Nodes& nodes, uint row, uint column, uint index, float x, float z)
 {
-
+	nodes.emplace_back(Node(GridLocation(row, column), index, x, z, make_unique<Road>(x, z)));
 }
 
-void waterFactory(Nodes& nodes, float x, float z, uint row, uint column)
+void waterFactory(Nodes& nodes, uint row, uint column, uint index, float x, float z)
 {
-
+	nodes.emplace_back(Node(GridLocation(row, column), index, x, z, make_unique<Water>(x, z)));
 }

@@ -22,6 +22,8 @@ namespace cdc
 		virtual void parse(std::string path) override;
 
 	private:
+		GameMap& operator=(const GameMap& rhs);
+
 		GameMap& map;
 	};
 }

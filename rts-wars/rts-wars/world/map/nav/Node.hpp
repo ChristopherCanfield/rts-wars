@@ -7,7 +7,7 @@
 #include "Edge.hpp"
 #include "GridLocation.hpp"
 #include "util/Typedefs.hpp"
-#include "world/map/terrain/Terrain.hpp>
+#include "world/map/terrain/Terrain.hpp"
 
 #include <SFML/Graphics.hpp>
 

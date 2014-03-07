@@ -54,9 +54,11 @@
 #include "util/Observer.hpp"
 #include "util/Observable.hpp"
 #include "util/UUIDHash.hpp"
+#include "util/Vector2fAdapter.hpp"
+
 #include "util/FileLoadException.hpp"
 #include "util/GameLogicException.hpp"
-#include "util/Vector2fAdapter.hpp"
+#include "util/NavGraphException.hpp"
 
 #include "graphics/Graphics.hpp"
 #include "graphics/Camera.hpp"

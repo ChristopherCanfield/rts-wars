@@ -8,13 +8,27 @@
 using namespace cdc;
 using namespace std;
 
-GameMap::GameMap(uint height, uint width, uint tileHeight, uint tileWidth, std::vector<std::vector<Terrain::UniquePtr>> nodes) :
+GameMap::GameMap(uint rows, uint columns, uint tileHeight, uint tileWidth, std::vector<Node> nodes) :
 	rows(rows),
 	columns(columns),
 	tileHeight(tileHeight),
 	tileWidth(tileWidth),
-	nodes(nodes)
+	navGraph(move(nodes))
 {
+	for (const auto& node : navGraph)
+	{
+		auto gridLocation(GridLocation(node.getRow(), node.getColumn()));
+		if (nodeIndices.count(gridLocation) == 0)
+		{
+			nodeIndices[GridLocation(node.getRow(), node.getColumn())] = node.getIndex();
+		}
+		else
+		{
+			stringstream s;
+			s << "Duplicate GridLocation in navGraph: " << node.getRow() << ", " << node.getColumn;
+			throw GameLogicException(s.str());
+		}
+	}
 }
 
 
@@ -30,19 +44,17 @@ uint GameMap::getColumns() const
 
 Terrain& GameMap::getTerrain(uint x, uint z) const
 {
-	uint gridX(x / tileWidth);
-	uint gridZ(z / tileHeight);
-
+	GridLocation gridLocation(x / tileWidth, z / tileHeight);
 	#ifdef _DEBUG
-		if (gridX > terrain.size() - 1)
+		if (nodeIndices.count(gridLocation) == 0)
 		{
-			throw new GameLogicException("GameMap::getTerrain: x parameter is out of range: " + gridX);
-		}
-		else if (gridZ > terrain[0].size() - 1)
-		{
-			throw new GameLogicException("GameMap::getTerrain: z parameter is out of range: " + gridZ);
+			stringstream s;
+			s << "Invalid x and z provided to getTerrain. x: " << x << "; z: " << z << "; row: "
+				<< gridLocation.getRow << "; column: " << gridLocation.getColumn();
+			throw NavGraphException(s.str());
 		}
 	#endif
 
-	return *terrain[gridX][gridZ].get();
+	auto index = nodeIndices.at(gridLocation);
+	return navGraph[index].getTerrain();
 }
