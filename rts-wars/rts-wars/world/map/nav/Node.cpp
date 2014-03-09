@@ -58,6 +58,11 @@ const std::vector<uint>& Node::getAdjacent() const
 	return adjacent;
 }
 
+uint Node::getIndex() const
+{
+	return index;
+}
+
 sf::Rect<float> Node::getBoundingBox() const
 {
 	const float width = 6;

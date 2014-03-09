@@ -30,8 +30,8 @@ namespace cdc
 		class TiledMapFileInfo
 		{
 		public:
-			TiledMapFileInfo();
-			virtual ~TiledMapFileInfo();
+			TiledMapFileInfo() {}
+			virtual ~TiledMapFileInfo() {}
 
 			///<summary>Returns the Tiled TMX file name.</summary>
 			const std::string& getTmxFileName() const {

@@ -100,13 +100,13 @@ std::deque<Node*> cdc::Search::aStar(const Node& startNode, const Node& endNode,
 			if (debug) cout << "|-searching edge: current node: " << currentNode.getRow() << "," << currentNode.getColumn() << endl;
 
 			// Calculate the cost for traversing this edge.
-			float h = heuristic(*currentNode, endNode);
+			float h = heuristic(currentNode, endNode);
 			float g = currentNode.getTerrain().getCost() + lowestCost->getG();
 			float cost = h + g;
 			if (debug) cout << "|---current node cost: " << cost << endl;
 
 			// Determine if this node has already been traversed.
-			auto foundNode = find(searched.begin(), searched.end(), currentNode);
+			auto foundNode = find(searched.begin(), searched.end(), &currentNode);
 			bool found = (foundNode != searched.end());
 			if (debug) cout << "|---found: " << found << endl;
 
@@ -118,7 +118,7 @@ std::deque<Node*> cdc::Search::aStar(const Node& startNode, const Node& endNode,
 
 				auto currentPathNode = make_shared<PathNode>(currentNode, lowestCost, g, h);
 				frontier.push(currentPathNode);
-				searched.insert(currentNode);
+				searched.insert(&const_cast<Node&>(currentNode));
 			}
 		}
 	}
