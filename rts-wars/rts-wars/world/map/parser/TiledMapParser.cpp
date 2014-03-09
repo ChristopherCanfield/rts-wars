@@ -17,8 +17,7 @@ typedef void (*terrainFactory)(Nodes, uint row, uint column, uint index, float x
 
 void loadMapImages(Poco::XML::Node* node);
 map<uint, terrainFactory> setFactories(Poco::XML::Node* node);
-void setFactory(map<uint, terrainFactory>& terrainFactories, uint id, const std::string& name)
-
+void setFactory(map<uint, terrainFactory>& terrainFactories, uint id, const std::string& name);
 
 // Smart pointer for Poco::XML::NamedNodeMap
 class SmartNamedNodeMap
@@ -55,6 +54,9 @@ struct MapProperties
 };
 
 MapProperties processMapProperties(Poco::XML::Node* node);
+
+void processTerrain(Nodes& navGraph, const map<int, terrainFactory>& terrainFactories, Poco::XML::Node* node, 
+					const MapProperties& properties);
 
 
 TiledMapParser::TiledMapParser(GameMap& gameMap, tiled::TiledMapFileInfo& mapFileInfo) :
@@ -198,7 +200,6 @@ map<uint, terrainFactory> setFactories(Poco::XML::Node* node)
 			{
 				throw FileFormatException("TMX file malformed: tile>>properties should have a child, but does not.");
 			}
-			
 		}
 		
 		tileNode = childIterator.nextNode();
@@ -208,9 +209,36 @@ map<uint, terrainFactory> setFactories(Poco::XML::Node* node)
 }
 
 
-void processTerrain(Nodes& navGraph, map<int, terrainFactory> terrainFactories, Poco::XML::Node* node)
+void processTerrain(Nodes& navGraph, const map<int, terrainFactory>& terrainFactories, Poco::XML::Node* node, const MapProperties& properties)
 {
-	
+	using namespace Poco;
+
+	uint row = 0;
+	uint column = 0;
+	uint index = 0;
+
+	XML::NodeIterator childIterator(node, XML::NodeFilter::SHOW_ELEMENT);
+	XML::Node* dataNode = childIterator.nextNode();
+	while (dataNode)
+	{
+		SmartNamedNodeMap attributes(dataNode->attributes);
+		stringstream id(attributes->getNamedItem("gid")->nodeValue());
+		uint tileId;
+		id >> tileId;
+
+		dataNode = childIterator.nextNode();
+		terrainFactories.at(tileId - 1)(navGraph, row, column, index, 
+				static_cast<float>(properties.tileWidth * column), 
+				static_cast<float>(properties.tileHeight * row));
+
+		++column;
+		if (column > properties.columns - 1)
+		{
+			column = 0;
+			++row;
+		}
+		++index;
+	}
 }
 
 void bridgeFactory(Nodes& nodes, uint row, uint column, uint index, float x, float z)

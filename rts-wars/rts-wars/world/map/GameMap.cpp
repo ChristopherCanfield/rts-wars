@@ -25,7 +25,7 @@ GameMap::GameMap(uint rows, uint columns, uint tileHeight, uint tileWidth, std::
 		else
 		{
 			stringstream s;
-			s << "Duplicate GridLocation in navGraph: " << node.getRow() << ", " << node.getColumn;
+			s << "Duplicate GridLocation in navGraph: " << node.getRow() << ", " << node.getColumn();
 			throw GameLogicException(s.str());
 		}
 	}
@@ -50,7 +50,7 @@ Terrain& GameMap::getTerrain(uint x, uint z) const
 		{
 			stringstream s;
 			s << "Invalid x and z provided to getTerrain. x: " << x << "; z: " << z << "; row: "
-				<< gridLocation.getRow << "; column: " << gridLocation.getColumn();
+				<< gridLocation.getRow() << "; column: " << gridLocation.getColumn();
 			throw NavGraphException(s.str());
 		}
 	#endif
