@@ -11,11 +11,11 @@ using namespace std;
 
 std::unique_ptr<World> World::instance;
 
-static World& Instance()
+World& World::Instance()
 {
 	if (World::instance.get() == nullptr)
 	{
-		World::instance = make_unique<World>();
+		World::instance = unique_ptr<World>(new World());
 	}
 	return *World::instance;
 }

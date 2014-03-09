@@ -15,7 +15,7 @@ typedef std::vector<Node>& Nodes;
 
 typedef void (*terrainFactory)(Nodes, uint row, uint column, uint index, float x, float z);
 
-void loadMapImages(Poco::XML::Node* node);
+void loadMapImages(TiledMapFileInfo& fileInfo);
 map<uint, terrainFactory> setFactories(Poco::XML::Node* node);
 void setFactory(map<uint, terrainFactory>& terrainFactories, uint id, const std::string& name);
 
@@ -74,8 +74,6 @@ void TiledMapParser::parse()
 {
 	using namespace Poco;
 
-	// TODO: implement this.
-
 	loadMapImages(fileInfo);
 	
 	ifstream in(fileInfo.getTmxFileName());
@@ -85,7 +83,7 @@ void TiledMapParser::parse()
 	AutoPtr<XML::Document> doc = parser.parse(&src);
 
 	MapProperties properties;
-	std::map<int, terrainFactory> terrainFactories;
+	std::map<uint, terrainFactory> terrainFactories;
 
 	XML::NodeIterator iterator(doc, XML::NodeFilter::SHOW_ELEMENT);
 	XML::Node* node = iterator.nextNode();
@@ -158,7 +156,7 @@ MapProperties processMapProperties(Poco::XML::Node* node)
 }
 
 // Loads the map images based on the properties specified in the Tiled xml file.
-// fileInfo: 
+// fileInfo: The tiled map information.
 void loadMapImages(TiledMapFileInfo& fileInfo)
 {
 	for (MapImageProperties& properties : fileInfo.getProperties())

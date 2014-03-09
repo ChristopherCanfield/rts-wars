@@ -41,6 +41,8 @@ namespace cdc
 		///<returns>The max speed percent.</returns>
 		virtual float getSpeedPercentage() const override;
 
+		virtual float getCost() const override;
+
 	private:
 		float x;
 		float z;

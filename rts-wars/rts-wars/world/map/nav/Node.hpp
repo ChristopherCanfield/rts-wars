@@ -4,7 +4,6 @@
 // October 2013
 // Node.hpp
 
-#include "Edge.hpp"
 #include "GridLocation.hpp"
 #include "util/Typedefs.hpp"
 #include "world/map/terrain/Terrain.hpp"
@@ -55,6 +54,8 @@ namespace cdc
 		bool isConnected() const;
 
 		Terrain& getTerrain() const;
+
+		float getCost() const;
 
 		virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const override;
 

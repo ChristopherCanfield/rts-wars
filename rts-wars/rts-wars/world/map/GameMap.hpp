@@ -51,6 +51,10 @@ namespace cdc
 		///<returns>The node.</returns>
 		Node& getNode(uint x, uint z) const;
 
+		///<summary>Returns a reference to the navigation graph.</summary>
+		///<returns>The nav graph, as a list.</returns>
+		const std::vector<Node>& getNavGraph() const;
+
 		// TODO: add ability to change terrain objects?
 
 	private:

@@ -53,3 +53,8 @@ float AbstractTerrain::getSpeedPercentage() const
 {
 	return speedPercentage;
 }
+
+float AbstractTerrain::getCost() const
+{
+	return 100.f - speedPercentage;
+}

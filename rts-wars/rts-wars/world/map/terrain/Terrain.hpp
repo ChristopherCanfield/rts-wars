@@ -42,5 +42,8 @@ namespace cdc
 		///<summary>Specifies the percentage of the entity's max speed that can be reached
 		///	when traveling across the terrain.</summary>
 		virtual float getSpeedPercentage() const = 0;
+
+		///<summary>Returns the cost of traveling across the square.</summary>
+		virtual float getCost() const = 0;
 	};
 }

@@ -27,7 +27,7 @@ namespace cdc
 		virtual void parse() override;
 
 	private:
-		GameMap& operator=(const GameMap& rhs);
+		TiledMapParser& operator=(const TiledMapParser& rhs);
 
 		GameMap& map;
 

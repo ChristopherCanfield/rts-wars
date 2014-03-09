@@ -6,7 +6,7 @@
 // Node.cpp
 
 using cdc::Node;
-using cdc::Edge;
+using cdc::Terrain;
 using cdc::GridLocation;
 
 using namespace std;
@@ -78,6 +78,16 @@ uint Node::getColumn() const
 bool Node::isConnected() const
 {
 	return (adjacent.size() != 0);
+}
+
+Terrain& Node::getTerrain() const
+{
+	return *terrain.get();
+}
+
+float Node::getCost() const
+{
+	return terrain->getCost();
 }
 
 

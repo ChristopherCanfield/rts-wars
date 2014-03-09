@@ -26,7 +26,7 @@ namespace cdc
 
 		PathNode& operator=(const PathNode& rhs);
 	
-		const std::vector<uint> getAdjacent();
+		const std::vector<uint> PathNode::getAdjacent() const;
 
 		// Returns the underlying navigation node.
 		Node& getNode() const;

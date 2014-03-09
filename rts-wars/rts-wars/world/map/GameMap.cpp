@@ -58,3 +58,9 @@ Terrain& GameMap::getTerrain(uint x, uint z) const
 	auto index = nodeIndices.at(gridLocation);
 	return navGraph[index].getTerrain();
 }
+
+
+const std::vector<Node>& GameMap::getNavGraph() const
+{
+	return navGraph;
+}
