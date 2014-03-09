@@ -16,8 +16,8 @@ typedef std::vector<Node>& Nodes;
 typedef void (*terrainFactory)(Nodes, uint row, uint column, uint index, float x, float z);
 
 void loadMapImages(Poco::XML::Node* node);
-map<int, terrainFactory> setFactories(Poco::XML::Node* node);
-void setFactory(map<uint, terrainFactory>& terrainFactories, uint id, std::string name)
+map<uint, terrainFactory> setFactories(Poco::XML::Node* node);
+void setFactory(map<uint, terrainFactory>& terrainFactories, uint id, const std::string& name)
 
 
 // Smart pointer for Poco::XML::NamedNodeMap
@@ -170,11 +170,11 @@ void loadMapImages(TiledMapFileInfo& fileInfo)
 	}
 }
 
-map<int, terrainFactory> setFactories(Poco::XML::Node* node)
+map<uint, terrainFactory> setFactories(Poco::XML::Node* node)
 {
 	using namespace Poco;
 
-	map<int, terrainFactory> factories;
+	map<uint, terrainFactory> factories;
 	
 	XML::NodeIterator childIterator(node, XML::NodeFilter::SHOW_ELEMENT);
 	XML::Node* tileNode = childIterator.nextNode();
@@ -192,9 +192,7 @@ map<int, terrainFactory> setFactories(Poco::XML::Node* node)
 			if (propertyNode->hasAttributes())
 			{
 				SmartNamedNodeMap attributes(propertyNode->attributes());
-				attributes->getNamedItem("value")->nodeValue();
-
-
+				setFactory(factories, tileId, attributes->getNamedItem("value")->nodeValue());
 			}
 			else
 			{
@@ -241,7 +239,7 @@ void waterFactory(Nodes& nodes, uint row, uint column, uint index, float x, floa
 }
 
 // Loads one factory into the map.
-void setFactory(map<uint, terrainFactory>& terrainFactories, uint id, std::string name)
+void setFactory(map<uint, terrainFactory>& terrainFactories, uint id, const std::string& name)
 {
 	if (name == "concrete")
 	{
