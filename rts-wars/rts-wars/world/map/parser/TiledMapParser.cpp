@@ -8,6 +8,7 @@
 // TiledMapParser.cpp
 
 using namespace cdc;
+using namespace cdc::tiled;
 using namespace std;
 
 typedef std::vector<Node> Nodes;
@@ -50,8 +51,10 @@ void TiledMapParser::parse()
 	using namespace Poco;
 
 	// TODO: implement this.
+
+	loadMapImages(fileInfo);
 	
-	ifstream in(path);
+	ifstream in(fileInfo.getTmxFileName());
 	XML::InputSource src(in);
 
 	XML::DOMParser parser;
@@ -75,12 +78,7 @@ void TiledMapParser::parse()
 			XML::Node* childNode = childIterator.nextNode();
 			while (childNode)
 			{
-				if (node->nodeName() == "properties")
-				{
-					// TODO: Implement.
-					loadMapImages(childNode);
-				}
-				else if (node->nodeName() == "tileset")
+				if (node->nodeName() == "tileset")
 				{
 					// TODO: Implement.
 					terrainFactories = setFactories(childNode);
@@ -156,27 +154,17 @@ MapProperties processMapProperties(Poco::XML::Node* node)
 }
 
 // Loads the map images based on the properties specified in the Tiled xml file.
-// Example:
-//  <property name="image0" value="map1.png"/>
-//  <property name="imageLeft0" value="0"/>
-//  <property name="imageTop0" value="0"/>
-void loadMapImages(Poco::XML::Node* node)
+// 
+void loadMapImages(TiledMapFileInfo& fileInfo)
 {
-	using namespace Poco;
-
-	int i = 0;
-	bool nodeNotFound = false;
-	while (!nodeNotFound)
+	for (MapImageProperties& properties : fileInfo.getProperties())
 	{
-		// TODO: loop through the images, and load them into Graphics.
-		
-	}
+		auto& texture = Graphics::Instance().getTexture(properties.fileName);
 
-	XML::NodeIterator childIterator(node, XML::NodeFilter::SHOW_ELEMENT);
-	XML::Node* childNode = childIterator.nextNode();
-	while (childNode)
-	{
-		if (childNode->fin
+		sf::Sprite mapSprite(texture);
+		mapSprite.setPosition(static_cast<float>(properties.imageLeft), static_cast<float>(properties.imageTop));
+
+		Graphics::Instance().addMapSprite(mapSprite);
 	}
 }
 
