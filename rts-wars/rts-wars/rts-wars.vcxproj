@@ -84,6 +84,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="world\map\maps\tiled\Map1.hpp" />
+    <ClInclude Include="world\map\maps\tiled\TiledMapFileInfo.hpp" />
     <ClInclude Include="util\FileFormatException.hpp" />
     <ClInclude Include="util\NavGraphException.hpp" />
     <ClInclude Include="util\Vector2fAdapter.hpp" />
@@ -137,6 +139,7 @@
     <ClInclude Include="world\Entity.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="world\map\maps\tiled\Map1.cpp" />
     <ClCompile Include="util\FileFormatException.cpp" />
     <ClCompile Include="util\NavGraphException.cpp" />
     <ClCompile Include="util\Vector2fAdapter.cpp" />

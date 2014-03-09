@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "TiledMapParser.hpp"
+#include "world/map/maps/tiled/TiledMapFileInfo.hpp"
 
 
 // Christopher D. Canfield
@@ -33,8 +34,9 @@ struct MapProperties
 MapProperties processMapProperties(Poco::XML::Node* node);
 
 
-TiledMapParser::TiledMapParser(GameMap& gameMap) :
-	map(gameMap)
+TiledMapParser::TiledMapParser(GameMap& gameMap, tiled::TiledMapFileInfo& mapFileInfo) :
+	map(gameMap),
+	fileInfo(mapFileInfo)
 {
 }
 
@@ -43,7 +45,7 @@ TiledMapParser::~TiledMapParser()
 }
 
 
-void TiledMapParser::parse(std::string path)
+void TiledMapParser::parse()
 {
 	using namespace Poco;
 
@@ -73,7 +75,7 @@ void TiledMapParser::parse(std::string path)
 			XML::Node* childNode = childIterator.nextNode();
 			while (childNode)
 			{
-				if (node->nodeName() == "property")
+				if (node->nodeName() == "properties")
 				{
 					// TODO: Implement.
 					loadMapImages(childNode);
@@ -167,6 +169,7 @@ void loadMapImages(Poco::XML::Node* node)
 	while (!nodeNotFound)
 	{
 		// TODO: loop through the images, and load them into Graphics.
+		
 	}
 
 	XML::NodeIterator childIterator(node, XML::NodeFilter::SHOW_ELEMENT);

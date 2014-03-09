@@ -168,6 +168,12 @@
     <ClInclude Include="util\FileFormatException.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="world\map\maps\tiled\Map1.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="world\map\maps\tiled\TiledMapFileInfo.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -270,6 +276,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="util\FileFormatException.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="world\map\maps\tiled\Map1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

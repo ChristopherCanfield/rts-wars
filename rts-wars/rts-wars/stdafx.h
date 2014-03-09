@@ -28,6 +28,7 @@
 #include <stdexcept>
 
 #include <memory>
+#include <utility>
 
 // SFML Headers
 #include <SFML/System.hpp>
