@@ -11,13 +11,35 @@ using namespace cdc;
 using namespace cdc::tiled;
 using namespace std;
 
-typedef std::vector<Node> Nodes;
+typedef std::vector<Node>& Nodes;
 
 typedef void (*terrainFactory)(Nodes, uint row, uint column, uint index, float x, float z);
 
 void loadMapImages(Poco::XML::Node* node);
 map<int, terrainFactory> setFactories(Poco::XML::Node* node);
+void setFactory(map<uint, terrainFactory>& terrainFactories, uint id, std::string name)
 
+
+// Smart pointer for Poco::XML::NamedNodeMap
+class SmartNamedNodeMap
+{
+public:
+	SmartNamedNodeMap(Poco::XML::NamedNodeMap* attributes) :
+		att(attributes) {}
+
+	~SmartNamedNodeMap() {
+		att->release();
+	}
+
+	Poco::XML::NamedNodeMap* operator->() { 
+		return att; 
+	}
+
+private:
+	Poco::XML::NamedNodeMap* att;
+};
+
+// Properties from the tmx file.
 struct MapProperties
 {
 	MapProperties() :
@@ -80,7 +102,6 @@ void TiledMapParser::parse()
 			{
 				if (node->nodeName() == "tileset")
 				{
-					// TODO: Implement.
 					terrainFactories = setFactories(childNode);
 				}
 				else if (node->nodeName() == "layer")
@@ -107,25 +128,6 @@ void TiledMapParser::parse()
 // <map version="1.0" orientation="orthogonal" width="50" height="50" tilewidth="32" tileheight="32">
 MapProperties processMapProperties(Poco::XML::Node* node)
 {
-	// Smart pointer for Poco::XML::NamedNodeMap
-	class SmartNamedNodeMap
-	{
-	public:
-		SmartNamedNodeMap(Poco::XML::NamedNodeMap* attributes) :
-			att(attributes) {}
-
-		~SmartNamedNodeMap() {
-			att->release();
-		}
-
-		Poco::XML::NamedNodeMap* operator->() { 
-			return att; 
-		}
-
-	private:
-		Poco::XML::NamedNodeMap* att;
-	};
-
 	try
 	{
 		MapProperties properties;
@@ -154,7 +156,7 @@ MapProperties processMapProperties(Poco::XML::Node* node)
 }
 
 // Loads the map images based on the properties specified in the Tiled xml file.
-// 
+// fileInfo: 
 void loadMapImages(TiledMapFileInfo& fileInfo)
 {
 	for (MapImageProperties& properties : fileInfo.getProperties())
@@ -170,13 +172,45 @@ void loadMapImages(TiledMapFileInfo& fileInfo)
 
 map<int, terrainFactory> setFactories(Poco::XML::Node* node)
 {
-	map<int, terrainFactory> factories;
+	using namespace Poco;
 
+	map<int, terrainFactory> factories;
+	
+	XML::NodeIterator childIterator(node, XML::NodeFilter::SHOW_ELEMENT);
+	XML::Node* tileNode = childIterator.nextNode();
+	while (tileNode)
+	{
+		if (tileNode->nodeName() == "tile")
+		{
+			SmartNamedNodeMap tileAttributes(tileNode->attributes());
+
+			stringstream id(tileAttributes->getNamedItem("id")->getNodeValue());
+			uint tileId = 0;
+			id >>tileId;
+
+			auto propertyNode = node->firstChild()->firstChild();
+			if (propertyNode->hasAttributes())
+			{
+				SmartNamedNodeMap attributes(propertyNode->attributes());
+				attributes->getNamedItem("value")->nodeValue();
+
+
+			}
+			else
+			{
+				throw FileFormatException("TMX file malformed: tile>>properties should have a child, but does not.");
+			}
+			
+		}
+		
+		tileNode = childIterator.nextNode();
+	}
 	
 	return factories;
 }
 
-void processTerrain(Nodes& nodes, map<int, terrainFactory> terrainFactories, Poco::XML::Node* node)
+
+void processTerrain(Nodes& navGraph, map<int, terrainFactory> terrainFactories, Poco::XML::Node* node)
 {
 	
 }
@@ -204,4 +238,33 @@ void roadFactory(Nodes& nodes, uint row, uint column, uint index, float x, float
 void waterFactory(Nodes& nodes, uint row, uint column, uint index, float x, float z)
 {
 	nodes.emplace_back(Node(GridLocation(row, column), index, x, z, make_unique<Water>(x, z)));
+}
+
+// Loads one factory into the map.
+void setFactory(map<uint, terrainFactory>& terrainFactories, uint id, std::string name)
+{
+	if (name == "concrete")
+	{
+		terrainFactories[id] = &roadFactory;
+	}
+	else if (name == "dirt")
+	{
+		terrainFactories[id] = &dirtFactory;
+	}
+	else if (name == "grass")
+	{
+		terrainFactories[id] = &grassFactory;
+	}
+	else if (name == "water")
+	{
+		terrainFactories[id] = &waterFactory;
+	}
+	else if (name == "bridge")
+	{
+		terrainFactories[id] = bridgeFactory;
+	}
+	else
+	{
+		throw FileFormatException("Invalid tile name found in TMX file: " + name);
+	}
 }
