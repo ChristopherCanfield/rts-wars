@@ -8,7 +8,6 @@
 
 using cdc::PathNode;
 using cdc::Node;
-using cdc::Edge;
 
 using std::move;
 using std::shared_ptr;

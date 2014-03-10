@@ -1,7 +1,5 @@
 #pragma once
 
-#include "Edge.hpp"
-
 #include <vector>
 #include <memory>
 

@@ -92,7 +92,6 @@
 #include "world/map/terrain/Water.hpp"
 
 #include "world/map/nav/Node.hpp"
-#include "world/map/nav/Edge.hpp"
 #include "world/map/nav/PathKey.hpp"
 #include "world/map/nav/GridLocation.hpp"
 #include "world/map/nav/PathNode.hpp"

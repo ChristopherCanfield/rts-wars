@@ -117,9 +117,6 @@
     <ClInclude Include="world\map\GameMap.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="world\map\nav\Edge.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="world\map\nav\NavGraphHelper.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -234,9 +231,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="world\map\GameMap.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="world\map\nav\Edge.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="world\map\nav\NavGraphHelper.cpp">

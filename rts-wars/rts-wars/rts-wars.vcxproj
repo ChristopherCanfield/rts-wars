@@ -91,7 +91,6 @@
     <ClInclude Include="util\FileFormatException.hpp" />
     <ClInclude Include="util\NavGraphException.hpp" />
     <ClInclude Include="util\Vector2fAdapter.hpp" />
-    <ClInclude Include="world\map\nav\Edge.hpp" />
     <ClInclude Include="world\map\nav\GridLocation.hpp" />
     <ClInclude Include="world\map\nav\NavGraphHelper.hpp" />
     <ClInclude Include="world\map\nav\Node.hpp" />
@@ -146,7 +145,6 @@
     <ClCompile Include="util\FileFormatException.cpp" />
     <ClCompile Include="util\NavGraphException.cpp" />
     <ClCompile Include="util\Vector2fAdapter.cpp" />
-    <ClCompile Include="world\map\nav\Edge.cpp" />
     <ClCompile Include="world\map\nav\GridLocation.cpp" />
     <ClCompile Include="world\map\nav\NavGraphHelper.cpp" />
     <ClCompile Include="world\map\nav\Node.cpp" />
