@@ -47,6 +47,7 @@
 #include <Poco/DOM/NodeIterator.h>
 #include <Poco/DOM/NodeFilter.h>
 #include <Poco/DOM/AutoPtr.h>
+#include <Poco/DOM/NodeList.h>
 #include <Poco/SAX/InputSource.h>
 #include <Poco/DOM/NamedNodeMap.h>
 
@@ -58,6 +59,7 @@
 #include "util/Observable.hpp"
 #include "util/UUIDHash.hpp"
 #include "util/Vector2fAdapter.hpp"
+#include "util/PocoXmlScopedPointers.hpp"
 
 #include "util/FileLoadException.hpp"
 #include "util/FileFormatException.hpp"

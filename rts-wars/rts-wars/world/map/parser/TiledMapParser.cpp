@@ -2,13 +2,13 @@
 #include "TiledMapParser.hpp"
 #include "world/map/maps/tiled/TiledMapFileInfo.hpp"
 
-
 // Christopher D. Canfield
 // March 2014
 // TiledMapParser.cpp
 
 using namespace cdc;
 using namespace cdc::tiled;
+using namespace cdc::poco;
 using namespace std;
 
 typedef std::vector<Node>& Nodes;
@@ -19,24 +19,6 @@ void loadMapImages(TiledMapFileInfo& fileInfo);
 map<uint, terrainFactory> setFactories(Poco::XML::Node* node);
 void setFactory(map<uint, terrainFactory>& terrainFactories, uint id, const std::string& name);
 
-// Smart pointer for Poco::XML::NamedNodeMap
-class SmartNamedNodeMap
-{
-public:
-	SmartNamedNodeMap(Poco::XML::NamedNodeMap* attributes) :
-		att(attributes) {}
-
-	~SmartNamedNodeMap() {
-		att->release();
-	}
-
-	Poco::XML::NamedNodeMap* operator->() { 
-		return att; 
-	}
-
-private:
-	Poco::XML::NamedNodeMap* att;
-};
 
 // Properties from the tmx file.
 struct MapProperties
@@ -76,7 +58,7 @@ GameMap::UniquePtr TiledMapParser::parse()
 	loadMapImages(fileInfo);
 	
 	ifstream in(Constants::MapPath + fileInfo.getTmxFileName());
-	if (!in.good)
+	if (!in.good())
 	{
 		throw FileLoadException("Unable to load the Tiled tmx file: " + Constants::MapPath + fileInfo.getTmxFileName());
 	}
@@ -102,18 +84,21 @@ GameMap::UniquePtr TiledMapParser::parse()
 			// Load the properties.
 			properties = processMapProperties(node);
 		
+			
 			XML::NodeIterator childIterator(node, XML::NodeFilter::SHOW_ELEMENT);
 			XML::Node* childNode = childIterator.nextNode();
 			while (childNode)
 			{
-				if (node->nodeName() == "tileset")
+				if (childNode->nodeName() == "tileset")
 				{
 					terrainFactories = setFactories(childNode);
 				}
-				else if (node->nodeName() == "layer")
+				else if (childNode->nodeName() == "layer")
 				{
-					processTerrain(navGraph, terrainFactories, node, properties);
+					processTerrain(navGraph, terrainFactories, childNode, properties);
 				}
+
+				childNode = childIterator.nextNode();
 			}
 		}
 
@@ -133,7 +118,7 @@ MapProperties processMapProperties(Poco::XML::Node* node)
 	{
 		MapProperties properties;
 
-		SmartNamedNodeMap attributes(node->attributes());
+		ScopedNamedNodeMap attributes(node->attributes());
 
 		stringstream widthStream(attributes->getNamedItem("width")->nodeValue());
 		widthStream >> properties.columns;
@@ -141,10 +126,10 @@ MapProperties processMapProperties(Poco::XML::Node* node)
 		stringstream heightStream(attributes->getNamedItem("height")->nodeValue());
 		heightStream >> properties.rows;
 
-		stringstream tileWidthStream(attributes->getNamedItem("tileWidth")->nodeValue());
+		stringstream tileWidthStream(attributes->getNamedItem("tilewidth")->nodeValue());
 		tileWidthStream >> properties.tileWidth;
 
-		stringstream tileHeightStream(attributes->getNamedItem("tileHeight")->nodeValue());
+		stringstream tileHeightStream(attributes->getNamedItem("tileheight")->nodeValue());
 		tileHeightStream >> properties.tileHeight;
 
 		return move(properties);
@@ -184,7 +169,7 @@ map<uint, terrainFactory> setFactories(Poco::XML::Node* node)
 	{
 		if (tileNode->nodeName() == "tile")
 		{
-			SmartNamedNodeMap tileAttributes(tileNode->attributes());
+			ScopedNamedNodeMap tileAttributes(tileNode->attributes());
 
 			stringstream id(tileAttributes->getNamedItem("id")->getNodeValue());
 			uint tileId = 0;
@@ -193,7 +178,7 @@ map<uint, terrainFactory> setFactories(Poco::XML::Node* node)
 			auto propertyNode = node->firstChild()->firstChild();
 			if (propertyNode->hasAttributes())
 			{
-				SmartNamedNodeMap attributes(propertyNode->attributes());
+				ScopedNamedNodeMap attributes(propertyNode->attributes());
 				setFactory(factories, tileId, attributes->getNamedItem("value")->nodeValue());
 			}
 			else
@@ -221,7 +206,7 @@ void processTerrain(Nodes& navGraph, const map<int, terrainFactory>& terrainFact
 	XML::Node* dataNode = childIterator.nextNode();
 	while (dataNode)
 	{
-		SmartNamedNodeMap attributes(dataNode->attributes());
+		ScopedNamedNodeMap attributes(dataNode->attributes());
 		stringstream id(attributes->getNamedItem("gid")->nodeValue());
 		uint tileId;
 		id >> tileId;

@@ -177,6 +177,9 @@
     <ClInclude Include="app\integration\TiledParserTest.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="util\PocoXmlScopedPointers.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

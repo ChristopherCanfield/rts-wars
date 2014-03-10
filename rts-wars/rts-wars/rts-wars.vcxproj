@@ -97,6 +97,7 @@
     <ClInclude Include="world\map\nav\PathKey.hpp" />
     <ClInclude Include="world\map\nav\PathNode.hpp" />
     <ClInclude Include="world\map\nav\Search.hpp" />
+    <ClInclude Include="util\PocoXmlScopedPointers.hpp" />
     <ClInclude Include="world\map\terrain\Bridge.hpp" />
     <ClInclude Include="world\map\GameMap.hpp" />
     <ClInclude Include="world\map\terrain\Road.hpp" />
