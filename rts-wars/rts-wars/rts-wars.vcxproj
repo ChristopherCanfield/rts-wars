@@ -84,6 +84,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="app\integration\TiledParserTest.hpp" />
     <ClInclude Include="util\Assert.hpp" />
     <ClInclude Include="world\map\maps\tiled\Map1.hpp" />
     <ClInclude Include="world\map\maps\tiled\TiledMapFileInfo.hpp" />
@@ -140,6 +141,7 @@
     <ClInclude Include="world\Entity.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="app\integration\TiledParserTest.cpp" />
     <ClCompile Include="world\map\maps\tiled\Map1.cpp" />
     <ClCompile Include="util\FileFormatException.cpp" />
     <ClCompile Include="util\NavGraphException.cpp" />
