@@ -20,6 +20,7 @@ namespace cdc
 	{
 	public:
 		typedef std::unique_ptr<GameMap> UniquePtr;
+		typedef std::vector<Node> NavGraphList;
 
 		///<summary>Constructs a new GameMap object.</summary>
 		///<param name="rows">The number of rows of terrain objects.</summary>

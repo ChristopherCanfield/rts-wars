@@ -39,17 +39,17 @@ namespace cdc
 			}
 
 			///<summary>Returns a reference to the list of map properties.</summary>
-			std::vector<MapImageProperties> getProperties() const {
+			const std::vector<MapImageProperties>& getProperties() const {
 				return properties;
 			}
 
 		protected:
-			void setFileName(std::string&& fileName) {
-				fileName = std::move(fileName);
+			void setFileName(std::string mapFileName) {
+				fileName = mapFileName;
 			}
 
-			void setProperties(std::vector<MapImageProperties>& properties) {
-				properties = std::move(properties);
+			void setProperties(std::vector<MapImageProperties>& mapProperties) {
+				properties = std::move(mapProperties);
 			}
 
 		private:

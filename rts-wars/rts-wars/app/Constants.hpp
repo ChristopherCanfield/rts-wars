@@ -20,5 +20,14 @@ namespace cdc
 
 		// The number of milliseconds per tick.
 		const sf::Int32 MillisPerTick = 1000 / TicksPerSecond;
+
+		// The path to the game resources (assets).
+		const std::string ResourcePath = "res/";
+
+		// The path to the map files.
+		const std::string MapPath = ResourcePath + "maps/";
+
+		// The path to the texture files.
+		const std::string TexturePath = ResourcePath + "textures/";
 	}
 }

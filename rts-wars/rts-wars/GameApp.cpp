@@ -4,6 +4,9 @@
 #include "world/Tank.hpp"
 #include "graphics/cameras/SfmlCamera.hpp"
 #include "controllers/cameracontrollers/SfmlCameraController.hpp"
+#include "world/map/parser/TiledMapParser.hpp"
+#include "world/map/maps/tiled/Map1.hpp"
+#include "world/map/maps/tiled/TiledMapFileInfo.hpp"
 
 using namespace cdc;
 using namespace sf;
@@ -31,6 +34,11 @@ void GameApp::setup()
 	tank->setX(50.f);
 	tank->setZ(40.f);
 	World::Instance().addEntity(tank);
+
+	tiled::Map1 map1;
+	TiledMapParser parser(map1);
+	auto gameMap = parser.parse();
+	World::Instance().setGameMap(move(gameMap));
 }
 
 bool GameApp::run()

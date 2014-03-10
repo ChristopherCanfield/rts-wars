@@ -59,8 +59,7 @@ void processTerrain(Nodes& navGraph, const map<int, terrainFactory>& terrainFact
 					const MapProperties& properties);
 
 
-TiledMapParser::TiledMapParser(GameMap& gameMap, tiled::TiledMapFileInfo& mapFileInfo) :
-	map(gameMap),
+TiledMapParser::TiledMapParser(tiled::TiledMapFileInfo& mapFileInfo) :
 	fileInfo(mapFileInfo)
 {
 }
@@ -70,20 +69,27 @@ TiledMapParser::~TiledMapParser()
 }
 
 
-void TiledMapParser::parse()
+GameMap::UniquePtr TiledMapParser::parse()
 {
 	using namespace Poco;
 
 	loadMapImages(fileInfo);
 	
-	ifstream in(fileInfo.getTmxFileName());
-	XML::InputSource src(in);
+	ifstream in(Constants::MapPath + fileInfo.getTmxFileName());
+	if (!in.good)
+	{
+		throw FileLoadException("Unable to load the Tiled tmx file: " + Constants::MapPath + fileInfo.getTmxFileName());
+	}
 
+	XML::InputSource src(in);
+	
 	XML::DOMParser parser;
 	AutoPtr<XML::Document> doc = parser.parse(&src);
 
 	MapProperties properties;
 	std::map<uint, terrainFactory> terrainFactories;
+
+	GameMap::NavGraphList navGraph;
 
 	XML::NodeIterator iterator(doc, XML::NodeFilter::SHOW_ELEMENT);
 	XML::Node* node = iterator.nextNode();
@@ -106,7 +112,7 @@ void TiledMapParser::parse()
 				}
 				else if (node->nodeName() == "layer")
 				{
-
+					processTerrain(navGraph, terrainFactories, node, properties);
 				}
 			}
 		}
@@ -114,14 +120,9 @@ void TiledMapParser::parse()
 		node = iterator.nextNode();
 	}
 
-	//MapProperties 
-
-	//Nodes nodes;
-	//nodes.resize(properties.rows);
-
-	//GameMap::UniquePtr gameMap = make_unique<GameMap>(properties.rows, properties.columns, 
-	//		properties.tileHeight, properties.tileWidth, nodes);
-	
+	GameMap::UniquePtr gameMap = make_unique<GameMap>(properties.rows, properties.columns, 
+			properties.tileHeight, properties.tileWidth, move(navGraph));
+	return move(gameMap);
 }
 
 // Imports the map properties, which should be in the following form:
@@ -159,9 +160,10 @@ MapProperties processMapProperties(Poco::XML::Node* node)
 // fileInfo: The tiled map information.
 void loadMapImages(TiledMapFileInfo& fileInfo)
 {
-	for (MapImageProperties& properties : fileInfo.getProperties())
+	for (const MapImageProperties& properties : fileInfo.getProperties())
 	{
-		auto& texture = Graphics::Instance().getTexture(properties.fileName);
+		// The map files and textures are stored in the same location.
+		auto& texture = Graphics::Instance().getTexture(Constants::MapPath + properties.fileName);
 
 		sf::Sprite mapSprite(texture);
 		mapSprite.setPosition(static_cast<float>(properties.imageLeft), static_cast<float>(properties.imageTop));

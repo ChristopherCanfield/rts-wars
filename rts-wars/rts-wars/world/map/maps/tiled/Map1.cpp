@@ -12,7 +12,7 @@ using namespace std;
 
 Map1::Map1()
 {
-	setFileName(string("map1.tmx"));
+	setFileName("map1.tmx");
 
 	vector<MapImageProperties> properties;
 	

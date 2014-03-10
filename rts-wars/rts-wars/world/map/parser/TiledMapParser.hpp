@@ -21,15 +21,13 @@ namespace cdc
 		public MapParser
 	{
 	public:
-		TiledMapParser(GameMap& map, tiled::TiledMapFileInfo& mapFileInfo);
+		TiledMapParser(tiled::TiledMapFileInfo& mapFileInfo);
 		virtual ~TiledMapParser();
 
-		virtual void parse() override;
+		virtual GameMap::UniquePtr parse() override;
 
 	private:
 		TiledMapParser& operator=(const TiledMapParser& rhs);
-
-		GameMap& map;
 
 		tiled::TiledMapFileInfo& fileInfo;
 	};

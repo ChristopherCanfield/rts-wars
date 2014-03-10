@@ -42,7 +42,7 @@ namespace cdc
 		/// <param name="id">The entity's unique id.</param>
 		void removeEntity(Poco::UUID id);
 
-		/// <summarySets the game map.</summary>
+		/// <summary>Sets the game map.</summary>
 		/// <param name="gameMap">The game map.</param>
 		void setGameMap(GameMap::UniquePtr gameMap);
 

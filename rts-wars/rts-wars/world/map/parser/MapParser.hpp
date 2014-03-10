@@ -1,5 +1,7 @@
 #pragma once
 
+#include "world/map/GameMap.hpp"
+
 #include <string>
 
 // Christopher D. Canfield
@@ -17,6 +19,6 @@ namespace cdc
 		virtual ~MapParser() {}
 
 		///<summary>Parses the game map file.</summary>
-		virtual void parse() = 0;
+		virtual GameMap::UniquePtr parse() = 0;
 	};
 }
