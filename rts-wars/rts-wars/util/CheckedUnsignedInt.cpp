@@ -2,6 +2,7 @@
 #include "CheckedUnsignedInt.hpp"
 
 #include <stdexcept>
+#include <climits>
 
 // Christopher D. Canfield
 // March 2014
@@ -15,9 +16,10 @@ CheckedUnsignedInt::CheckedUnsignedInt() :
 {
 }
 
-CheckedUnsignedInt::CheckedUnsignedInt(unsigned int value) :
-	value(value)
+CheckedUnsignedInt::CheckedUnsignedInt(unsigned int val) :
+	value(val)
 {
+	Assert<range_error>(val <= INT_MAX, "CheckedUnsignedInt exceeded max int value.");
 }
 
 CheckedUnsignedInt::CheckedUnsignedInt(int value)
@@ -28,12 +30,14 @@ CheckedUnsignedInt::CheckedUnsignedInt(int value)
 
 CheckedUnsignedInt& CheckedUnsignedInt::operator++()
 {
+	Assert<range_error>(value <= INT_MAX, "CheckedUnsignedInt exceeded max int value.");
 	++value;
 	return *this;
 }
 
-CheckedUnsignedInt CheckedUnsignedInt::operator++(int)
+CheckedUnsignedInt CheckedUnsignedInt::operator++(int val)
 {
+	Assert<range_error>(value <= INT_MAX, "CheckedUnsignedInt exceeded max int value.");
 	return CheckedUnsignedInt(++value);
 }
 
@@ -52,11 +56,13 @@ CheckedUnsignedInt CheckedUnsignedInt::operator--(int)
 
 CheckedUnsignedInt CheckedUnsignedInt::operator+(CheckedUnsignedInt val)
 {
+	Assert<range_error>(val.toValue() + value <= INT_MAX, "CheckedUnsignedInt exceeded max int value.");
 	return CheckedUnsignedInt(value + val.value);
 }
 
 CheckedUnsignedInt CheckedUnsignedInt::operator+(unsigned int val)
 {
+	Assert<range_error>(val + value <= INT_MAX, "CheckedUnsignedInt exceeded max int value.");
 	return CheckedUnsignedInt(value + val);
 }
 
@@ -75,7 +81,7 @@ CheckedUnsignedInt CheckedUnsignedInt::operator-(CheckedUnsignedInt val)
 CheckedUnsignedInt CheckedUnsignedInt::operator-(unsigned int val)
 {
 	Assert<range_error>(value - val >= 0, "CheckedUnsignedInt was negative.");
-	return CheckedUnsignedInt(value - val >= 0);
+	return CheckedUnsignedInt(value - val);
 }
 		
 CheckedUnsignedInt CheckedUnsignedInt::operator-(int val)
