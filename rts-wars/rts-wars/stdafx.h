@@ -64,6 +64,8 @@
 #include "util/GameLogicException.hpp"
 #include "util/NavGraphException.hpp"
 
+#include "util/Assert.hpp"
+
 #include "graphics/Graphics.hpp"
 #include "graphics/Camera.hpp"
 #include "graphics/Sprite.hpp"

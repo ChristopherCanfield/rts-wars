@@ -241,27 +241,27 @@ void processTerrain(Nodes& navGraph, const map<int, terrainFactory>& terrainFact
 
 void bridgeFactory(Nodes& nodes, uint row, uint column, uint index, int x, int z)
 {
-	nodes.emplace_back(Node(GridLocation(row, column), index, x, z, make_unique<Bridge>(x, z)));
+	nodes.emplace_back(Node(GridLocation(row, column), index, x, z, make_unique<Bridge>(static_cast<float>(x), static_cast<float>(z))));
 }
 
 void dirtFactory(Nodes& nodes, uint row, uint column, uint index, int x, int z)
 {
-	nodes.emplace_back(Node(GridLocation(row, column), index, x, z, make_unique<Dirt>(x, z)));
+	nodes.emplace_back(Node(GridLocation(row, column), index, x, z, make_unique<Dirt>(static_cast<float>(x), static_cast<float>(z))));
 }
 
 void grassFactory(Nodes& nodes, uint row, uint column, uint index, int x, int z)
 {
-	nodes.emplace_back(Node(GridLocation(row, column), index, x, z, make_unique<Grass>(x, z)));
+	nodes.emplace_back(Node(GridLocation(row, column), index, x, z, make_unique<Grass>(static_cast<float>(x), static_cast<float>(z))));
 }
 
 void roadFactory(Nodes& nodes, uint row, uint column, uint index, int x, int z)
 {
-	nodes.emplace_back(Node(GridLocation(row, column), index, x, z, make_unique<Road>(x, z)));
+	nodes.emplace_back(Node(GridLocation(row, column), index, x, z, make_unique<Road>(static_cast<float>(x), static_cast<float>(z))));
 }
 
 void waterFactory(Nodes& nodes, uint row, uint column, uint index, int x, int z)
 {
-	nodes.emplace_back(Node(GridLocation(row, column), index, x, z, make_unique<Water>(x, z)));
+	nodes.emplace_back(Node(GridLocation(row, column), index, x, z, make_unique<Water>(static_cast<float>(x), static_cast<float>(z))));
 }
 
 // Loads one factory into the map.

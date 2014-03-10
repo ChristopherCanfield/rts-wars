@@ -12,7 +12,7 @@ const float movementPerTick = 0.1f;
 SfmlCamera::SfmlCamera(sf::RenderWindow& window, sf::Vector2u worldDimensions) :
 	window(window),
 	worldDimensions(worldDimensions),
-	view(sf::FloatRect(0, 0, window.getSize().x, window.getSize().y))
+	view(sf::FloatRect(0, 0, static_cast<float>(window.getSize().x), static_cast<float>(window.getSize().y)))
 {
 }
 
