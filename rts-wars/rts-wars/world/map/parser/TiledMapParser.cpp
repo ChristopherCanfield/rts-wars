@@ -98,6 +98,15 @@ GameMap::UniquePtr TiledMapParser::parse()
 				}
 			}
 		}
+		else
+		{
+			// Postconditions:
+			Assert<FileFormatException>(properties.rows != 0, "Properties not loaded from Tiled map file.");
+			Assert<FileFormatException>(!navGraph.empty(), "NavGraph not loaded from Tiled map file.");
+
+			// Everything has been processed, so no need to continue iteration.
+			break;
+		}
 
 		node = iterator.nextNode();
 	}
@@ -200,28 +209,40 @@ void processTerrain(Nodes& navGraph, const map<int, terrainFactory>& terrainFact
 	uint column = 0;
 	uint index = 0;
 
-	XML::NodeIterator childIterator(node, XML::NodeFilter::SHOW_ELEMENT);
-	XML::Node* dataNode = childIterator.nextNode();
-	while (dataNode)
+	ScopedNodeList dataNodeList(node->childNodes());
+	for (int i = 0; i < dataNodeList->length(); ++i)
 	{
-		ScopedNamedNodeMap attributes(dataNode->attributes());
-		stringstream id(attributes->getNamedItem("gid")->nodeValue());
-		uint tileId;
-		id >> tileId;
-
-		dataNode = childIterator.nextNode();
-		terrainFactories.at(tileId - 1)(navGraph, row, column, index, 
-				static_cast<int>(properties.tileWidth * column), 
-				static_cast<int>(properties.tileHeight * row));
-
-		++column;
-		if (column > properties.columns - 1)
+		auto dataNode = dataNodeList->item(i);
+		if (dataNode->nodeName() == "data")
 		{
-			column = 0;
-			++row;
+			ScopedNodeList tileNodeList(dataNode->childNodes());
+			for (int x = 0; x < tileNodeList->length(); ++x)
+			{
+				auto tileNode = tileNodeList->item(x);
+				if (tileNode->nodeName() == "tile")
+				{
+					ScopedNamedNodeMap attributes(tileNode->attributes());
+					stringstream id(attributes->getNamedItem("gid")->nodeValue());
+					uint tileId;
+					id >> tileId;
+
+					terrainFactories.at(tileId - 1)(navGraph, row, column, index, 
+							static_cast<int>(properties.tileWidth * column), 
+							static_cast<int>(properties.tileHeight * row));
+
+					++column;
+					if (column > properties.columns - 1)
+					{
+						column = 0;
+						++row;
+					}
+					++index;
+				}
+			}
 		}
-		++index;
 	}
+
+	Assert<FileFormatException>(index > 0, "No tile information found in Tiled tmx file.");
 }
 
 void bridgeFactory(Nodes& nodes, uint row, uint column, uint index, int x, int z)
