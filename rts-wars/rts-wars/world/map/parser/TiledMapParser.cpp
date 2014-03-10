@@ -84,11 +84,10 @@ GameMap::UniquePtr TiledMapParser::parse()
 			// Load the properties.
 			properties = processMapProperties(node);
 		
-			
-			XML::NodeIterator childIterator(node, XML::NodeFilter::SHOW_ELEMENT);
-			XML::Node* childNode = childIterator.nextNode();
-			while (childNode)
+			ScopedNodeList childNodes = node->childNodes();
+			for (int i = 0; i < childNodes->length(); ++i)
 			{
+				auto childNode = childNodes->item(i);
 				if (childNode->nodeName() == "tileset")
 				{
 					terrainFactories = setFactories(childNode);
@@ -97,8 +96,6 @@ GameMap::UniquePtr TiledMapParser::parse()
 				{
 					processTerrain(navGraph, terrainFactories, childNode, properties);
 				}
-
-				childNode = childIterator.nextNode();
 			}
 		}
 
@@ -175,7 +172,8 @@ map<uint, terrainFactory> setFactories(Poco::XML::Node* node)
 			uint tileId = 0;
 			id >>tileId;
 
-			auto propertyNode = node->firstChild()->firstChild();
+			auto propertiesNode = tileNode->firstChild()->nextSibling();
+			auto propertyNode = propertiesNode->firstChild()->nextSibling();
 			if (propertyNode->hasAttributes())
 			{
 				ScopedNamedNodeMap attributes(propertyNode->attributes());
