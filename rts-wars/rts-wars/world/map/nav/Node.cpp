@@ -12,16 +12,16 @@ using cdc::GridLocation;
 using namespace std;
 
 
-Node::Node(GridLocation location, uint index, int pixelX, int pixelY, Terrain::UniquePtr terrain) :
+Node::Node(GridLocation location, uint index, int pixelX, int pixelZ, Terrain::UniquePtr terrain) :
 	location(location), 
 	index(index),
 	pixelX(pixelX), 
-	pixelY(pixelY), 
+	pixelZ(pixelZ), 
 	circle(5),
 	terrain(move(terrain))
 {
 	circle.setOrigin(circle.getLocalBounds().width / 2.f, circle.getLocalBounds().height / 2.f);
-	circle.setPosition(Vector2fAdapter(pixelX, pixelY));
+	circle.setPosition(Vector2fAdapter(pixelX, pixelZ));
 	circle.setFillColor(sf::Color::Blue);
 }
 
@@ -30,7 +30,7 @@ Node::Node(GridLocation location, uint index, int pixelX, int pixelY, Terrain::U
 Node::Node(const Node&& other) :
 	location(other.location), 
 	pixelX(other.pixelX), 
-	pixelY(other.pixelY), 
+	pixelZ(other.pixelZ), 
 	circle(other.circle)
 {
 	adjacent = std::move(other.adjacent);
@@ -42,7 +42,7 @@ Node& Node::operator=(const Node&& other)
 	{
 		adjacent = std::move(other.adjacent);
 		pixelX = other.pixelX;
-		pixelY = other.pixelY;
+		pixelZ = other.pixelZ;
 		location = other.location;
 		circle = other.circle;
 	}
@@ -67,7 +67,7 @@ sf::Rect<float> Node::getBoundingBox() const
 {
 	const float width = 6;
 	const float height = 6;
-	return sf::Rect<float>(pixelX - 3.f, pixelY - 3.f, width, height);
+	return sf::Rect<float>(pixelX - 3.f, pixelZ - 3.f, width, height);
 }
 
 uint Node::getRow() const

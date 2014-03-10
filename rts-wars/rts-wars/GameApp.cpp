@@ -29,7 +29,7 @@ void GameApp::setup()
 	// TODO: this is a test - remove it in the future.
 	Entity::SharedPtr tank = make_shared<Tank>();
 	tank->setX(50.f);
-	tank->setY(40.f);
+	tank->setZ(40.f);
 	World::Instance().addEntity(tank);
 }
 

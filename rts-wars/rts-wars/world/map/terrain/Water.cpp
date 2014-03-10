@@ -7,8 +7,8 @@
 
 using namespace cdc;
 
-Water::Water(float x, float y) :
-	AbstractTerrain(x, y, 32, 32, true, 1.f)
+Water::Water(float x, float z) :
+	AbstractTerrain(x, z, 32, 32, true, 1.f)
 {
 }
 

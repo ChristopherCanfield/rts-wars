@@ -14,7 +14,7 @@ namespace cdc
 		public AbstractTerrain
 	{
 	public:
-		Bridge(float x, float y);
+		Bridge(float x, float z);
 		virtual ~Bridge();
 	};
 }

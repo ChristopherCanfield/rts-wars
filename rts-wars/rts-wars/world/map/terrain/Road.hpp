@@ -14,7 +14,7 @@ namespace cdc
 		public AbstractTerrain
 	{
 	public:
-		Road(float x, float y);
+		Road(float x, float z);
 		virtual ~Road();
 	};
 }

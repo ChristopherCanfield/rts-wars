@@ -29,13 +29,13 @@ namespace cdc
 		///<param name="x">The entity's x coordinate.</param>
 		virtual void setX(float x) override;
 
-		///<summary>Gets the entity's y coordinate, in world coordinates.</summary>
-		///<returns>The entity's y coordinate.</returns>
-		virtual float getY() const override;
+		///<summary>Gets the entity's z coordinate, in world coordinates.</summary>
+		///<returns>The entity's z coordinate.</returns>
+		virtual float getZ() const override;
 
-		///<summary>Sets the entity's y coordinate.</summary>
-		///<param name="y">The entity's y coordinate.</param>
-		virtual void setY(float y) override;
+		///<summary>Sets the entity's z coordinate.</summary>
+		///<param name="z">The entity's z coordinate.</param>
+		virtual void setZ(float z) override;
 
 		///<summary>Gets the entity's rotation.</summary>
 		///<returns>The entity's rotation.</returns>
@@ -93,7 +93,7 @@ namespace cdc
 		const Poco::UUID id;
 
 		float x;
-		float y;
+		float z;
 
 		float rotation;
 

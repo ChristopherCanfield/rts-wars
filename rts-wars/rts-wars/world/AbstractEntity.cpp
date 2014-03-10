@@ -24,7 +24,7 @@ AbstractEntity::AbstractEntity(Poco::UUID id) :
 
 void AbstractEntity::constructEntity()
 {
-	x = y = rotation = 0;
+	x = z = rotation = 0;
 	height = width = 0;
 	destroyed = false;
 }
@@ -48,14 +48,14 @@ void AbstractEntity::setX(float x)
 	this->x = x;
 }
 
-float AbstractEntity::getY() const
+float AbstractEntity::getZ() const
 {
-	return y;
+	return z;
 }
 
-void AbstractEntity::setY(float y)
+void AbstractEntity::setZ(float z)
 {
-	this->y = y;
+	this->z = z;
 }
 
 float AbstractEntity::getRotation() const

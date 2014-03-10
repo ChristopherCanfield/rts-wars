@@ -22,7 +22,7 @@ namespace cdc
 		public sf::Drawable
 	{
 	public:
-		Node(GridLocation location, uint index, int pixelX, int pixelY, Terrain::UniquePtr terrain);
+		Node(GridLocation location, uint index, int pixelX, int pixelZ, Terrain::UniquePtr terrain);
 		~Node();
 
 		Node(const Node&& other);
@@ -37,9 +37,9 @@ namespace cdc
 		template <class T>
 		T getPixelX() const;
 
-		// Gets the y location of the Node, in pixels.
+		// Gets the z location of the Node, in pixels.
 		template <class T>
-		T getPixelY() const;
+		T getPixelZ() const;
 
 		sf::Rect<float> getBoundingBox() const;
 
@@ -70,7 +70,7 @@ namespace cdc
 		std::vector<uint> adjacent;
 
 		int pixelX;
-		int pixelY;
+		int pixelZ;
 
 		uint index;
 
@@ -88,9 +88,9 @@ namespace cdc
 	}
 
 	template <class T>
-	T Node::getPixelY() const
+	T Node::getPixelZ() const
 	{
-		return static_cast<T>(pixelY);
+		return static_cast<T>(pixelZ);
 	}
 }
 

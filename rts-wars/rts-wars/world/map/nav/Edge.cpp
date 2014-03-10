@@ -41,11 +41,11 @@ void Edge::setVertices(Node& startNode, Node& endNode)
 	vertices.setPrimitiveType(sf::Lines);
 
 	vertices.append(sf::Vertex(
-			Vector2fAdapter(startNode.getPixelX<uint>(), startNode.getPixelY<uint>()), 
+			Vector2fAdapter(startNode.getPixelX<uint>(), startNode.getPixelZ<uint>()), 
 			sf::Color(0, 0, 255)));
 
 	vertices.append(sf::Vertex(
-			Vector2fAdapter(endNode.getPixelX<uint>(), endNode.getPixelY<uint>()), 
+			Vector2fAdapter(endNode.getPixelX<uint>(), endNode.getPixelZ<uint>()), 
 			sf::Color(0, 0, 255)));
 }
 
@@ -100,8 +100,8 @@ void Edge::draw(sf::RenderTarget &target, sf::RenderStates states, sf::Color col
 		path.setPrimitiveType(sf::Lines);
 
 		// TODO: set this on construction, instead of continuously recreating it.
-		path.append(Vertex(Vector2f(startNode->getPixelX<float>(), startNode->getPixelY<float>()), color));
-		path.append(Vertex(Vector2f(endNode->getPixelX<float>(), endNode->getPixelY<float>()), color));
+		path.append(Vertex(Vector2f(startNode->getPixelX<float>(), startNode->getPixelZ<float>()), color));
+		path.append(Vertex(Vector2f(endNode->getPixelX<float>(), endNode->getPixelZ<float>()), color));
 
 		target.draw(path, states);
 	}

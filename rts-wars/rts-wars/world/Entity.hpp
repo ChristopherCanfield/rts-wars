@@ -35,13 +35,13 @@ namespace cdc
 		///<param name="x">The entity's x coordinate.</param>
 		virtual void setX(float x) = 0;
 
-		///<summary>Gets the entity's y coordinate, in world coordinates.</summary>
-		///<returns>The entity's y coordinate.</returns>
-		virtual float getY() const = 0;
+		///<summary>Gets the entity's z coordinate, in world coordinates.</summary>
+		///<returns>The entity's z coordinate.</returns>
+		virtual float getZ() const = 0;
 
-		///<summary>Sets the entity's y coordinate.</summary>
-		///<param name="y">The entity's y coordinate.</param>
-		virtual void setY(float y) = 0;
+		///<summary>Sets the entity's z coordinate.</summary>
+		///<param name="z">The entity's z coordinate.</param>
+		virtual void setZ(float z) = 0;
 
 		///<summary>Gets the entity's rotation.</summary>
 		///<returns>The entity's rotation.</returns>

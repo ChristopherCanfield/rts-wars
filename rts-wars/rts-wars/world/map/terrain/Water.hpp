@@ -14,7 +14,7 @@ namespace cdc
 		public AbstractTerrain
 	{
 	public:
-		Water(float x, float y);
+		Water(float x, float z);
 		virtual ~Water();
 	};
 }

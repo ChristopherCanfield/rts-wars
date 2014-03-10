@@ -8,8 +8,8 @@
 using namespace cdc;
 
 
-Bridge::Bridge(float x, float y) :
-	AbstractTerrain(x, y, 32, 32, true, 1.f)
+Bridge::Bridge(float x, float z) :
+	AbstractTerrain(x, z, 32, 32, true, 1.f)
 {
 }
 

@@ -38,7 +38,7 @@ void AbstractSprite::draw(sf::RenderTarget &target, sf::RenderStates states) con
 {
 	if (movable)
 	{
-		currentSprite->setPosition(entity.getX(), entity.getY());
+		currentSprite->setPosition(entity.getX(), entity.getZ());
 	}
 	target.draw(*currentSprite, states);
 }
