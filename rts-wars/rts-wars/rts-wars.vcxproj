@@ -50,7 +50,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level4</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;HIGH_ASSERTION;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>ASSERTIONS;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>$(ProjectDir)lib/;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
@@ -84,7 +84,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="util\CheckedUnsignedInt.hpp" />
     <ClInclude Include="util\Assert.hpp" />
     <ClInclude Include="world\map\maps\tiled\Map1.hpp" />
     <ClInclude Include="world\map\maps\tiled\TiledMapFileInfo.hpp" />
@@ -141,7 +140,6 @@
     <ClInclude Include="world\Entity.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="util\CheckedUnsignedInt.cpp" />
     <ClCompile Include="world\map\maps\tiled\Map1.cpp" />
     <ClCompile Include="util\FileFormatException.cpp" />
     <ClCompile Include="util\NavGraphException.cpp" />
