@@ -17,20 +17,35 @@ namespace cdc
 
 		virtual ~Camera() {}
 
+		///<summary>Adds a controller to the camera.</summary>
+		///<param name="c">The controller to add.</param>
 		virtual void addController(CameraController::UniquePtr c) = 0;
 
+		///<summary>Updates all attached controllers. Must be called once per game tick.</summary>
 		virtual void update() = 0;
 
-		virtual void moveForwardZ() = 0;
+		///<summary>Moves the camera forward in the Z direction.</summary>
+		///<param name="fastMovement">true if the camera should be moved quickly.</param>
+		virtual void moveForwardZ(bool fastMovement) = 0;
 
-		virtual void moveBackwardZ() = 0;
+		///<summary>Moves the camera backward in the Z direction.</summary>
+		///<param name="fastMovement">true if the camera should be moved quickly.</param>
+		virtual void moveBackwardZ(bool fastMovement) = 0;
 
-		virtual void moveLeftX() = 0;
+		///<summary>Moves the camera left in the X direction.</summary>
+		///<param name="fastMovement">true if the camera should be moved quickly.</param>
+		virtual void moveLeftX(bool fastMovement) = 0;
 
-		virtual void moveRightX() = 0;
+		///<summary>Moves the camera right in the X direction.</summary>
+		///<param name="fastMovement">true if the camera should be moved quickly.</param>
+		virtual void moveRightX(bool fastMovement) = 0;
 
-		virtual void moveUpY() = 0;
+		///<summary>Moves the camera up in the Y direction.</summary>
+		///<param name="fastMovement">true if the camera should be moved quickly.</param>
+		virtual void moveUpY(bool fastMovement) = 0;
 
-		virtual void moveDownY() = 0;
+		///<summary>Moves the camera down in the Y direction.</summary>
+		///<param name="fastMovement">true if the camera should be moved quickly.</param>
+		virtual void moveDownY(bool fastMovement) = 0;
 	};
 }

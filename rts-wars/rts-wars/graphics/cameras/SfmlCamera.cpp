@@ -8,12 +8,15 @@
 using namespace cdc;
 
 const float movementPerTick = 0.1f;
+const float fastMovementPerTick = movementPerTick * 3.f;
 
 SfmlCamera::SfmlCamera(sf::RenderWindow& window, sf::Vector2u worldDimensions) :
 	window(window),
 	worldDimensions(worldDimensions),
 	view(sf::FloatRect(0, 0, static_cast<float>(window.getSize().x), static_cast<float>(window.getSize().y)))
 {
+	Assert<GameLogicException>(worldDimensions.x != 0 && worldDimensions.y != 0, 
+		"SfmlCamera: worldDimensions are zero.");
 }
 
 
@@ -35,40 +38,48 @@ void SfmlCamera::update()
 }
 
 
-void SfmlCamera::moveForwardZ()
+void SfmlCamera::moveForwardZ(bool fastMovement)
 {
-	// TODO: restrict this from moving off the world.
-	view.move(0.f, -movementPerTick);
-	window.setView(view);
+	if (view.getCenter().y > view.getSize().y / 2.f)
+	{
+		view.move(0.f, (fastMovement ? -fastMovementPerTick : -movementPerTick));
+		window.setView(view);
+	}
 }
 
-void SfmlCamera::moveBackwardZ()
+void SfmlCamera::moveBackwardZ(bool fastMovement)
 {
-	// TODO: restrict this from moving off the world.
-	view.move(0.f, movementPerTick);
-	window.setView(view);
+	if (view.getCenter().y < (worldDimensions.y - view.getSize().y / 2.f))
+	{
+		view.move(0.f, (fastMovement ? fastMovementPerTick : movementPerTick));
+		window.setView(view);
+	}
 }
 
-void SfmlCamera::moveLeftX()
+void SfmlCamera::moveLeftX(bool fastMovement)
 {
-	// TODO: restrict this from moving off the world.
-	view.move(-movementPerTick, 0.f);
-	window.setView(view);
+	if (view.getCenter().x > view.getSize().x / 2.f)
+	{
+		view.move((fastMovement ? -fastMovementPerTick : -movementPerTick), 0.f);
+		window.setView(view);
+	}
 }
 
-void SfmlCamera::moveRightX()
+void SfmlCamera::moveRightX(bool fastMovement)
 {
-	// TODO: restrict this from moving off the world.
-	view.move(movementPerTick, 0.f);
-	window.setView(view);
+	if (view.getCenter().x < (worldDimensions.x - view.getSize().x / 2.f))
+	{
+		view.move((fastMovement ? fastMovementPerTick : movementPerTick), 0.f);
+		window.setView(view);
+	}
 }
 
-void SfmlCamera::moveUpY()
+void SfmlCamera::moveUpY(bool fastMovement)
 {
 	// Do nothing, because SFML is a 2D library.
 }
 
-void SfmlCamera::moveDownY()
+void SfmlCamera::moveDownY(bool fastMovement)
 {
 	// Do nothing, because SFML is a 2D library.
 }

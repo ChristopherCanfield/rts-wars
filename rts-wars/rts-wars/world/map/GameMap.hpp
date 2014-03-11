@@ -40,6 +40,14 @@ namespace cdc
 		///<returns>the number of columns of terrain objects.</returns>
 		uint getColumns() const;
 
+		///<summary>Returns the width of the map.</summary>
+		///<returns>the width of the map.</returns>
+		int getWidth() const;
+
+		///<summary>Returns the height of the map.</summary>
+		///<returns>the height of the map.</returns>
+		int getHeight() const;
+
 		///<summary>Returns the specified terrain.</summary>
 		///<param name="x">the x location of the terrain, in world coordinates.</param>
 		///<param name="z">the z location of the terrain, in world coordinates.</param>

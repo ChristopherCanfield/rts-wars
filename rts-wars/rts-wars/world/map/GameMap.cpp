@@ -42,6 +42,16 @@ uint GameMap::getColumns() const
 	return columns;
 }
 
+int GameMap::getWidth() const
+{
+	return columns * tileWidth;
+}
+
+int GameMap::getHeight() const
+{
+	return rows * tileHeight;
+}
+
 Terrain& GameMap::getTerrain(uint x, uint z) const
 {
 	GridLocation gridLocation(x / tileWidth, z / tileHeight);

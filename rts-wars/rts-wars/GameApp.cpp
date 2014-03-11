@@ -26,9 +26,6 @@ void GameApp::setup()
 	// TODO: allow the window resolution to be set by user?
 	window.create(sf::VideoMode(800, 600), Constants::AppName, sf::Style::Default);
 
-	camera = make_unique<SfmlCamera>(window, sf::Vector2u(3200u, 3200u));
-	camera->addController(make_unique<SfmlCameraController>(*camera));
-
 	// TODO: this is a test - remove it in the future.
 	Entity::SharedPtr tank = make_shared<Tank>();
 	tank->setX(50.f);
@@ -38,6 +35,10 @@ void GameApp::setup()
 	tiled::Map1 map1;
 	TiledMapParser parser(map1);
 	auto gameMap = parser.parse();
+
+	camera = make_unique<SfmlCamera>(window, sf::Vector2u(gameMap->getWidth(), gameMap->getHeight()));
+	camera->addController(make_unique<SfmlCameraController>(*camera));
+
 	World::Instance().setGameMap(move(gameMap));
 }
 

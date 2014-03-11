@@ -25,17 +25,17 @@ namespace cdc
 
 		virtual void update() override;
 
-		virtual void moveForwardZ() override;
+		virtual void moveForwardZ(bool fastMovement) override;
 
-		virtual void moveBackwardZ() override;
+		virtual void moveBackwardZ(bool fastMovement) override;
 
-		virtual void moveLeftX() override;
+		virtual void moveLeftX(bool fastMovement) override;
 
-		virtual void moveRightX() override;
+		virtual void moveRightX(bool fastMovement) override;
 
-		virtual void moveUpY() override;
+		virtual void moveUpY(bool fastMovement) override;
 
-		virtual void moveDownY() override;
+		virtual void moveDownY(bool fastMovement) override;
 
 	private:
 		SfmlCamera& operator=(SfmlCamera& rhs);

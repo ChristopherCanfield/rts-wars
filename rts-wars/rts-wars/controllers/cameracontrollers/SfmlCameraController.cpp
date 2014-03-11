@@ -20,22 +20,26 @@ SfmlCameraController::~SfmlCameraController()
 
 void SfmlCameraController::update()
 {
+	using namespace sf;
+
 	// TODO: allow these keys to be set at run-time.
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+	bool moveFast(Keyboard::isKeyPressed(Keyboard::LShift) || Keyboard::isKeyPressed(Keyboard::RShift));
+
+	if (Keyboard::isKeyPressed(Keyboard::Left))
 	{
-		camera.moveLeftX();
+		camera.moveLeftX(moveFast);
 	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+	else if (Keyboard::isKeyPressed(Keyboard::Right))
 	{
-		camera.moveRightX();
+		camera.moveRightX(moveFast);
 	}
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+	if (Keyboard::isKeyPressed(Keyboard::Up))
 	{
-		camera.moveForwardZ();
+		camera.moveForwardZ(moveFast);
 	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+	else if (Keyboard::isKeyPressed(Keyboard::Down))
 	{
-		camera.moveBackwardZ();
+		camera.moveBackwardZ(moveFast);
 	}
 }
