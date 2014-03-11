@@ -45,7 +45,7 @@ namespace cdc
 
 		virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 
-		void update();
+		void update(const sf::Time& deltaTime);
 
 	private:
 		Graphics();

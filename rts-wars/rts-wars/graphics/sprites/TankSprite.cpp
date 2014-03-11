@@ -22,8 +22,7 @@ TankSprite::TankSprite(Entity& entity) :
 	sf::Texture& texture = Graphics::Instance().getTexture(Graphics::TexturePath + TankSpriteTextureName);
 	sprite.setTexture(texture);
 	sprite.setTextureRect(textureRegions[0]);
-
-	setSprite(sprite);
+	addFrame(AnimationFrame(sprite, sf::Time::Zero));
 }
 
 TankSprite::~TankSprite()

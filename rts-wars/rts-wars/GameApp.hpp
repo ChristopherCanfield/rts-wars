@@ -35,5 +35,6 @@ namespace cdc
 		Camera::UniquePtr camera;
 
 		sf::Clock timer;
+		sf::Clock deltaTime;
 	};
 }

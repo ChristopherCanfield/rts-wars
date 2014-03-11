@@ -10,10 +10,10 @@ using namespace cdc;
 
 AbstractSprite::AbstractSprite(Entity& entity, bool isMovable) :
 	entity(entity),
-	movable(isMovable)
+	movable(isMovable),
+	currentFrame(0)
 {
 }
-
 
 AbstractSprite::~AbstractSprite()
 {
@@ -24,21 +24,39 @@ bool AbstractSprite::isDestroyed() const
 	return entity.isDestroyed();
 }
 
-void AbstractSprite::setSprite(sf::Sprite& sprite)
+void AbstractSprite::addFrame(AnimationFrame frame)
 {
-	currentSprite = &sprite;
+	frames.push_back(frame);
 }
 
-sf::Sprite& AbstractSprite::getSprite() const
+void AbstractSprite::setCurrentFrame(int index)
 {
-	return *currentSprite;
+	currentFrame = index;
 }
 
 void AbstractSprite::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
+	Assert<GameLogicException>(frames.size() != 0, "AbstractSprite: No frames added to Sprite.");
+	target.draw(frames[currentFrame].sprite, states);
+}
+
+void AbstractSprite::update(const sf::Time& deltaTime)
+{
+	// Update the sprite to match the underlying entity's position.
 	if (movable)
 	{
-		currentSprite->setPosition(entity.getX(), entity.getZ());
+		frames[currentFrame].sprite.setPosition(entity.getX(), entity.getZ());
 	}
-	target.draw(*currentSprite, states);
+
+	// Rotate through the animation frames, if there are more than one.
+	if (frames.size() > 1)
+	{
+		auto& frame = frames[currentFrame];
+		frame.timeRemaining -= deltaTime;
+		if (frame.timeRemaining.asMilliseconds() <= 0)
+		{
+			currentFrame = (currentFrame == static_cast<int>(frames.size() - 1u)) ? 0 : currentFrame + 1;
+			frames[currentFrame].timeRemaining = frames[currentFrame].timePerFrame;
+		}
+	}
 }

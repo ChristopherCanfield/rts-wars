@@ -7,10 +7,10 @@
 
 using namespace cdc;
 
+
 GameLogicException::GameLogicException(std::string message) :
 	std::logic_error(message)
 {
-	
 }
 
 

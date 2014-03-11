@@ -2,10 +2,6 @@
 
 #include "AppRunner.hpp"
 
-#include <stdexcept>
-#include <iostream>
-#include <iomanip>
-
 // Christopher D. Canfield
 // October 2013
 // AppRunner.cpp
@@ -28,7 +24,11 @@ void AppRunner::execute(App& app)
 	}
 	catch (const std::exception& e)
 	{
-		std::cout << "An exception has occurred:\n";
-		std::cout << e.what() << std::endl;
+		std::cerr << "An exception has occurred:\n";
+		std::cerr << e.what() << std::endl;
+
+		#ifdef _DEBUG
+			system("PAUSE");
+		#endif
 	}
 }

@@ -63,7 +63,7 @@ void Graphics::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	}
 }
 
-void Graphics::update()
+void Graphics::update(const sf::Time& deltaTime)
 {
 	// Remove destroyed sprites.
 	auto eraseIterator = remove_if(sprites.begin(), sprites.end(), [](Sprite::SharedPtr sprite) {
@@ -73,5 +73,10 @@ void Graphics::update()
 	if (eraseIterator != sprites.end())
 	{
 		sprites.erase(eraseIterator);
+	}
+
+	for (auto& sprite : sprites)
+	{
+		sprite->update(deltaTime);
 	}
 }

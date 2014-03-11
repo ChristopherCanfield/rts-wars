@@ -61,7 +61,8 @@ bool GameApp::run()
 		window.draw(Graphics::Instance());
 		World::Instance().update();
 		camera->update();
-		Graphics::Instance().update();
+		Graphics::Instance().update(deltaTime.getElapsedTime());
+		deltaTime.restart();
 
 		window.display();
 	}
