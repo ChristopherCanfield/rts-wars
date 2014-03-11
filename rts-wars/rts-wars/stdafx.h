@@ -69,6 +69,10 @@
 
 #include "util/Assert.hpp"
 
+#include "util/event/ui/GuiEventManager.hpp"
+#include "util/event/ui/GuiEventObserver.hpp"
+#include "util/event/ui/DirectGuiEventObserver.hpp"
+
 #include "graphics/Graphics.hpp"
 #include "graphics/Camera.hpp"
 #include "graphics/Sprite.hpp"
@@ -77,10 +81,6 @@
 #include "app/App.hpp"
 #include "app/AppRunner.hpp"
 #include "app/Constants.hpp"
-
-#include "ui/GuiEventManager.hpp"
-#include "ui/GuiEventObserver.hpp"
-#include "ui/DirectGuiEventObserver.hpp"
 
 #include "world/Entity.hpp"
 #include "world/World.hpp"

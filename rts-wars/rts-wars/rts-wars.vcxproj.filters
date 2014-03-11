@@ -63,15 +63,6 @@
     <ClInclude Include="graphics\Sprite.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ui\DirectGuiEventObserver.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ui\GuiEventManager.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ui\GuiEventObserver.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="util\UUIDHash.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -180,6 +171,15 @@
     <ClInclude Include="util\PocoXmlScopedPointers.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="util\event\ui\DirectGuiEventObserver.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="util\event\ui\GuiEventManager.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="util\event\ui\GuiEventObserver.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -201,9 +201,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="world\World.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ui\GuiEventManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="world\Tank.cpp">
@@ -285,6 +282,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="app\integration\TiledParserTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="util\event\ui\GuiEventManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

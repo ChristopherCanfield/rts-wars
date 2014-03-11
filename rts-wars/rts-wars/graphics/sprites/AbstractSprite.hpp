@@ -23,6 +23,9 @@ namespace cdc
 		sf::Sprite sprite;
 		const sf::Time timePerFrame;
 		sf::Time timeRemaining;
+
+	private:
+		AnimationFrame& operator=(const AnimationFrame&);
 	};
 
 	///<summary>Abstract sprite implementation.</summary>

@@ -122,9 +122,9 @@
     <ClInclude Include="world\map\parser\TiledMapParser.hpp" />
     <ClInclude Include="world\Tank.hpp" />
     <ClInclude Include="util\UUIDHash.hpp" />
-    <ClInclude Include="ui\DirectGuiEventObserver.hpp" />
-    <ClInclude Include="ui\GuiEventManager.hpp" />
-    <ClInclude Include="ui\GuiEventObserver.hpp" />
+    <ClInclude Include="util\event\ui\DirectGuiEventObserver.hpp" />
+    <ClInclude Include="util\event\ui\GuiEventManager.hpp" />
+    <ClInclude Include="util\event\ui\GuiEventObserver.hpp" />
     <ClInclude Include="world\World.hpp" />
     <ClInclude Include="world\AbstractEntity.hpp" />
     <ClInclude Include="app\App.hpp" />
@@ -169,7 +169,7 @@
     <ClCompile Include="graphics\sprites\TankSprite.cpp" />
     <ClCompile Include="world\map\parser\TiledMapParser.cpp" />
     <ClCompile Include="world\Tank.cpp" />
-    <ClCompile Include="ui\GuiEventManager.cpp" />
+    <ClCompile Include="util\event\ui\GuiEventManager.cpp" />
     <ClCompile Include="world\World.cpp" />
     <ClCompile Include="world\AbstractEntity.cpp" />
     <ClCompile Include="app\AppRunner.cpp" />
