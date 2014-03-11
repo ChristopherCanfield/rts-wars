@@ -180,6 +180,9 @@
     <ClInclude Include="util\event\ui\GuiEventObserver.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="util\event\Events.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -285,6 +288,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="util\event\ui\GuiEventManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="util\event\Events.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
