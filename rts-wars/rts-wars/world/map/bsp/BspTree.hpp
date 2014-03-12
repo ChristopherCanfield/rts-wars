@@ -1,5 +1,7 @@
 #pragma once
 
+#include <vector>
+
 // Christopher D. Canfield
 // March 2014
 // BspTree.hpp
@@ -12,5 +14,9 @@ namespace cdc
 	public:
 		BspTree();
 		~BspTree();
+
+	private:
+
+		std::vector<std::vector<int>> leafNodes;
 	};
 }
