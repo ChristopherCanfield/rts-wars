@@ -53,7 +53,7 @@ namespace cdc
 
 		/// <summary>Returns a reference to the selected entities object.</summary>
 		/// <returns>Reference to the selected entities object.</returns>
-		SelectedEntities& selected() const;
+		SelectedEntities& selected();
 
 		/// <summary>Updates all entities</summary>
 		void update();
@@ -72,6 +72,6 @@ namespace cdc
 
 		GameMap::UniquePtr gameMap;
 
-		SelectedEntities selected;
+		SelectedEntities selectedEntities;
 	};
 }

@@ -86,3 +86,9 @@ void World::update()
 		entity->update(*this);
 	}
 }
+
+
+SelectedEntities& World::selected()
+{
+	return selectedEntities;
+}
