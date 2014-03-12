@@ -11,6 +11,7 @@ namespace cdc
 			public sf::Vector2f
 	{
 	public:
-		Vector2fAdapter(uint x, uint y);
+		Vector2fAdapter(uint x, uint y) :
+			sf::Vector2f(static_cast<float>(x), static_cast<float>(y)) {}
 	};
 }

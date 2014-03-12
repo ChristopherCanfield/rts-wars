@@ -19,7 +19,7 @@ TankSprite::TankSprite(Entity& entity) :
 	textureRegions.push_back(IntRect(37, 1, 24, 29));
 	textureRegions.push_back(IntRect(70, 1, 24, 29));
 
-	sf::Texture& texture = Graphics::Instance().getTexture(Graphics::TexturePath + TankSpriteTextureName);
+	const sf::Texture& texture = Graphics::Instance().getTexture(Graphics::TexturePath + TankSpriteTextureName);
 	sprite.setTexture(texture);
 	sprite.setTextureRect(textureRegions[0]);
 	addFrame(AnimationFrame(sprite, sf::Time::Zero));

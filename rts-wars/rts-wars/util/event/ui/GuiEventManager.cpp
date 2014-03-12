@@ -24,7 +24,7 @@ void GuiEventManager::update(const sf::Event& e, const sf::RenderWindow& window)
 	if (e.type == sf::Event::MouseButtonReleased)
 	{
 		sf::Event clonedEvent(e);
-		sf::Vector2i location(e.mouseButton.x, e.mouseButton.y);
+		const sf::Vector2i location(e.mouseButton.x, e.mouseButton.y);
 		clonedEvent.mouseButton.x = static_cast<int>(window.mapPixelToCoords(location).x);
 		clonedEvent.mouseButton.y = static_cast<int>(window.mapPixelToCoords(location).y);
 
@@ -34,7 +34,7 @@ void GuiEventManager::update(const sf::Event& e, const sf::RenderWindow& window)
 	else if (e.type == sf::Event::MouseMoved)
 	{
 		sf::Event clonedEvent(e);
-		sf::Vector2i location(e.mouseMove.x, e.mouseMove.y);
+		const sf::Vector2i location(e.mouseMove.x, e.mouseMove.y);
 		clonedEvent.mouseMove.x = static_cast<int>(window.mapPixelToCoords(location).x);
 		clonedEvent.mouseMove.y = static_cast<int>(window.mapPixelToCoords(location).y);
 

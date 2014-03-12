@@ -16,7 +16,7 @@ using namespace std;
 ///<param name="axis">The axis to build along.</param>
 ///<param name="depth">The maximum depth of the tree. The root is at depth 0.</param>
 ///<param name="currentDepth">The current depth of the tree, starting at 0.</param>
-void buildTree(TreeNode::SharedPtr& root, int width, int height, Axis axis, int depth, int currentDepth = 0);
+void buildTree(TreeNode::SharedPtr& root, int width, int height, Axis axis, const int depth, int currentDepth = 0);
 
 BspTree::BspTree(int mapWidth, int mapHeight)
 {
@@ -47,7 +47,7 @@ BspTree::~BspTree()
 ///<param name="axis">The axis to build along.</param>
 ///<param name="depth">The maximum depth of the tree. The root is at depth 0.</param>
 ///<param name="currentDepth">The current depth of the tree, starting at 0.</param>
-void buildTree(TreeNode::SharedPtr& root, int width, int height, Axis axis, int depth, int currentDepth)
+void buildTree(TreeNode::SharedPtr& root, int width, int height, Axis axis, const int depth, int currentDepth)
 {
 	if (currentDepth == depth)
 	{
@@ -55,15 +55,15 @@ void buildTree(TreeNode::SharedPtr& root, int width, int height, Axis axis, int 
 		return;
 	}
 
-	int point = (axis == Axis::X) ? width / 2 : height / 2;
+	const int point = (axis == Axis::X) ? width / 2 : height / 2;
 
 	auto child1 = root->setChild1(make_shared<TreeNode>(point, axis));
 	auto child2 = root->setChild2(make_shared<TreeNode>(point, axis));
 
-	Axis nextAxis = (axis == Axis::X) ? Axis::Z : Axis::X;
-	int nextWidth = (axis == Axis::X) ? width / 2 : width;
-	int nextHeight = (axis == Axis::Z) ? height / 2 : height;
-	int nextDepth = currentDepth + 1;
+	const Axis nextAxis = (axis == Axis::X) ? Axis::Z : Axis::X;
+	const int nextWidth = (axis == Axis::X) ? width / 2 : width;
+	const int nextHeight = (axis == Axis::Z) ? height / 2 : height;
+	const int nextDepth = currentDepth + 1;
 
 	// Recurse through the children.
 	buildTree(child1, nextWidth, nextHeight, nextAxis, depth, nextDepth);

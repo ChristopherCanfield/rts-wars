@@ -52,12 +52,12 @@ sf::Texture& Graphics::getTexture(std::string path)
 
 void Graphics::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-	for (auto& map : mapSprites)
+	for (const auto& map : mapSprites)
 	{
 		target.draw(map, states);
 	}
 
-	for (auto& sprite : sprites)
+	for (const auto& sprite : sprites)
 	{
 		target.draw(*sprite, states);
 	}
@@ -66,7 +66,7 @@ void Graphics::draw(sf::RenderTarget& target, sf::RenderStates states) const
 void Graphics::update(const sf::Time& deltaTime)
 {
 	// Remove destroyed sprites.
-	auto eraseIterator = remove_if(sprites.begin(), sprites.end(), [](Sprite::SharedPtr sprite) {
+	const auto eraseIterator = remove_if(sprites.begin(), sprites.end(), [](Sprite::SharedPtr sprite) {
 		return sprite->isDestroyed();
 	});
 

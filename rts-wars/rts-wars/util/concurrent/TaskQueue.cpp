@@ -66,7 +66,7 @@ void TaskQueue::runTask(Task::SharedPtr task)
 void TaskQueue::removeCompleted(const Poco::UUID& taskId)
 {
 	// Acquire the mutex.
-	lock_guard<mutex> lock(runningTasksMutex);
+	const lock_guard<mutex> lock(runningTasksMutex);
 
 	// Remove the completed task.
 	runningTasks.erase(remove_if(runningTasks.begin(), runningTasks.end(), [&taskId](const Task::SharedPtr& task) {

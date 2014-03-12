@@ -16,8 +16,8 @@ namespace cdc
 		template <class Point1Type, class Point2Type>
 		float angleInRadians(Point1Type point1x, Point1Type point1y, Point2Type point2x, Point2Type point2y)
 		{
-			float deltaX = static_cast<float>(point2x) - static_cast<float>(point1x);
-			float deltaY = static_cast<float>(point2y) - static_cast<float>(point1y);
+			const float deltaX = static_cast<float>(point2x) - static_cast<float>(point1x);
+			const float deltaY = static_cast<float>(point2y) - static_cast<float>(point1y);
 			return std::atan2(deltaY, deltaX);
 		}
 

@@ -269,9 +269,6 @@
     <ClCompile Include="world\map\nav\Search.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="util\Vector2fAdapter.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="world\map\nav\GridLocation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

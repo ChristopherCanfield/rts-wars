@@ -160,7 +160,6 @@
     <ClCompile Include="world\map\maps\tiled\Map1.cpp" />
     <ClCompile Include="util\FileFormatException.cpp" />
     <ClCompile Include="util\NavGraphException.cpp" />
-    <ClCompile Include="util\Vector2fAdapter.cpp" />
     <ClCompile Include="world\map\nav\GridLocation.cpp" />
     <ClCompile Include="world\map\nav\NavGraphHelper.cpp" />
     <ClCompile Include="world\map\nav\Node.cpp" />
