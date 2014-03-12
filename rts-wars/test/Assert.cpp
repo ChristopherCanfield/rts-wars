@@ -31,13 +31,13 @@ namespace test
 
 		TEST_METHOD(Assert_message)
 		{
-			cdc::Assert<cdc::GameLogicException>(true, "assertion message");
+			cdc::Assert<cdc::GameLogicException>(true, "class", "method", "assertion message");
 		}
 
 		TEST_METHOD(Assert_failMessage)
 		{
 			try {
-				cdc::Assert<cdc::GameLogicException>(false, "assertion message");
+				cdc::Assert<cdc::GameLogicException>(false, "class", "method", "assertion message");
 				Assert::Fail();
 			} catch (...) {}
 		}

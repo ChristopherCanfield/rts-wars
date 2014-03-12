@@ -73,11 +73,11 @@ void buildTree(TreeNode::SharedPtr& root, int width, int height, Axis axis, int 
 
 std::vector<int> BspTree::findEntities(sf::IntRect searchArea)
 {
-	throw UnimplementedMethodException("BspTree::findEntities is not implemented");
+	throw UnimplementedMethodException("BspTree", "findEntities", "Not implemented");
 }
 
 
 int BspTree::findEntity(sf::Vector2i point)
 {
-
+	throw UnimplementedMethodException("BspTree", "findEntities", "Not implemented");
 }

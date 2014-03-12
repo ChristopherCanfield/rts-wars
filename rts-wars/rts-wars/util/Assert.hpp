@@ -9,21 +9,39 @@
 namespace cdc
 {
 
-	template<class E, class A, class DebugLevel>
-	inline void Assert(A assertion)
+	template<class E>
+	inline void Assert(bool assertion)
 	{
-		if (DebugLevel || !assertion) throw E();
+		if (!assertion) throw E();
 	}
 
-	template<class E, class A, class DebugLevel>
-	inline void Assert(A assertion, std::string message)
+	template<class E>
+	inline void Assert(bool assertion, std::string message)
 	{
-		if (DebugLevel || !assertion) throw E(message);
+		if (!assertion) throw E(message);
 	}
 
-	template<class E, class A, class DebugLevel>
-	inline void Assert(A assertion, std::string className, std::string methodName, std::string message)
+	template<class E>
+	inline void Assert(bool assertion, std::string className, std::string methodName, std::string message)
 	{
-		if (DebugLevel || !assertion) throw E(className, methodName, message);
+		if (!assertion) throw E(className, methodName, message);
+	}
+
+	template<class E, bool DebugLevel>
+	inline void Assert(bool assertion)
+	{
+		if (DebugLevel && !assertion) throw E();
+	}
+
+	template<class E, bool DebugLevel>
+	inline void Assert(bool assertion, std::string message)
+	{
+		if (DebugLevel && !assertion) throw E(message);
+	}
+
+	template<class E, bool DebugLevel>
+	inline void Assert(bool assertion, std::string className, std::string methodName, std::string message)
+	{
+		if (DebugLevel && !assertion) throw E(className, methodName, message);
 	}
 }

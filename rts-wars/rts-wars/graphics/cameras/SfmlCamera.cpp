@@ -16,7 +16,7 @@ SfmlCamera::SfmlCamera(sf::RenderWindow& window, sf::Vector2u worldDimensions) :
 	view(sf::FloatRect(0, 0, static_cast<float>(window.getSize().x), static_cast<float>(window.getSize().y)))
 {
 	Assert<GameLogicException>(worldDimensions.x != 0 && worldDimensions.y != 0, 
-		"SfmlCamera: worldDimensions are zero.");
+		"SfmlCamera", "SfmlCamera", "worldDimensions are zero.");
 }
 
 

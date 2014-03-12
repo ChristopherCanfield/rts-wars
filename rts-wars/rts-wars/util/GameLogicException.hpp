@@ -15,7 +15,7 @@ namespace cdc
 	{
 	public:
 		GameLogicException(std::string className, std::string methodName, std::string message);
-		virtual ~GameLogicException() {}
+		virtual ~GameLogicException();
 
 		///<summary>Returns the name of the class that threw the exception.</summary>
 		///<returns>The name of the class that threw the exception.</returns>

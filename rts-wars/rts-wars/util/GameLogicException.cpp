@@ -9,7 +9,7 @@ using namespace cdc;
 
 
 GameLogicException::GameLogicException(std::string className, std::string methodName, std::string message) :
-	std::logic_error(message),
+	std::logic_error(className + "::" + methodName + ": " + message),
 	className(className),
 	methodName(methodName)
 {

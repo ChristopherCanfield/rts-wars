@@ -36,7 +36,7 @@ void AbstractSprite::setCurrentFrame(int index)
 
 void AbstractSprite::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
-	Assert<GameLogicException>(frames.size() != 0, "AbstractSprite: No frames added to Sprite.");
+	Assert<GameLogicException, HIGH_ASSERT>(frames.size() != 0, "AbstractSprite", "draw", "No frames added to Sprite.");
 	target.draw(frames[currentFrame].sprite, states);
 }
 
