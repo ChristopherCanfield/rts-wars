@@ -111,5 +111,8 @@
 #include "world/map/nav/PathNode.hpp"
 #include "world/map/nav/Search.hpp"
 
+#include "world/map/bsp/BspTree.hpp"
+#include "world/map/bsp/TreeNode.hpp"
+
 #include "controllers/Controller.hpp"
 #include "controllers/CameraController.hpp"
