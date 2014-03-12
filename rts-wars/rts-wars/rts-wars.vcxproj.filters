@@ -183,6 +183,12 @@
     <ClInclude Include="util\event\Events.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="util\concurrent\TaskQueue.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="util\concurrent\Task.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -291,6 +297,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="util\event\Events.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="util\concurrent\TaskQueue.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="util\concurrent\Task.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

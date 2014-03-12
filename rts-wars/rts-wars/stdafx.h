@@ -31,6 +31,8 @@
 #include <memory>
 #include <utility>
 
+#include <mutex>
+
 // SFML Headers
 #include <SFML/System.hpp>
 #include <SFML/Window.hpp>
@@ -52,6 +54,10 @@
 #include <Poco/SAX/InputSource.h>
 #include <Poco/DOM/NamedNodeMap.h>
 
+#include <Poco/Runnable.h>
+#include <Poco/Thread.h>
+#include <Poco/ThreadPool.h>
+
 // Game Headers
 #include "util/make_unique.hpp"
 #include "util/Math.hpp"
@@ -72,6 +78,9 @@
 #include "util/event/ui/GuiEventManager.hpp"
 #include "util/event/ui/GuiEventObserver.hpp"
 #include "util/event/ui/DirectGuiEventObserver.hpp"
+
+#include "util/concurrent/Task.hpp"
+#include "util/concurrent/TaskQueue.hpp"
 
 #include "graphics/Graphics.hpp"
 #include "graphics/Camera.hpp"
