@@ -72,7 +72,7 @@
 #include "util/FileFormatException.hpp"
 #include "util/GameLogicException.hpp"
 #include "util/NavGraphException.hpp"
-#include "util/UnimplementedMethodException.hpp"
+#include "util/NotImplementedException.hpp"
 
 #include "util/Assert.hpp"
 

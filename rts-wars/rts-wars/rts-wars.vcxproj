@@ -86,7 +86,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="app\integration\TiledParserTest.hpp" />
-    <ClInclude Include="util\UnimplementedMethodException.hpp" />
+    <ClInclude Include="util\NotImplementedException.hpp" />
     <ClInclude Include="world\map\bsp\TreeNode.hpp" />
     <ClInclude Include="world\map\bsp\BspTree.hpp" />
     <ClInclude Include="world\SelectedEntities.hpp" />
@@ -150,7 +150,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="app\integration\TiledParserTest.cpp" />
-    <ClCompile Include="util\UnimplementedMethodException.cpp" />
+    <ClCompile Include="util\NotImplementedException.cpp" />
     <ClCompile Include="world\map\bsp\TreeNode.cpp" />
     <ClCompile Include="world\map\bsp\BspTree.cpp" />
     <ClCompile Include="world\SelectedEntities.cpp" />

@@ -198,7 +198,7 @@
     <ClInclude Include="world\map\bsp\TreeNode.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="util\UnimplementedMethodException.hpp">
+    <ClInclude Include="util\NotImplementedException.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -326,7 +326,7 @@
     <ClCompile Include="world\map\bsp\TreeNode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="util\UnimplementedMethodException.cpp">
+    <ClCompile Include="util\NotImplementedException.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
