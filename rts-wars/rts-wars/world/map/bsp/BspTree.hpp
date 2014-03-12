@@ -1,5 +1,7 @@
 #pragma once
 
+#include "TreeNode.hpp"
+
 #include <vector>
 
 // Christopher D. Canfield
@@ -12,13 +14,15 @@ namespace cdc
 	class BspTree
 	{
 	public:
-		BspTree();
+		BspTree(int mapWidth, int mapHeight);
 		~BspTree();
 
 		///<summary>Assigns entities to leaf nodes.</summary>
 		void update();
 
 	private:
+		bsp::TreeNode::SharedPtr root;
+
 		// The leaf nodes. Each entity should be in a leaf node.
 		std::vector<std::vector<int>> leafNodes;
 

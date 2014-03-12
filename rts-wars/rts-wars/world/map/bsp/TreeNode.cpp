@@ -33,9 +33,10 @@ bsp::TreeNode* bsp::TreeNode::getChild1() const
 
 ///<summary>Sets the first child.</summary>
 ///<param name="child">Pointer to the child.</param>
-void bsp::TreeNode::setChild1(TreeNode::SharedPtr child)
+TreeNode::SharedPtr bsp::TreeNode::setChild1(TreeNode::SharedPtr child)
 {
 	child1 = child;
+	return child1;
 }
 
 ///<summary>Gets the second child, or null if there isn't one.</summary>
@@ -51,9 +52,10 @@ bsp::TreeNode* bsp::TreeNode::getChild2() const
 
 ///<summary>Sets the second child.</summary>
 ///<param name="child">Pointer to the child.</param>
-void bsp::TreeNode::setChild2(TreeNode::SharedPtr child)
+TreeNode::SharedPtr bsp::TreeNode::setChild2(TreeNode::SharedPtr child)
 {
 	child2 = child;
+	return child2;
 }
 
 int bsp::TreeNode::getPoint() const

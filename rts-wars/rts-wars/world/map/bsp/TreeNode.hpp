@@ -31,7 +31,8 @@ namespace cdc
 
 			///<summary>Sets the first child.</summary>
 			///<param name="child">Pointer to the child.</param>
-			void setChild1(TreeNode::SharedPtr child);
+			///<returns>The first child.</returns>
+			TreeNode::SharedPtr setChild1(TreeNode::SharedPtr child);
 
 			///<summary>Gets the second child, or null if there isn't one.</summary>
 			///<returns>The second child, or null if there isn't one.</returns>
@@ -39,7 +40,8 @@ namespace cdc
 
 			///<summary>Sets the second child.</summary>
 			///<param name="child">Pointer to the child.</param>
-			void setChild2(TreeNode::SharedPtr child);
+			///<returns>The second child.</returns>
+			TreeNode::SharedPtr setChild2(TreeNode::SharedPtr child);
 
 			///<summary>Returns the node's point. This may be extended along the x or z axis
 			/// depending on the value returned by getAxis().</summary>
