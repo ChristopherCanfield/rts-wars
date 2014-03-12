@@ -9,15 +9,21 @@
 namespace cdc
 {
 
-	template<class E, class A>
+	template<class E, class A, class DebugLevel>
 	inline void Assert(A assertion)
 	{
-		if (!assertion) throw E();
+		if (DebugLevel || !assertion) throw E();
 	}
 
-	template<class E, class A>
+	template<class E, class A, class DebugLevel>
 	inline void Assert(A assertion, std::string message)
 	{
-		if (!assertion) throw E(message);
+		if (DebugLevel || !assertion) throw E(message);
+	}
+
+	template<class E, class A, class DebugLevel>
+	inline void Assert(A assertion, std::string className, std::string methodName, std::string message)
+	{
+		if (DebugLevel || !assertion) throw E(className, methodName, message);
 	}
 }

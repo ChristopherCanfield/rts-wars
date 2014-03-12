@@ -23,9 +23,16 @@ BspTree::BspTree(int mapWidth, int mapHeight)
 	// Root:
 	root = make_shared<TreeNode>(mapHeight, Axis::Z);
 
-	// Depth 1:
-	buildTree(root, mapWidth, mapHeight, Axis::X, 3);
+	int leafDepth = 3;
+	// Build the tree.
+	buildTree(root, mapWidth, mapHeight, Axis::X, leafDepth);
 
+	// Create the leaf node vectors.
+	auto leafNodeCount = static_cast<int>(pow(2, leafDepth));
+	for (int i = 0; i < leafNodeCount; ++i)
+	{
+		leafNodes.push_back(vector<int>());
+	}
 }
 
 
@@ -61,4 +68,16 @@ void buildTree(TreeNode::SharedPtr& root, int width, int height, Axis axis, int 
 	// Recurse through the children.
 	buildTree(child1, nextWidth, nextHeight, nextAxis, depth, nextDepth);
 	buildTree(child2, nextWidth, nextHeight, nextAxis, depth, nextDepth);
+}
+
+
+std::vector<int> BspTree::findEntities(sf::IntRect searchArea)
+{
+	throw UnimplementedMethodException("BspTree::findEntities is not implemented");
+}
+
+
+int BspTree::findEntity(sf::Vector2i point)
+{
+
 }

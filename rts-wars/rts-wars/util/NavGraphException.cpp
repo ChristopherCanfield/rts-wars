@@ -8,8 +8,8 @@
 using namespace cdc;
 
 
-NavGraphException::NavGraphException(std::string message) :
-	GameLogicException(message)
+NavGraphException::NavGraphException(std::string className, std::string methodName, std::string message) :
+	GameLogicException(className, methodName, message)
 {
 }
 

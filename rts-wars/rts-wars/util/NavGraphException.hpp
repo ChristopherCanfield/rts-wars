@@ -13,7 +13,7 @@ namespace cdc
 		public GameLogicException
 	{
 	public:
-		NavGraphException(std::string message);
+		NavGraphException(std::string className, std::string methodName, std::string message);
 		virtual ~NavGraphException();
 	};
 }
