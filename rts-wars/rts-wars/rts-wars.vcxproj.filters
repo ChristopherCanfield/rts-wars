@@ -189,6 +189,9 @@
     <ClInclude Include="util\concurrent\Task.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="world\SelectedEntities.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -303,6 +306,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="util\concurrent\Task.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="world\SelectedEntities.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

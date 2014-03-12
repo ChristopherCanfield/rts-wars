@@ -6,6 +6,7 @@
 
 #include "Entity.hpp"
 #include "world/map/GameMap.hpp"
+#include "SelectedEntities.hpp"
 
 #include <memory>
 #include <vector>
@@ -50,6 +51,10 @@ namespace cdc
 		/// <returns>Reference to the game map.</returns>
 		GameMap& getGameMap() const;
 
+		/// <summary>Returns a reference to the selected entities object.</summary>
+		/// <returns>Reference to the selected entities object.</returns>
+		SelectedEntities& selected() const;
+
 		/// <summary>Updates all entities</summary>
 		void update();
 
@@ -60,9 +65,13 @@ namespace cdc
 		World(const World& rhs);
 		World(const World&& rhs);
 
+		// The list of entities.
 		std::vector<Entity::SharedPtr> entities;
+		// A map of entity unique ids to entity pointers.
 		std::unordered_map<Poco::UUID, Entity*> entityMap;
 
 		GameMap::UniquePtr gameMap;
+
+		SelectedEntities selected;
 	};
 }

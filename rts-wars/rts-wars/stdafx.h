@@ -93,6 +93,8 @@
 
 #include "world/Entity.hpp"
 #include "world/World.hpp"
+#include "world/SelectedEntities.hpp"
+
 #include "world/map/GameMap.hpp"
 
 #include "world/map/terrain/Terrain.hpp"
