@@ -88,7 +88,17 @@ void World::update()
 }
 
 
-SelectedEntities& World::selected()
+SelectedEntities& World::getSelected()
 {
 	return selectedEntities;
+}
+
+const Camera& World::getCamera() const
+{
+	return *camera;
+}
+
+void World::setCamera(const Camera& c)
+{
+	camera = &c;
 }

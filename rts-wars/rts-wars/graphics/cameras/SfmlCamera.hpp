@@ -37,7 +37,11 @@ namespace cdc
 
 		virtual void moveDownY(bool fastMovement) override;
 
-		virtual sf::Vector2f getCenter() const;
+		virtual sf::Vector2f getCenter() const override;
+
+		virtual sf::Vector2f cameraToWorldCoordinates(const sf::Vector2i& cameraCoordinates) const override;
+
+		virtual sf::Vector2i worldToCameraCoordinates(const sf::Vector2f& worldCoordinates) const override;
 
 	private:
 		SfmlCamera& operator=(SfmlCamera& rhs);

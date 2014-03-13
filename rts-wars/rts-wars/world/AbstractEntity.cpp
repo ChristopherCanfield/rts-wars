@@ -107,6 +107,11 @@ void AbstractEntity::update(World& world)
 {
 	for (auto& controller : controllers)
 	{
-		controller.update(world);
+		controller->update(world);
 	}
+}
+
+void AbstractEntity::addController(Controller::UniquePtr controller)
+{
+	controllers.push_back(move(controller));
 }

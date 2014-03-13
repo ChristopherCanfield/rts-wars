@@ -7,8 +7,9 @@
 
 using namespace cdc;
 
-SelectionController::SelectionController(Poco::UUID& id) :
-	entityId(id)
+SelectionController::SelectionController(const Poco::UUID& id) :
+	entityId(id),
+	isSelected(false)
 {
 }
 
@@ -24,19 +25,24 @@ void SelectionController::update(World& world)
 	if (Mouse::isButtonPressed(Mouse::Button::Left))
 	{
 		const Entity& entity = *world.getEntity(entityId);
-		const bool withinBounds =  entity.getBoundingBox().contains(Mouse::getPosition());
+		const auto mousePosition = world.getCamera().cameraToWorldCoordinates(Mouse::getPosition());
+		const auto mousePositionInt = Vector2i(mousePosition.x, mousePosition.y);
+		const bool withinBounds =  entity.getBoundingBox().contains(mousePositionInt);
 
 		if (isSelected && !withinBounds)
 		{
-
+			world.getSelected().remove(entityId);
+			isSelected = false;
 		}
 		else if (!isSelected && withinBounds)
 		{
-
+			world.getSelected().add(entityId);
+			isSelected = true;
 		}
 	}
 	else if (Mouse::isButtonPressed(Mouse::Button::Right) && isSelected)
 	{
-		world.selected().removeAll();
+		world.getSelected().removeAll();
+		isSelected = false;
 	}
 }

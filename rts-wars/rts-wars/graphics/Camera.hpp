@@ -51,5 +51,9 @@ namespace cdc
 		///<summary>Gets the position of the camera.</summary>
 		///<returns>Returns the position of the camera.</returns>
 		virtual sf::Vector2f getCenter() const = 0;
+
+		virtual sf::Vector2f cameraToWorldCoordinates(const sf::Vector2i& cameraCoordinates) const = 0;
+
+		virtual sf::Vector2i worldToCameraCoordinates(const sf::Vector2f& worldCoordinates) const = 0;
 	};
 }

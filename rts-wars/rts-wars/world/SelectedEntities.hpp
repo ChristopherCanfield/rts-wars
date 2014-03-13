@@ -19,20 +19,20 @@ namespace cdc
 
 		///<summary>Returns the list of selected entities.</summary>
 		///<returns>The list of selected entities (the indexes to those entities).</returns>
-		const std::vector<int>& get() const;
+		const std::vector<Poco::UUID>& get() const;
 
 		///<summary>Adds the entity's index to the selected entities list.</summary>
-		///<param name="entityIndex">The index of the entity that will be added to the list.</param>
-		void add(int entityIndex);
+		///<param name="entityId">The unique id of the entity that will be added to the list.</param>
+		void add(const Poco::UUID& entityId);
 
 		///<summary>Removes the entity's index from the selected entities list.</summary>
-		///<param name="entityIndex">The index of the entity that will be removed from the list.</param>
-		void remove(int entityIndex);
+		///<param name="entityId">The unique id of the entity that will be removed from the list.</param>
+		void remove(const Poco::UUID& entityId);
 
 		///<summary>Removes all indexes from the selected entities list.</summary>
 		void removeAll();
 
 	private:
-		std::vector<int> selected;
+		std::vector<Poco::UUID> selected;
 	};
 }

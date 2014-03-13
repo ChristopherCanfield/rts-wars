@@ -53,7 +53,11 @@ namespace cdc
 
 		/// <summary>Returns a reference to the selected entities object.</summary>
 		/// <returns>Reference to the selected entities object.</returns>
-		SelectedEntities& selected();
+		SelectedEntities& getSelected();
+
+		const Camera& getCamera() const;
+
+		void setCamera(const Camera& camera);
 
 		/// <summary>Updates all entities</summary>
 		void update();
@@ -71,6 +75,8 @@ namespace cdc
 		std::unordered_map<Poco::UUID, Entity*> entityMap;
 
 		GameMap::UniquePtr gameMap;
+
+		const Camera* camera;
 
 		SelectedEntities selectedEntities;
 	};

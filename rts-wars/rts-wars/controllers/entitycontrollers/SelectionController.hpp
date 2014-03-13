@@ -15,13 +15,13 @@ namespace cdc
 		public Controller
 	{
 	public:
-		SelectionController(Poco::UUID& id);
+		SelectionController(const Poco::UUID& id);
 		virtual ~SelectionController();
 
 		virtual void update(World& world) override;
 
 	private:
-		Poco::UUID entityId;
+		const Poco::UUID entityId;
 
 		bool isSelected;
 	};

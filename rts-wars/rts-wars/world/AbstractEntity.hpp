@@ -87,6 +87,8 @@ namespace cdc
 
 		void destroy();
 
+		void addController(Controller::UniquePtr controller);
+
 	private:
 		AbstractEntity operator=(AbstractEntity&) {}
 
@@ -104,6 +106,6 @@ namespace cdc
 
 		bool destroyed;
 
-		std::vector<Controller> controllers;
+		std::vector<Controller::UniquePtr> controllers;
 	};
 }

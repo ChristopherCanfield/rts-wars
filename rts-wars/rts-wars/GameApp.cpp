@@ -39,6 +39,7 @@ void GameApp::setup()
 	camera = make_unique<SfmlCamera>(window, sf::Vector2u(gameMap->getWidth(), gameMap->getHeight()));
 	camera->addController(make_unique<SfmlCameraController>(*camera));
 
+	World::Instance().setCamera(*camera.get());
 	World::Instance().setGameMap(move(gameMap));
 }
 

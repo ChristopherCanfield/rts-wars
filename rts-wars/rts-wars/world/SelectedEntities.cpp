@@ -18,27 +18,27 @@ SelectedEntities::~SelectedEntities()
 }
 
 
-const std::vector<int>& SelectedEntities::get() const
+const std::vector<Poco::UUID>& SelectedEntities::get() const
 {
 	return selected;
 }
 
 
-void SelectedEntities::add(int entityIndex)
+void SelectedEntities::add(const Poco::UUID& entityId)
 {
-	if (!std::binary_search(selected.begin(), selected.end(), entityIndex))
+	if (!std::binary_search(selected.begin(), selected.end(), entityId))
 	{
-		selected.push_back(entityIndex);
+		selected.push_back(entityId);
 		std::sort(selected.begin(), selected.end());
 	}
 }
 
 
-void SelectedEntities::remove(int entityIndex)
+void SelectedEntities::remove(const Poco::UUID& entityId)
 {
 	if (!selected.empty())
 	{
-		selected.erase(std::remove(selected.begin(), selected.end(), entityIndex));
+		selected.erase(std::remove(selected.begin(), selected.end(), entityId));
 	}
 }
 

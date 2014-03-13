@@ -88,3 +88,13 @@ sf::Vector2f SfmlCamera::getCenter() const
 {
 	return view.getCenter();
 }
+
+sf::Vector2f SfmlCamera::cameraToWorldCoordinates(const sf::Vector2i& cameraCoordinates) const 
+{
+	return window.mapPixelToCoords(cameraCoordinates);
+}
+
+sf::Vector2i SfmlCamera::worldToCameraCoordinates(const sf::Vector2f& worldCoordinates) const 
+{
+	return window.mapCoordsToPixel(worldCoordinates);
+}
