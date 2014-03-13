@@ -76,10 +76,6 @@
 
 #include "util/Assert.hpp"
 
-#include "util/event/ui/GuiEventManager.hpp"
-#include "util/event/ui/GuiEventObserver.hpp"
-#include "util/event/ui/DirectGuiEventObserver.hpp"
-
 #include "util/concurrent/Task.hpp"
 #include "util/concurrent/TaskQueue.hpp"
 
@@ -117,3 +113,12 @@
 
 #include "controllers/Controller.hpp"
 #include "controllers/CameraController.hpp"
+#include "controllers/InputManager.hpp"
+
+#include "controllers/entitycontrollers/SelectionController.hpp"
+
+#include "controllers/inputcontrollers/Events.hpp"
+#include "controllers/inputcontrollers/SfmlInputManager.hpp"
+#include "controllers/inputcontrollers/ui/DirectGuiEventObserver.hpp"
+#include "controllers/inputcontrollers/ui/GuiEventManager.hpp"
+#include "controllers/inputcontrollers/ui/GuiEventObserver.hpp"

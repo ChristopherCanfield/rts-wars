@@ -22,6 +22,9 @@ namespace cdc
 		public:
 			typedef std::shared_ptr<TreeNode> SharedPtr;
 
+			///<summary>Constructs a tree node.</summary>
+			///<param name="point">The point that divides this node from its neighbor, in World Coordinates.</param>
+			///<param name="axis">The axis that divides this node from its neighbor.</param>
 			TreeNode(int point, Axis axis);
 			~TreeNode();
 
@@ -52,9 +55,15 @@ namespace cdc
 			///<returns>The axis of the node.</returns>
 			Axis getAxis() const;
 
+			///<summary>Returns true if this node is a leaf.</summary>
+			///<returns>true if this node is a leaf, or false otherwise.</returns>
+			bool isLeaf() const;
+
 		private:
 			int point;
 			Axis axis;
+
+			int nodeNumber;
 
 			TreeNode::SharedPtr child1;
 			TreeNode::SharedPtr child2;

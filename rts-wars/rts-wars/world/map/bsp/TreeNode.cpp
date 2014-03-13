@@ -67,3 +67,8 @@ Axis bsp::TreeNode::getAxis() const
 {
 	return axis;
 }
+
+bool bsp::TreeNode::isLeaf() const
+{
+	return (child1 == nullptr && child2 == nullptr);
+}

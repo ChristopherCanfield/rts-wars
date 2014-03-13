@@ -171,18 +171,6 @@
     <ClInclude Include="util\PocoXmlScopedPointers.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="util\event\ui\DirectGuiEventObserver.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="util\event\ui\GuiEventManager.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="util\event\ui\GuiEventObserver.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="util\event\Events.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="util\concurrent\TaskQueue.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -199,6 +187,27 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="util\NotImplementedException.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="controllers\InputManager.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="controllers\inputcontrollers\SfmlInputManager.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="controllers\inputcontrollers\Events.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="controllers\inputcontrollers\ui\DirectGuiEventObserver.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="controllers\inputcontrollers\ui\GuiEventManager.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="controllers\inputcontrollers\ui\GuiEventObserver.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="controllers\entitycontrollers\SelectionController.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -302,12 +311,6 @@
     <ClCompile Include="app\integration\TiledParserTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="util\event\ui\GuiEventManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="util\event\Events.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="util\concurrent\TaskQueue.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -324,6 +327,18 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="util\NotImplementedException.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="controllers\inputcontrollers\SfmlInputManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="controllers\inputcontrollers\ui\GuiEventManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="controllers\inputcontrollers\Events.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="controllers\entitycontrollers\SelectionController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

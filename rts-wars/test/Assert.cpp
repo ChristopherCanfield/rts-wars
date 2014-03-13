@@ -41,5 +41,23 @@ namespace test
 				Assert::Fail();
 			} catch (...) {}
 		}
+
+		TEST_METHOD(Assert_assertLevel_message)
+		{
+			cdc::Assert<cdc::GameLogicException, true>(true, "class", "method", "assertion message");
+		}
+
+		TEST_METHOD(Assert_assertLevel_failMessage)
+		{
+			try {
+				cdc::Assert<cdc::GameLogicException, true>(false, "class", "method", "assertion message");
+				Assert::Fail();
+			} catch (...) {}
+		}
+
+		TEST_METHOD(Assert_assertLevelFalse)
+		{
+			cdc::Assert<cdc::GameLogicException, false>(true, "class", "method", "assertion message");
+		}
 	};
 }

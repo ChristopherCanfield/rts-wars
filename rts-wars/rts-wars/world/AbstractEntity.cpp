@@ -88,6 +88,11 @@ void AbstractEntity::setWidth(uint width)
 	this->width = width;
 }
 
+sf::IntRect AbstractEntity::getBoundingBox() const
+{
+	return sf::IntRect(x, z, width, height);
+}
+
 bool AbstractEntity::isDestroyed() const
 {
 	return destroyed;

@@ -61,6 +61,8 @@ namespace cdc
 		///<param name="width">The entity's width.</param>
 		virtual void setWidth(uint width) override;
 
+		sf::IntRect getBoundingBox() const override;
+
 		///<summary>Specifies whether the entity is destroyed.</summary>
 		///<returns>true if the entity is destroyed.</returns>
 		virtual bool isDestroyed() const override;

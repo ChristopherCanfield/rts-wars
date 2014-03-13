@@ -1,10 +1,14 @@
 #pragma once
 
+#include "controllers/inputcontrollers/ui/DirectGuiEventObserver.hpp"
+#include "controllers/inputcontrollers/ui/GuiEventManager.hpp"
+#include "controllers/inputcontrollers/ui/GuiEventObserver.hpp"
+
 #include <memory>
 
 // Christopher D. Canfield
 // March 2014
-// Event.hpp
+// Events.hpp
 
 namespace cdc
 {

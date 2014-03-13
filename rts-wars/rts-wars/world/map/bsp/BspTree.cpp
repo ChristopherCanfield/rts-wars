@@ -10,7 +10,7 @@ using namespace cdc::bsp;
 using namespace std;
 
 ///<summary>Builds the bsp tree.</summary>
-///<param name="root">The root of the tree.</param>
+///<param name="parent">The parent node.</param>
 ///<param name="width">The width of the region to place within the tree.</param>
 ///<param name="height">The height of the region to place within the tree.</param>
 ///<param name="axis">The axis to build along.</param>
@@ -41,13 +41,13 @@ BspTree::~BspTree()
 }
 
 ///<summary>Builds the bsp tree.</summary>
-///<param name="root">The root of the tree.</param>
+///<param name="parent">The parent node.</param>
 ///<param name="width">The width of the region to place within the tree.</param>
 ///<param name="height">The height of the region to place within the tree.</param>
 ///<param name="axis">The axis to build along.</param>
 ///<param name="depth">The maximum depth of the tree. The root is at depth 0.</param>
 ///<param name="currentDepth">The current depth of the tree, starting at 0.</param>
-void buildTree(TreeNode::SharedPtr& root, int width, int height, Axis axis, const int depth, int currentDepth)
+void buildTree(TreeNode::SharedPtr& parent, int width, int height, Axis axis, const int depth, int currentDepth)
 {
 	if (currentDepth == depth)
 	{
@@ -57,8 +57,8 @@ void buildTree(TreeNode::SharedPtr& root, int width, int height, Axis axis, cons
 
 	const int point = (axis == Axis::X) ? width / 2 : height / 2;
 
-	auto child1 = root->setChild1(make_shared<TreeNode>(point, axis));
-	auto child2 = root->setChild2(make_shared<TreeNode>(point, axis));
+	auto child1 = parent->setChild1(make_shared<TreeNode>(point, axis));
+	auto child2 = parent->setChild2(make_shared<TreeNode>(point, axis));
 
 	const Axis nextAxis = (axis == Axis::X) ? Axis::Z : Axis::X;
 	const int nextWidth = (axis == Axis::X) ? width / 2 : width;
@@ -79,5 +79,24 @@ std::vector<int> BspTree::findEntities(sf::IntRect searchArea)
 
 int BspTree::findEntity(sf::Vector2i point)
 {
-	throw NotImplementedException("BspTree", "findEntities", "Not implemented");
+	auto node = root.get();
+	while (!node->isLeaf())
+	{
+		auto nodePoint = node->getChild1()->getPoint();
+		if (node->getChild1()->getAxis() == Axis::X)
+		{
+			node = (point.x < nodePoint) ? node->getChild1() : node->getChild2();
+		}
+		else if (node->getChild1()->getAxis() == Axis::Z)
+		{
+			node = (point.y < nodePoint) ? node->getChild1() : node->getChild2();
+		}
+		else
+		{
+			throw GameLogicException("BspTree", "findEntity", "Invalid value returned by getAxis().");
+		}
+	}
+
+	// TODO: complete this: need a way to get the vector index.
+	throw NotImplementedException("BspTree", "findEntity", "Not yet implemented.");
 }

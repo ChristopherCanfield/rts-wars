@@ -86,13 +86,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="app\integration\TiledParserTest.hpp" />
+    <ClInclude Include="controllers\InputManager.hpp" />
+    <ClInclude Include="controllers\inputcontrollers\SfmlInputManager.hpp" />
+    <ClInclude Include="controllers\entitycontrollers\SelectionController.hpp" />
     <ClInclude Include="util\NotImplementedException.hpp" />
     <ClInclude Include="world\map\bsp\TreeNode.hpp" />
     <ClInclude Include="world\map\bsp\BspTree.hpp" />
     <ClInclude Include="world\SelectedEntities.hpp" />
     <ClInclude Include="util\concurrent\Task.hpp" />
     <ClInclude Include="util\concurrent\TaskQueue.hpp" />
-    <ClInclude Include="util\event\Events.hpp" />
+    <ClInclude Include="controllers\inputcontrollers\Events.hpp" />
     <ClInclude Include="util\Assert.hpp" />
     <ClInclude Include="world\map\maps\tiled\Map1.hpp" />
     <ClInclude Include="world\map\maps\tiled\TiledMapFileInfo.hpp" />
@@ -129,9 +132,9 @@
     <ClInclude Include="world\map\parser\TiledMapParser.hpp" />
     <ClInclude Include="world\Tank.hpp" />
     <ClInclude Include="util\UUIDHash.hpp" />
-    <ClInclude Include="util\event\ui\DirectGuiEventObserver.hpp" />
-    <ClInclude Include="util\event\ui\GuiEventManager.hpp" />
-    <ClInclude Include="util\event\ui\GuiEventObserver.hpp" />
+    <ClInclude Include="controllers\inputcontrollers\ui\DirectGuiEventObserver.hpp" />
+    <ClInclude Include="controllers\inputcontrollers\ui\GuiEventManager.hpp" />
+    <ClInclude Include="controllers\inputcontrollers\ui\GuiEventObserver.hpp" />
     <ClInclude Include="world\World.hpp" />
     <ClInclude Include="world\AbstractEntity.hpp" />
     <ClInclude Include="app\App.hpp" />
@@ -150,13 +153,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="app\integration\TiledParserTest.cpp" />
+    <ClCompile Include="controllers\inputcontrollers\SfmlInputManager.cpp" />
+    <ClCompile Include="controllers\entitycontrollers\SelectionController.cpp" />
     <ClCompile Include="util\NotImplementedException.cpp" />
     <ClCompile Include="world\map\bsp\TreeNode.cpp" />
     <ClCompile Include="world\map\bsp\BspTree.cpp" />
     <ClCompile Include="world\SelectedEntities.cpp" />
     <ClCompile Include="util\concurrent\Task.cpp" />
     <ClCompile Include="util\concurrent\TaskQueue.cpp" />
-    <ClCompile Include="util\event\Events.cpp" />
+    <ClCompile Include="controllers\inputcontrollers\Events.cpp" />
     <ClCompile Include="world\map\maps\tiled\Map1.cpp" />
     <ClCompile Include="util\FileFormatException.cpp" />
     <ClCompile Include="util\NavGraphException.cpp" />
@@ -182,7 +187,7 @@
     <ClCompile Include="graphics\sprites\TankSprite.cpp" />
     <ClCompile Include="world\map\parser\TiledMapParser.cpp" />
     <ClCompile Include="world\Tank.cpp" />
-    <ClCompile Include="util\event\ui\GuiEventManager.cpp" />
+    <ClCompile Include="controllers\inputcontrollers\ui\GuiEventManager.cpp" />
     <ClCompile Include="world\World.cpp" />
     <ClCompile Include="world\AbstractEntity.cpp" />
     <ClCompile Include="app\AppRunner.cpp" />

@@ -83,3 +83,8 @@ void SfmlCamera::moveDownY(bool fastMovement)
 {
 	// Do nothing, because SFML is a 2D library.
 }
+
+sf::Vector2f SfmlCamera::getCenter() const
+{
+	return view.getCenter();
+}

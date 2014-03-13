@@ -47,5 +47,9 @@ namespace cdc
 		///<summary>Moves the camera down in the Y direction.</summary>
 		///<param name="fastMovement">true if the camera should be moved quickly.</param>
 		virtual void moveDownY(bool fastMovement) = 0;
+
+		///<summary>Gets the position of the camera.</summary>
+		///<returns>Returns the position of the camera.</returns>
+		virtual sf::Vector2f getCenter() const = 0;
 	};
 }
