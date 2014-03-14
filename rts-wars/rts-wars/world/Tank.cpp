@@ -18,6 +18,14 @@ Tank::Tank()
 
 	Sprite::SharedPtr sprite(make_shared<TankSprite>(*this));
 	Graphics::Instance().addSprite(sprite);
+
+	setHeight(32);
+	setWidth(32);
+
+	// Ensure that the entity's invariants hold.
+	#if HIGH_ASSERT
+		checkInvariants();
+	#endif
 }
 
 Tank::Tank(Poco::UUID id) :

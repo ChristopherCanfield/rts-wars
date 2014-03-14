@@ -71,6 +71,14 @@ namespace cdc
 		///<returns>The entity's bounding box.</returns>
 		virtual sf::IntRect getBoundingBox() const = 0;
 
+		///<summary>Sets whether the entity is selected or not.</summary>
+		///<param name="val">true if the entity is selected, or false otherwise.</param>
+		virtual void setSelected(bool val) = 0;
+
+		///<summary>Gets whether the entity is selected or not.</summary>
+		///<returns>true if the entity is selected, or false otherwise.</returns>
+		virtual bool isSelected() const = 0;
+
 		/// <summary>Determines whether this entity is destroyed.</summary>
 		/// <returns>true if this entity is destroyed.</returns>
 		virtual bool isDestroyed() const = 0;

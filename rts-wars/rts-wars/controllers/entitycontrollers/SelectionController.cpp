@@ -24,27 +24,27 @@ void SelectionController::update(World& world)
 
 	if (Mouse::isButtonPressed(Mouse::Button::Left))
 	{
+		// Get the entity.
 		const Entity& entity = *world.getEntity(entityId);
 		
+		// Determine if the mouse click falls within the entity's bounds.
 		const auto mousePosition = Mouse::getPosition(world.getCamera().getWindow());
 		const auto adjustedMousePosition = world.getCamera().cameraToWorldCoordinates(mousePosition);
 		const auto adjustedMousePositionInt = Vector2i(mousePosition.x, mousePosition.y);
 		const bool withinBounds =  entity.getBoundingBox().contains(adjustedMousePositionInt);
 
-		if (isSelected && !withinBounds)
+		if (entity.isSelected() && !withinBounds)
 		{
 			world.getSelected().remove(entityId);
-			isSelected = false;
 		}
-		else if (!isSelected && withinBounds)
+		else if (!entity.isSelected() && withinBounds)
 		{
 			world.getSelected().add(entityId);
-			isSelected = true;
 		}
 	}
 	else if (Mouse::isButtonPressed(Mouse::Button::Right) && isSelected)
 	{
+		// Right click deselects all selected units.
 		world.getSelected().removeAll();
-		isSelected = false;
 	}
 }

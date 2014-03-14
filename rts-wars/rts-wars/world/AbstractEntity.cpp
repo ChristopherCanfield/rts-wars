@@ -29,6 +29,12 @@ void AbstractEntity::constructEntity()
 	destroyed = false;
 }
 
+void AbstractEntity::checkInvariants()
+{
+	Assert<GameLogicException>(height != 0, "AbstractEntity", "checkInvariants", "Height is zero.");
+	Assert<GameLogicException>(width != 0, "AbstractEntity", "checkInvariants", "Width is zero.");
+}
+
 AbstractEntity::~AbstractEntity()
 {
 }
@@ -91,6 +97,16 @@ void AbstractEntity::setWidth(uint width)
 sf::IntRect AbstractEntity::getBoundingBox() const
 {
 	return sf::IntRect(x, z, width, height);
+}
+
+void AbstractEntity::setSelected(bool val)
+{
+	selected = val;
+}
+
+bool AbstractEntity::isSelected() const
+{
+	return selected;
 }
 
 bool AbstractEntity::isDestroyed() const

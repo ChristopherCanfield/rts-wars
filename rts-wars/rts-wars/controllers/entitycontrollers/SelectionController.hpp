@@ -21,6 +21,8 @@ namespace cdc
 		virtual void update(World& world) override;
 
 	private:
+		SelectionController& operator=(const SelectionController&);
+
 		const Poco::UUID entityId;
 
 		bool isSelected;

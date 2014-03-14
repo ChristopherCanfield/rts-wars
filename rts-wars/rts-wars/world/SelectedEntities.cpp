@@ -30,6 +30,7 @@ void SelectedEntities::add(const Poco::UUID& entityId)
 	{
 		selected.push_back(entityId);
 		std::sort(selected.begin(), selected.end());
+		World::Instance().getEntity(entityId)->setSelected(false);
 	}
 }
 
@@ -39,11 +40,17 @@ void SelectedEntities::remove(const Poco::UUID& entityId)
 	if (!selected.empty())
 	{
 		selected.erase(std::remove(selected.begin(), selected.end(), entityId));
+		World::Instance().getEntity(entityId)->setSelected(false);
 	}
 }
 
 
 void SelectedEntities::removeAll()
 {
+	for (auto& entityId : selected)
+	{
+		World::Instance().getEntity(entityId)->setSelected(false);
+	}
+
 	selected.clear();
 }

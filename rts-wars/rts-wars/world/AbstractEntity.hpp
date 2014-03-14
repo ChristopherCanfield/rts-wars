@@ -61,7 +61,11 @@ namespace cdc
 		///<param name="width">The entity's width.</param>
 		virtual void setWidth(uint width) override;
 
-		sf::IntRect getBoundingBox() const override;
+		virtual sf::IntRect getBoundingBox() const override;
+
+		virtual void setSelected(bool val) override;
+
+		virtual bool isSelected() const override;
 
 		///<summary>Specifies whether the entity is destroyed.</summary>
 		///<returns>true if the entity is destroyed.</returns>
@@ -89,6 +93,8 @@ namespace cdc
 
 		void addController(Controller::UniquePtr controller);
 
+		void checkInvariants();
+
 	private:
 		AbstractEntity operator=(AbstractEntity&) {}
 
@@ -104,6 +110,10 @@ namespace cdc
 		uint height;
 		uint width;
 
+		// whether the entity is selected or not.
+		bool selected;
+
+		// whether the entity has been destroyed.
 		bool destroyed;
 
 		std::vector<Controller::UniquePtr> controllers;
