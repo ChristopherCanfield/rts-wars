@@ -175,7 +175,7 @@
  </tileset>
  <layer name="ground" width="50" height="50">
   <data>
-   <tile gid="6"/>
+   <tile gid="4"/>
    <tile gid="6"/>
    <tile gid="6"/>
    <tile gid="6"/>
@@ -224,7 +224,7 @@
    <tile gid="6"/>
    <tile gid="6"/>
    <tile gid="6"/>
-   <tile gid="6"/>
+   <tile gid="4"/>
    <tile gid="6"/>
    <tile gid="6"/>
    <tile gid="6"/>
@@ -2625,7 +2625,7 @@
    <tile gid="6"/>
    <tile gid="6"/>
    <tile gid="6"/>
-   <tile gid="6"/>
+   <tile gid="4"/>
    <tile gid="6"/>
    <tile gid="6"/>
    <tile gid="6"/>
@@ -2674,7 +2674,7 @@
    <tile gid="6"/>
    <tile gid="6"/>
    <tile gid="6"/>
-   <tile gid="6"/>
+   <tile gid="4"/>
   </data>
  </layer>
 </map>

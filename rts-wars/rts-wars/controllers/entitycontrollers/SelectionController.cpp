@@ -25,9 +25,11 @@ void SelectionController::update(World& world)
 	if (Mouse::isButtonPressed(Mouse::Button::Left))
 	{
 		const Entity& entity = *world.getEntity(entityId);
-		const auto mousePosition = world.getCamera().cameraToWorldCoordinates(Mouse::getPosition());
-		const auto mousePositionInt = Vector2i(mousePosition.x, mousePosition.y);
-		const bool withinBounds =  entity.getBoundingBox().contains(mousePositionInt);
+		
+		const auto mousePosition = Mouse::getPosition(world.getCamera().getWindow());
+		const auto adjustedMousePosition = world.getCamera().cameraToWorldCoordinates(mousePosition);
+		const auto adjustedMousePositionInt = Vector2i(mousePosition.x, mousePosition.y);
+		const bool withinBounds =  entity.getBoundingBox().contains(adjustedMousePositionInt);
 
 		if (isSelected && !withinBounds)
 		{

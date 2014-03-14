@@ -91,10 +91,15 @@ sf::Vector2f SfmlCamera::getCenter() const
 
 sf::Vector2f SfmlCamera::cameraToWorldCoordinates(const sf::Vector2i& cameraCoordinates) const 
 {
-	return window.mapPixelToCoords(cameraCoordinates);
+	return window.mapPixelToCoords(cameraCoordinates, view);
 }
 
 sf::Vector2i SfmlCamera::worldToCameraCoordinates(const sf::Vector2f& worldCoordinates) const 
 {
-	return window.mapCoordsToPixel(worldCoordinates);
+	return window.mapCoordsToPixel(worldCoordinates, view);
+}
+
+const sf::Window& SfmlCamera::getWindow() const
+{
+	return window;
 }

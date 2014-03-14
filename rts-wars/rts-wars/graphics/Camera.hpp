@@ -55,5 +55,7 @@ namespace cdc
 		virtual sf::Vector2f cameraToWorldCoordinates(const sf::Vector2i& cameraCoordinates) const = 0;
 
 		virtual sf::Vector2i worldToCameraCoordinates(const sf::Vector2f& worldCoordinates) const = 0;
+
+		virtual const sf::Window& getWindow() const = 0;
 	};
 }

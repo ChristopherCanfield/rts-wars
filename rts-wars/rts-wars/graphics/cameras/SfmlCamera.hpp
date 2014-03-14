@@ -43,6 +43,8 @@ namespace cdc
 
 		virtual sf::Vector2i worldToCameraCoordinates(const sf::Vector2f& worldCoordinates) const override;
 
+		virtual const sf::Window& getWindow() const override;
+
 	private:
 		SfmlCamera& operator=(SfmlCamera& rhs);
 
