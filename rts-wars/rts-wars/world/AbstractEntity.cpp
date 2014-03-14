@@ -11,7 +11,8 @@ using namespace cdc;
 
 
 AbstractEntity::AbstractEntity() :
-	id(Poco::UUIDGenerator::defaultGenerator().createRandom())
+	id(Poco::UUIDGenerator::defaultGenerator().createRandom()),
+	selected(false)
 {
 	constructEntity();
 }

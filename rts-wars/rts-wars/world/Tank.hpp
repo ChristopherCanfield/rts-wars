@@ -15,6 +15,9 @@ namespace cdc
 	public:
 		Tank();
 		Tank(Poco::UUID id);
+
 		virtual ~Tank();
+
+		std::string toString() const override;
 	};
 }

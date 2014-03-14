@@ -87,6 +87,8 @@ namespace cdc
 		/// <param name="world">Reference to the world.</param>
 		virtual void update(World& world) = 0;
 
+		virtual std::string toString() const = 0;
+
 	private:
 		Entity& operator=(const Entity& rhs);
 	};

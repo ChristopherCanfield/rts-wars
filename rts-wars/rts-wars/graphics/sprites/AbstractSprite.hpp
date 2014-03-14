@@ -51,6 +51,12 @@ namespace cdc
 		///<param name="index">The index of the frame that will be drawn.</param>
 		void setCurrentFrame(int index);
 
+		///<summary></summary>
+		///<param name="border">Sets the border that is displayed when the entity is selected.</param>
+		///<param name="drawAdjustmentX">The x draw adjustment for the border image, compared to the normal image.</param>
+		///<param name="drawAdjustmentZ">The z draw adjustment for the border image, compared to the normal image.</param>
+		void setSelectionBorder(sf::Sprite border, int drawAdjustmentX, int drawAdjustmentZ);
+
 	private:
 		AbstractSprite& operator=(AbstractSprite& rhs);
 
@@ -58,6 +64,10 @@ namespace cdc
 
 		std::vector<AnimationFrame> frames;
 		int currentFrame;
+
+		sf::Sprite selectionBorder;
+		int borderDrawAdjustmentX;
+		int borderDrawAdjustmentZ;
 
 		bool movable;
 	};

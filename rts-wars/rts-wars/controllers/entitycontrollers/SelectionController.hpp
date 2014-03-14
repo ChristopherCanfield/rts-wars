@@ -24,7 +24,5 @@ namespace cdc
 		SelectionController& operator=(const SelectionController&);
 
 		const Poco::UUID entityId;
-
-		bool isSelected;
 	};
 }

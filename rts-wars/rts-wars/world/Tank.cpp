@@ -36,3 +36,9 @@ Tank::Tank(Poco::UUID id) :
 Tank::~Tank()
 {
 }
+
+
+std::string Tank::toString() const
+{
+	return "Tank";
+}

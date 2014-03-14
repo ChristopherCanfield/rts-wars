@@ -32,6 +32,11 @@ void GameApp::setup()
 	tank->setZ(40.f);
 	World::Instance().addEntity(tank);
 
+	Entity::SharedPtr tank2 = make_shared<Tank>();
+	tank2->setX(625.f);
+	tank2->setZ(75.f);
+	World::Instance().addEntity(tank2);
+
 	tiled::Map1 map1;
 	TiledMapParser parser(map1);
 	auto gameMap = parser.parse();

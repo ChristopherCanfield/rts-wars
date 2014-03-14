@@ -30,7 +30,7 @@ void SelectedEntities::add(const Poco::UUID& entityId)
 	{
 		selected.push_back(entityId);
 		std::sort(selected.begin(), selected.end());
-		World::Instance().getEntity(entityId)->setSelected(false);
+		World::Instance().getEntity(entityId)->setSelected(true);
 	}
 }
 

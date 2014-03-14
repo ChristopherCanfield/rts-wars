@@ -23,6 +23,8 @@ TankSprite::TankSprite(Entity& entity) :
 	sprite.setTexture(texture);
 	sprite.setTextureRect(textureRegions[0]);
 	addFrame(AnimationFrame(sprite, sf::Time::Zero));
+
+	setSelectionBorder(sf::Sprite(texture, sf::IntRect(12, 68, 41, 52)), 6, 2);
 }
 
 TankSprite::~TankSprite()
